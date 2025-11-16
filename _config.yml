@@ -1,0 +1,60 @@
+title: "Domenico Pascucci"
+description: "Personal Profile & Information"
+url: "https://pasmimmo.github.io"   # your site URL (no trailing slash)
+baseurl: ""                         # IMPORTANT: empty for USERNAME.github.io sites
+
+# Theme
+theme: minima
+# _config.yml
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# Author info (used by minima and SEO)
+author:
+  name: "Domenico Pascucci"
+  email: "pasmimmo@gmail.com"
+
+# Social links (used by minima)
+#github_username:  "pasmimmo"
+#linkedin_username: "pasmimmo"
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+
+# Exclude stuff from the build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - tmp
+  - log
+  - .gitignore
+header_pages:
+  - pages/about.md
+  - pages/work-experiences.md
+  - pages/skills.md
+  - pages/projects.md
+
+# Defaults: come trattare post e pagine
+defaults:
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Domenico Pascucci"
+
+  - scope:
+      path: "pages"
+      type: "pages"
+    values:
+      layout: "page"
+      author: "Domenico Pascucci"
+
+timezone: "Europe/Rome"

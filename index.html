@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domenico Pascucci — Curriculum Vitae</title>
-  <meta name="description" content="Curriculum Vitae di Domenico Pascucci — Technical Architect, Cloud Native & Azure Specialist.">
+  <title>Domenico Pascucci (pasmimmo) — Curriculum Vitae</title>
+  <meta name="description" content="Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect, Cloud Native & Azure Specialist.">
 
-  <!-- Google Fonts: Space Grotesk (per titoli bold stile editorial), Syne (per il nome grafico) e Plus Jakarta Sans per il corpo -->
+  <!-- Google Fonts: Space Grotesk, Syne e Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
               cream: '#fbf7ee',
               paper: '#ffffff',
               coral: '#e2513a',
+              coralHover: '#c93f2a',
               coralLight: '#fdeee9',
               yellow: '#ffd152',
               yellowDark: '#f0be2f',
@@ -48,7 +49,6 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Titoli sezione stile poster: compatti, neri, decisi */
     .poster-section-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.45rem;
@@ -57,12 +57,15 @@
       color: #181615;
     }
 
-    /* Animazione hover timeline evoluzione */
     .evo-pill:hover {
-      transform: translateY(-3px) scale(1.04);
+      transform: translateY(-3px) scale(1.03);
     }
 
-    /* Stili per la stampa / Esportazione PDF pulita a pagina intera */
+    /* Stile per badge skill interattivi */
+    .skill-card:hover .skill-dot {
+      transform: scale(1.25);
+    }
+
     @media print {
       body {
         background: white !important;
@@ -92,7 +95,7 @@
   <aside aria-label="Controlli CV" class="no-print sticky top-3 z-50 mb-6 flex items-center justify-between gap-3 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-poster-line shadow-lg max-w-4xl w-full mx-4">
     <div class="flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-poster-teal animate-pulse"></span>
-      <span class="text-xs font-bold font-heading tracking-wide uppercase text-poster-charcoal" data-i18n="badge-top">Curriculum Vitae • Domenico Pascucci</span>
+      <span class="text-xs font-bold font-heading tracking-wide uppercase text-poster-charcoal" data-i18n="badge-top">Curriculum Vitae • Domenico Pascucci (pasmimmo)</span>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-3">
@@ -106,7 +109,7 @@
         </button>
       </div>
 
-      <!-- Tasto Stampa / Salva PDF -->
+      <!-- Tasto Stampa PDF -->
       <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-poster-charcoal bg-poster-yellow hover:bg-poster-yellowDark rounded-xl shadow-xs transition-all active:scale-95">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
@@ -116,75 +119,83 @@
     </div>
   </aside>
 
-  <!-- FOGLIO POSTER (Fedele all'immagine: sfondo crema, composizione tipografica in alto a destra, 2 colonne, tab laterali gialli) -->
+  <!-- FOGLIO POSTER (Stile Peter Robinson: Sfondo crema, linguette laterali, grafica artistica e griglia strutturata) -->
   <main class="poster-card relative w-full max-w-4xl bg-poster-cream rounded-none sm:rounded-3xl shadow-2xl overflow-hidden border border-poster-line/70">
     
-    <!-- LINGUETTE DECORATIVE GIALLE SUL BORDO SINISTRO (esattamente come nel modello) -->
-    <div class="hidden sm:block absolute left-0 top-[42%] w-2.5 h-16 bg-poster-yellow rounded-r-md z-20"></div>
-    <div class="hidden sm:block absolute left-0 top-[68%] w-2.5 h-20 bg-poster-yellow rounded-r-md z-20"></div>
-    <div class="hidden sm:block absolute right-0 top-[42%] w-2.5 h-16 bg-poster-yellow rounded-l-md z-20"></div>
+    <!-- LINGUETTE DECORATIVE GIALLE SUL BORDO -->
+    <div class="hidden sm:block absolute left-0 top-[38%] w-2.5 h-16 bg-poster-yellow rounded-r-md z-20"></div>
+    <div class="hidden sm:block absolute left-0 top-[65%] w-2.5 h-20 bg-poster-yellow rounded-r-md z-20"></div>
+    <div class="hidden sm:block absolute right-0 top-[45%] w-2.5 h-16 bg-poster-yellow rounded-l-md z-20"></div>
 
-    <!-- CONTENUTO DEL POSTER -->
     <div class="p-6 sm:p-12 md:p-14 space-y-10">
 
-      <!-- ================= HEADER SECTION ================= -->
+      <!-- ================= HEADER SECTION CON EVIDENZA AL NICKNAME ================= -->
       <header class="relative pb-8 border-b-2 border-poster-line">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
-          <!-- Colonna Sinistra Header: Saluto, Nome, Ruolo, Bio -->
-          <div class="md:col-span-7 space-y-3">
-            <p class="text-lg sm:text-xl font-bold font-heading text-poster-charcoal tracking-tight" data-i18n="hero-greeting">
-              Hello! I'm
-            </p>
+          <div class="md:col-span-7 space-y-3.5">
+            
+            <!-- Saluto e Nome -->
+            <div>
+              <p class="text-base sm:text-lg font-bold font-heading text-poster-charcoal tracking-tight" data-i18n="hero-greeting">
+                Hello! I'm
+              </p>
+              <h1 class="text-4xl sm:text-5xl font-black font-display text-poster-charcoal tracking-tight leading-none mt-1">
+                Domenico Pascucci
+              </h1>
+            </div>
 
-            <h1 class="text-4xl sm:text-5xl font-black font-display text-poster-charcoal tracking-tight leading-tight">
-              Domenico Pascucci
-            </h1>
+            <!-- EVIDENZA AL NICKNAME (pasmimmo) stile sticker/badge iconico -->
+            <div class="flex items-center flex-wrap gap-2 pt-0.5">
+              <span class="text-xs sm:text-sm font-semibold text-poster-muted italic" data-i18n="hero-nickname-prefix">
+                ...but you can call me
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-poster-coral text-white font-mono font-extrabold text-sm sm:text-base shadow-sm rotate-[-1.5deg] hover:rotate-0 transition-transform">
+                <span>@</span><span>pasmimmo</span>
+              </span>
+            </div>
 
-            <p class="text-base sm:text-lg font-bold font-heading text-poster-coral" data-i18n="hero-title">
-              Technical Architect & Cloud Native Specialist
-            </p>
+            <!-- Ruolo e Breve Descrizione -->
+            <div class="pt-1">
+              <p class="text-base sm:text-lg font-bold font-heading text-poster-coral" data-i18n="hero-title">
+                Technical Architect & Cloud Native Specialist
+              </p>
+              <p class="text-xs sm:text-sm text-poster-muted leading-relaxed mt-1" data-i18n="hero-summary">
+                Comprovata esperienza nel design e implementazione di soluzioni Cloud Native su <strong class="text-poster-charcoal">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e <strong class="text-poster-charcoal">FinOps (-30%)</strong>. Guida e coordinamento di un team di 13 persone.
+              </p>
+            </div>
 
-            <p class="text-xs sm:text-sm text-poster-muted leading-relaxed pt-1" data-i18n="hero-summary">
-              Comprovata esperienza nel design e nell'implementazione di soluzioni Cloud Native su <strong class="text-poster-charcoal">Microsoft Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi (<strong class="text-poster-charcoal">FinOps</strong>). Gestione e coordinamento di team ingegneristici (13 persone).
-            </p>
-
-            <!-- Pillola Progetti Enterprise -->
+            <!-- Badge Progetto Enterprise -->
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
               <span class="w-2 h-2 rounded-full bg-poster-teal"></span>
-              <span>Walgreens Boots Alliance • Cloud Native • Microservizi</span>
+              <span>Walgreens Boots Alliance • Cloud Native • Team Lead</span>
             </div>
           </div>
 
-          <!-- Colonna Destra Header: Composizione Grafica Artistica ispirata all'immagine (ENG / ARCH + Stella gialla + Forme geometriche) -->
+          <!-- Composizione Artistica Cubista con Sunburst Stella Gialla e lettere ARCH -->
           <div class="md:col-span-5 relative flex items-center justify-center min-h-[170px] select-none">
             
-            <!-- Stella gialla organica (Sunburst come nel poster di riferimento) -->
+            <!-- Stella gialla a raggiera -->
             <svg class="absolute -top-6 left-4 w-16 h-16 text-poster-yellow animate-[spin_25s_linear_infinite] opacity-90" viewBox="0 0 100 100" fill="currentColor">
               <polygon points="50,0 63,33 98,35 70,57 79,91 50,70 21,91 30,57 2,35 37,33"/>
             </svg>
 
-            <!-- Composizione tipografica artistica cubista "ARCH / CLOUD" (con lettere incastrate nera, corallo, teal e gialla) -->
+            <!-- Lettere ad incastro corallo, teal, nero e giallo -->
             <div class="relative w-full max-w-[240px] h-[160px] flex items-center justify-center">
-              <!-- Lettera A corallo arcuata -->
               <span class="absolute top-0 left-2 text-7xl font-display font-black text-poster-coral opacity-95 leading-none rotate-[-6deg]">
                 A
               </span>
-              <!-- Lettera R teal allungata -->
               <span class="absolute top-2 left-16 text-7xl font-display font-black text-poster-teal leading-none">
                 R
               </span>
-              <!-- Lettera C nera bold sopraelevata -->
               <span class="absolute top-6 right-8 text-8xl font-display font-black text-poster-charcoal leading-none">
                 C
               </span>
-              <!-- Lettera H gialla arcuata -->
               <span class="absolute bottom-0 right-2 text-7xl font-display font-black text-poster-yellowDark opacity-90 leading-none rotate-[8deg]">
                 H
               </span>
-              <!-- Simbolo Cloud stilizzato centrale -->
-              <div class="absolute bottom-2 left-8 px-2.5 py-1 rounded-lg bg-white/90 border border-poster-line shadow-xs text-[10px] font-mono font-bold text-poster-charcoal tracking-wider">
-                AZURE CLOUD
+              <div class="absolute bottom-2 left-6 px-2.5 py-1 rounded-lg bg-white/90 border border-poster-line shadow-xs text-[10px] font-mono font-bold text-poster-charcoal tracking-wider">
+                AZURE ARCHITECT
               </div>
             </div>
 
@@ -193,14 +204,13 @@
         </div>
       </header>
 
-      <!-- ================= TIMELINE EVOLUZIONE "DELL'INFORMATICO" ================= -->
-      <!-- Ispirata all'evoluzione dell'uomo: dallo studente col cappello all'architetto davanti al cloud -->
-      <section class="no-print bg-white/80 rounded-2xl border border-poster-line p-4 sm:p-5 space-y-3">
+      <!-- ================= BARRA ESPERIENZE PIÙ SIGNIFICATIVE ================= -->
+      <section class="no-print bg-white/85 rounded-2xl border border-poster-line p-4 sm:p-5 space-y-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="text-base">🧬</span>
+            <span class="text-base">⭐</span>
             <h2 class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal" data-i18n="evo-heading">
-              Evoluzione della Carriera: Dal Cappello Accademico all'Architettura Cloud
+              Esperienze Più Significative & Tappe Chiave
             </h2>
           </div>
           <span class="text-[11px] font-medium text-poster-muted hidden sm:inline" data-i18n="evo-sub">
@@ -210,46 +220,50 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
           
-          <!-- STEP 1: Studente con cappello -->
-          <button type="button" onclick="scrollToId('section-education')" class="evo-pill text-left p-2.5 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🎓</span>
+          <!-- TAPPA 1: Formazione Accademica & Ricerca Iniziale -->
+          <button type="button" onclick="scrollToId('section-education')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🎓</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019</span>
+                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019 • BASE ACCADEMICA</span>
                 <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s1">Laurea Informatica</span>
+                <span class="block text-[10px] text-poster-muted">Università di Salerno</span>
               </div>
             </div>
           </button>
 
-          <!-- STEP 2: Ricercatore ML & Bandi Europei -->
-          <button type="button" onclick="scrollToId('exp-unisa')" class="evo-pill text-left p-2.5 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🧠</span>
+          <!-- TAPPA 2: Reti Neurali & Bandi Europei -->
+          <button type="button" onclick="scrollToId('exp-unisa')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🧠</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019 — 2020</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s2">Ricerca & ML</span>
+                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019 — 2020 • BANDI UE</span>
+                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s2">Deep Learning & ML</span>
+                <span class="block text-[10px] text-poster-muted">PICO-E-PRO & PACIB</span>
               </div>
             </div>
           </button>
 
-          <!-- STEP 3: Algorithm Engineer davanti al PC -->
-          <button type="button" onclick="scrollToId('exp-act')" class="evo-pill text-left p-2.5 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">💻</span>
+          <!-- TAPPA 3: Algoritmi & Impatto Sanitario (ACT) -->
+          <button type="button" onclick="scrollToId('exp-act')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">💻</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2020 — 2021</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s3">Algorithm Engineer</span>
+                <span class="block text-[10px] font-mono font-bold text-poster-coral">2020 — 2021 • COD19</span>
+                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s3">Algorithm Engineering</span>
+                <span class="block text-[10px] text-poster-muted">Modelli decisionali sanitari</span>
               </div>
             </div>
           </button>
 
-          <!-- STEP 4: Technical Architect & Team Lead -->
-          <button type="button" onclick="scrollToId('exp-magma')" class="evo-pill text-left p-2.5 rounded-xl bg-poster-coralLight border border-poster-coral/40 hover:border-poster-coral transition-all ring-1 ring-poster-coral/20">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">☁️</span>
+          <!-- TAPPA 4: Cloud Enterprise & Leadership (WBA) -->
+          <button type="button" onclick="scrollToId('exp-magma')" class="evo-pill text-left p-3 rounded-xl bg-poster-coralLight border border-poster-coral/40 hover:border-poster-coral transition-all ring-1 ring-poster-coral/20">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">☁️</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2021 — OGG</span>
-                <span class="block text-xs font-bold font-heading text-poster-coral" data-i18n="evo-s4">Technical Architect</span>
+                <span class="block text-[10px] font-mono font-bold text-poster-coral">2021 — OGG • ARCHITETTO</span>
+                <span class="block text-xs font-bold font-heading text-poster-coral" data-i18n="evo-s4">Cloud Native Architect</span>
+                <span class="block text-[10px] text-poster-charcoal font-semibold">WBA • Team 13 Devs • FinOps</span>
               </div>
             </div>
           </button>
@@ -257,36 +271,36 @@
         </div>
       </section>
 
-      <!-- ================= GRIGLIA A 2 COLONNE (STILE POSTER PETER ROBINSON) ================= -->
+      <!-- ================= GRIGLIA A 2 COLONNE: SKILLS IN GRANDE EVIDENZA ================= -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
 
-        <!-- ================= COLONNA SINISTRA (1/3): CONTACT + QR CODE + SKILLS ================= -->
-        <div class="md:col-span-4 space-y-10">
+        <!-- ================= COLONNA SINISTRA: CONTACT + QR + SKILLS DETTAGLIATE ================= -->
+        <div class="md:col-span-5 space-y-8">
 
-          <!-- BLOCCO 1: CONTACT -->
+          <!-- CONTACT -->
           <section id="section-contact" class="space-y-3">
             <h2 class="poster-section-title" data-i18n="title-contact">Contact</h2>
             <div class="text-xs sm:text-sm text-poster-muted space-y-2 font-medium">
               <p class="flex items-center gap-2 text-poster-charcoal font-semibold">
-                <svg class="w-4 h-4 text-poster-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
                 <a href="mailto:pasmimmo@gmail.com" class="hover:text-poster-coral transition-colors">pasmimmo@gmail.com</a>
               </p>
               <p class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-poster-coral" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
                 <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">linkedin.com/in/pasmimmo/</a>
               </p>
               <p class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-poster-coral" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
                 </svg>
                 <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">github.com/pasmimmo</a>
               </p>
               <p class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-poster-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -295,20 +309,15 @@
             </div>
           </section>
 
-          <!-- BLOCCO 2: QR CODE (Identico al layout del modello e del PDF originale) -->
-          <div class="p-3 bg-white rounded-2xl border-2 border-poster-charcoal shadow-sm inline-block">
-            <!-- QR Code vettoriale nitido puntato a pasmimmo.github.io -->
-            <svg class="w-32 h-32 text-poster-charcoal" viewBox="0 0 100 100" fill="currentColor">
-              <!-- Corner Top Left -->
+          <!-- QR CODE E SITO -->
+          <div class="flex items-center gap-3 p-3 bg-white rounded-2xl border-2 border-poster-charcoal shadow-sm">
+            <svg class="w-20 h-20 text-poster-charcoal shrink-0" viewBox="0 0 100 100" fill="currentColor">
               <rect x="5" y="5" width="28" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
               <rect x="13" y="13" width="12" height="12" fill="currentColor"/>
-              <!-- Corner Top Right -->
               <rect x="67" y="5" width="28" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
               <rect x="75" y="13" width="12" height="12" fill="currentColor"/>
-              <!-- Corner Bottom Left -->
               <rect x="5" y="67" width="28" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
               <rect x="13" y="75" width="12" height="12" fill="currentColor"/>
-              <!-- Custom Data Blocks -->
               <rect x="42" y="10" width="8" height="8"/>
               <rect x="52" y="18" width="6" height="6"/>
               <rect x="40" y="28" width="6" height="14"/>
@@ -321,76 +330,121 @@
               <rect x="58" y="65" width="12" height="6"/>
               <rect x="75" y="75" width="15" height="15"/>
             </svg>
-            <p class="text-[10px] font-mono text-center font-bold text-poster-charcoal mt-1 tracking-wider">
-              pasmimmo.github.io
-            </p>
+            <div class="space-y-1">
+              <span class="inline-block px-2 py-0.5 rounded-full bg-poster-coral text-white text-[10px] font-mono font-bold">PORTFOLIO LIVE</span>
+              <p class="text-xs font-bold text-poster-charcoal font-heading leading-tight">Scansiona per consultare il CV online</p>
+              <p class="text-[11px] font-mono text-poster-coral font-bold">pasmimmo.github.io</p>
+            </div>
           </div>
 
-          <!-- BLOCCO 3: SKILLS (Stile lista con cerchi concentrici colorati) -->
+          <!-- ================= SEZIONE SKILLS IN FORTE EVIDENZA ================= -->
           <section id="section-skills" class="space-y-4">
-            <h2 class="poster-section-title" data-i18n="title-skills">Skills</h2>
-            
-            <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="poster-section-title" data-i18n="title-skills">Skills & Expertise</h2>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-poster-yellow text-poster-charcoal">STACK COMPLETO</span>
+            </div>
 
-              <!-- Skill 1 -->
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                  <div class="w-2.5 h-2.5 rounded-full bg-poster-coral"></div>
+            <!-- CARD CATEGORIZZATE CON PALLINI CONCENTRICI E TAG AD ALTO IMPATTO -->
+            <div class="space-y-3.5">
+
+              <!-- 1. CLOUD & AZURE (CORE) -->
+              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
+                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
+                  </div>
+                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
+                    Cloud & Azure (Native)
+                  </h3>
                 </div>
-                <div>
-                  <h3 class="text-xs font-bold text-poster-charcoal">Azure Cloud Native</h3>
-                  <p class="text-[11px] text-poster-muted">Functions, APIM, AKS, Cosmos DB</p>
+                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Azure Functions</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">APIM</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Kubernetes (AKS)</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Cosmos DB</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Docker</span>
                 </div>
               </div>
 
-              <!-- Skill 2 -->
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                  <div class="w-2.5 h-2.5 rounded-full bg-poster-coral"></div>
+              <!-- 2. BACKEND & FRAMEWORK -->
+              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
+                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
+                  </div>
+                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
+                    Backend & Frameworks
+                  </h3>
                 </div>
-                <div>
-                  <h3 class="text-xs font-bold text-poster-charcoal">Backend Engineering</h3>
-                  <p class="text-[11px] text-poster-muted">Java (Spring Boot), .NET 8, Python</p>
-                </div>
-              </div>
-
-              <!-- Skill 3 -->
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                  <div class="w-2.5 h-2.5 rounded-full bg-poster-coral"></div>
-                </div>
-                <div>
-                  <h3 class="text-xs font-bold text-poster-charcoal">Distributed & Messaging</h3>
-                  <p class="text-[11px] text-poster-muted">Microservizi, ServiceBus, RabbitMQ</p>
+                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Java (Spring Boot)</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">.NET 8 (C#)</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Python</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Microservizi</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Serverless</span>
                 </div>
               </div>
 
-              <!-- Skill 4 -->
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                  <div class="w-2.5 h-2.5 rounded-full bg-poster-coral"></div>
+              <!-- 3. MESSAGING, EVENT-DRIVEN & DATABASES -->
+              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
+                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
+                  </div>
+                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
+                    Messaging & Databases
+                  </h3>
                 </div>
-                <div>
-                  <h3 class="text-xs font-bold text-poster-charcoal">Leadership & FinOps</h3>
-                  <p class="text-[11px] text-poster-muted">Team Lead 13 Devs, -30% Costi</p>
+                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Azure ServiceBus</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">EventHub</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">RabbitMQ</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Redis</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">SQL Server / MySQL</span>
                 </div>
               </div>
 
-              <!-- Skill 5 -->
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                  <div class="w-2.5 h-2.5 rounded-full bg-poster-coral"></div>
+              <!-- 4. LEADERSHIP & FINOPS -->
+              <div class="skill-card p-3 rounded-xl bg-poster-coralLight/60 border border-poster-coral/30 shadow-2xs space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0 bg-white">
+                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
+                  </div>
+                  <h3 class="text-xs font-bold font-heading text-poster-coral uppercase tracking-wide">
+                    Governance, FinOps & Leadership
+                  </h3>
                 </div>
-                <div>
-                  <h3 class="text-xs font-bold text-poster-charcoal">DevOps & Observability</h3>
-                  <p class="text-[11px] text-poster-muted">CI/CD, Prometheus, AppInsights</p>
+                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Team Lead (13 Devs)</span>
+                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">FinOps (-30% Costi)</span>
+                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Mentoring</span>
+                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Agile / Scrum</span>
+                </div>
+              </div>
+
+              <!-- 5. DEVOPS, TESTING & OBSERVABILITY -->
+              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
+                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
+                  </div>
+                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
+                    Observability & CI/CD
+                  </h3>
+                </div>
+                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Prometheus</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">AppInsights</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">SonarQube</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">GitHub Actions</span>
+                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Performance Tuning</span>
                 </div>
               </div>
 
             </div>
           </section>
 
-          <!-- BLOCCO 4: LINGUE -->
+          <!-- LINGUE -->
           <section class="space-y-2 pt-2 border-t border-poster-line">
             <h3 class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal" data-i18n="title-languages">
               Lingue / Languages
@@ -405,16 +459,15 @@
 
         </div>
 
-        <!-- ================= COLONNA DESTRA (2/3): EDUCATION + EXPERIENCE ================= -->
-        <div class="md:col-span-8 space-y-10">
+        <!-- ================= COLONNA DESTRA: EDUCATION + EXPERIENCE ================= -->
+        <div class="md:col-span-7 space-y-10">
 
-          <!-- BLOCCO 1: EDUCATION (Disposta a 2 colonne come nel modello Peter Robinson) -->
+          <!-- BLOCCO 1: EDUCATION -->
           <section id="section-education" class="space-y-4">
             <h2 class="poster-section-title" data-i18n="title-education">Education</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
-              <!-- Grado 1 -->
               <div class="flex items-start gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-poster-coral mt-1.5 shrink-0"></span>
                 <div class="space-y-0.5">
@@ -424,7 +477,6 @@
                 </div>
               </div>
 
-              <!-- Grado 2 -->
               <div class="flex items-start gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-poster-coral mt-1.5 shrink-0"></span>
                 <div class="space-y-0.5">
@@ -439,7 +491,7 @@
             <hr class="border-poster-line pt-2">
           </section>
 
-          <!-- BLOCCO 2: EXPERIENCE (Data a sinistra + Titolo in grassetto + Paragrafo narrativo sotto) -->
+          <!-- BLOCCO 2: EXPERIENCE -->
           <section id="section-experience" class="space-y-8">
             <h2 class="poster-section-title" data-i18n="title-experience">Experience</h2>
 
@@ -530,7 +582,7 @@
       <!-- FOOTER POSTER -->
       <footer class="no-print pt-6 border-t border-poster-line text-center">
         <p class="text-xs text-poster-muted font-medium">
-          Domenico Pascucci • Technical Architect • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
+          Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
         </p>
       </footer>
 
@@ -541,20 +593,21 @@
   <script>
     const translations = {
       it: {
-        "badge-top": "Curriculum Vitae • Domenico Pascucci",
+        "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
         "btn-print": "Stampa / Salva",
         "hero-greeting": "Hello! I'm",
+        "hero-nickname-prefix": "...but you can call me",
         "hero-title": "Technical Architect & Cloud Native Specialist",
-        "hero-summary": "Comprovata esperienza nel design e nell'implementazione di soluzioni Cloud Native su <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi (<strong class=\"text-poster-charcoal\">FinOps</strong>). Gestione e coordinamento di team ingegneristici (13 persone).",
-        "evo-heading": "Evoluzione della Carriera: Dal Cappello Accademico all'Architettura Cloud",
+        "hero-summary": "Comprovata esperienza nel design e implementazione di soluzioni Cloud Native su <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e <strong class=\"text-poster-charcoal\">FinOps (-30%)</strong>. Guida e coordinamento di un team di 13 persone.",
+        "evo-heading": "Esperienze Più Significative & Tappe Chiave",
         "evo-sub": "Clicca per saltare all'esperienza",
         "evo-s1": "Laurea Informatica",
-        "evo-s2": "Ricerca & ML",
-        "evo-s3": "Algorithm Engineer",
-        "evo-s4": "Technical Architect",
+        "evo-s2": "Deep Learning & ML",
+        "evo-s3": "Algorithm Engineering",
+        "evo-s4": "Cloud Native Architect",
         "title-contact": "Contact",
         "contact-loc": "Napoli / Remoto (Italia)",
-        "title-skills": "Skills",
+        "title-skills": "Skills & Expertise",
         "title-languages": "Lingue / Languages",
         "lang-ita": "Madrelingua",
         "lang-eng": "C2 Lettura • C1 Scrittura • B1 Parlato",
@@ -573,20 +626,21 @@
         "exp-3-desc": "Partecipazione ai bandi europei <strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> e <strong class=\"text-poster-charcoal\">PACIB</strong>, con sviluppo di sistemi predittivi di Machine Learning in ambito biomedicale e industriale. Focus su <strong class=\"text-poster-charcoal\">reti neurali convoluzionali (CNN)</strong> e sviluppo dell'orchestrazione a scambio di messaggi per il calcolo di pannelli proteici."
       },
       en: {
-        "badge-top": "Curriculum Vitae • Domenico Pascucci",
+        "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
         "btn-print": "Print / Save",
         "hero-greeting": "Hello! I'm",
+        "hero-nickname-prefix": "...but you can call me",
         "hero-title": "Technical Architect & Cloud Native Specialist",
-        "hero-summary": "Proven track record in designing and delivering enterprise Cloud Native solutions on <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, focusing on scalability, high performance, and cost governance (<strong class=\"text-poster-charcoal\">FinOps</strong>). Coordinating and leading engineering teams (13 developers).",
-        "evo-heading": "Career Evolution: From Academic Cap to Cloud Architecture",
+        "hero-summary": "Proven track record in designing and delivering enterprise Cloud Native solutions on <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, microservices, serverless, and event-driven architectures with strong focus on scalability, performance, and <strong class=\"text-poster-charcoal\">FinOps (-30%)</strong>. Guiding and leading an engineering team of 13 people.",
+        "evo-heading": "Key Milestones & Significant Experiences",
         "evo-sub": "Click to jump to experience",
         "evo-s1": "B.Sc. CompSci",
-        "evo-s2": "ML Research",
-        "evo-s3": "Algorithm Engineer",
-        "evo-s4": "Technical Architect",
+        "evo-s2": "Deep Learning & ML",
+        "evo-s3": "Algorithm Engineering",
+        "evo-s4": "Cloud Native Architect",
         "title-contact": "Contact",
         "contact-loc": "Naples, Italy / Remote",
-        "title-skills": "Skills",
+        "title-skills": "Skills & Expertise",
         "title-languages": "Languages",
         "lang-ita": "Native speaker",
         "lang-eng": "C2 Reading • C1 Writing • B1 Speaking",

@@ -3,37 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domenico Pascucci | Technical Architect & Cloud Native Specialist</title>
-  <meta name="description" content="Curriculum Vitae e Portfolio di Domenico Pascucci - Technical Architect, Cloud Native & Azure Specialist, Team Lead.">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='900' fill='white'>DP</text></svg>">
+  <title>Domenico Pascucci — Curriculum Vitae</title>
+  <meta name="description" content="Curriculum Vitae di Domenico Pascucci — Technical Architect, Cloud Native & Azure Specialist.">
 
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans (caldo, leggibile e umano) + Merriweather (editoriale per i titoli) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a',
+            pdfOrange: {
+              DEFAULT: '#d96b27',
+              hover: '#bf5719',
+              light: '#fdf4ed',
+              border: '#f6d2b8'
+            },
+            paper: {
+              bg: '#faf8f5',
+              card: '#ffffff',
+              border: '#ede6dd'
+            },
+            ink: {
+              DEFAULT: '#2a2624',
+              muted: '#635d57',
+              faint: '#9a938b'
             }
           }
         }
@@ -42,549 +45,577 @@
   </script>
 
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
+    body {
+      background-color: #faf8f5;
+      color: #2a2624;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
 
-    /* Print Styles: Optimized for 2-page clean PDF export */
+    /* Stile titoli arancio caldo identico al PDF */
+    .section-title {
+      color: #d96b27;
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* Animazione timeline evoluzione */
+    .evo-step:hover .evo-avatar {
+      transform: translateY(-6px) scale(1.08);
+      filter: drop-shadow(0 10px 15px rgba(217, 107, 39, 0.25));
+    }
+    .evo-step.active .evo-avatar {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    /* Pulsazione evidenziazione quando si clicca un punto dell'evoluzione */
+    @keyframes highlightPulse {
+      0% { background-color: rgba(217, 107, 39, 0.18); }
+      100% { background-color: transparent; }
+    }
+    .flash-highlight {
+      animation: highlightPulse 2s ease-out;
+      border-color: #d96b27 !important;
+    }
+
+    /* Stili per la stampa / Esportazione PDF identica all'originale */
     @media print {
       body {
-        background: #ffffff !important;
-        color: #0f172a !important;
-        font-size: 11pt;
+        background: white !important;
+        color: #1a1a1a !important;
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
       }
       .no-print {
         display: none !important;
       }
-      .print-shadow-none {
+      .cv-paper {
         box-shadow: none !important;
-        border: 1px solid #e2e8f0 !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
       }
-      .page-break-inside-avoid {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+        padding-top: 1.5rem;
       }
-      header, footer {
-        display: none !important;
-      }
-      a {
-        text-decoration: none !important;
-        color: #0f172a !important;
+      .section-title {
+        color: #d96b27 !important;
+        font-size: 1.4rem !important;
       }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-brand-500 selection:text-white">
+<body class="selection:bg-pdfOrange-light selection:text-pdfOrange">
 
-  <!-- Top Navigation Bar -->
-  <header class="no-print sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-sm shadow-brand-500/30 group-hover:scale-105 transition-transform">
-          DP
-        </div>
-        <div>
-          <span class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Domenico Pascucci</span>
-          <span class="hidden sm:block text-xs text-slate-500 font-mono">Technical Architect</span>
-        </div>
-      </a>
+  <!-- TOP BAR: Controllo Lingua e Azioni Rapide -->
+  <aside aria-label="Controlli pagina" class="no-print sticky top-0 z-40 bg-paper-bg/95 backdrop-blur border-b border-paper-border px-4 py-2.5">
+    <div class="max-w-4xl mx-auto flex items-center justify-between text-sm">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs text-ink-muted font-medium" data-i18n="status-online">CV Online & Versione Interattiva</span>
+      </div>
 
-      <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-        <a href="#about" class="hover:text-brand-600 transition-colors">Profilo</a>
-        <a href="#experience" class="hover:text-brand-600 transition-colors">Esperienze</a>
-        <a href="#skills" class="hover:text-brand-600 transition-colors">Competenze</a>
-        <a href="#education" class="hover:text-brand-600 transition-colors">Formazione</a>
-      </nav>
-
-      <!-- Action Buttons -->
       <div class="flex items-center gap-3">
-        <button onclick="window.print()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 text-sm font-medium shadow-sm transition-all active:scale-95">
-          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Selettore Lingua ITA / ENG -->
+        <div class="inline-flex rounded-lg border border-paper-border bg-white p-0.5 shadow-sm">
+          <button id="btn-lang-it" onclick="setLanguage('it')" class="px-2.5 py-1 text-xs font-semibold rounded-md transition-colors bg-pdfOrange text-white shadow-xs">
+            🇮🇹 IT
+          </button>
+          <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 text-xs font-semibold rounded-md transition-colors text-ink-muted hover:text-ink">
+            🇬🇧 EN
+          </button>
+        </div>
+
+        <!-- Tasto Stampa PDF -->
+        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-ink bg-white border border-paper-border hover:border-pdfOrange hover:text-pdfOrange rounded-lg shadow-sm transition-all">
+          <svg class="w-3.5 h-3.5 text-pdfOrange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
           </svg>
-          <span class="hidden sm:inline">Stampa / Salva</span> PDF
+          <span data-i18n="btn-print">Stampa / Salva PDF</span>
         </button>
-        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm shadow-brand-500/25 transition-all hover:shadow-brand-500/40 active:scale-95">
-          Contattami
-        </a>
       </div>
     </div>
-  </header>
+  </aside>
 
-  <!-- Main Content Container -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-16">
+  <!-- CONTENITORE PRINCIPALE IN STILE FOGLIO CURRICULUM -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+    <div class="cv-paper bg-white rounded-2xl border border-paper-border/80 shadow-md sm:shadow-lg p-6 sm:p-12 space-y-12 transition-all">
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-2">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-10 border-b border-slate-200">
-        
-        <div class="space-y-4 max-w-2xl">
-          <!-- Availability Pill -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Cloud Architecture • FinOps • Team Leadership
+      <!-- HEADER FEDELE AL PDF: Logo geometrico + Dati personali -->
+      <header class="border-b border-paper-border/70 pb-8">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+          
+          <!-- Blocco Sinistro: Logo 4 quadrati colorati (stile PDF originale) e Nome -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-4">
+              <!-- Quattro cubetti colorati fedeli all'intestazione del PDF -->
+              <div class="grid grid-cols-2 gap-1 w-9 h-9 p-1 rounded-lg bg-slate-50 border border-slate-200 shadow-2xs">
+                <div class="rounded-xs bg-[#e05a47]"></div>
+                <div class="rounded-xs bg-[#00a3e0]"></div>
+                <div class="rounded-xs bg-[#ffb81c]"></div>
+                <div class="rounded-xs bg-[#002855]"></div>
+              </div>
+
+              <div>
+                <h1 class="text-3xl sm:text-4xl font-bold text-ink tracking-tight font-serif">
+                  Domenico Pascucci
+                </h1>
+                <p class="text-sm font-medium text-pdfOrange mt-0.5" data-i18n="hero-subtitle">
+                  Technical Architect & Cloud Native Specialist
+                </p>
+              </div>
+            </div>
+
+            <!-- Dati di contatto orizzontali compatti (formato pulito come il PDF) -->
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-ink-muted pt-1">
+              <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="hover:text-pdfOrange transition-colors inline-flex items-center gap-1">
+                <span class="font-bold text-ink">linkedin.</span> linkedin.com/in/pasmimmo/
+              </a>
+
+              <span class="text-slate-300">•</span>
+
+              <a href="mailto:pasmimmo@gmail.com" class="hover:text-pdfOrange transition-colors inline-flex items-center gap-1">
+                <span class="font-bold text-ink">email.</span> pasmimmo@gmail.com
+              </a>
+
+              <span class="text-slate-300">•</span>
+
+              <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="hover:text-pdfOrange transition-colors inline-flex items-center gap-1">
+                <span class="font-bold text-ink">github.</span> github.com/pasmimmo
+              </a>
+
+              <span class="text-slate-300">•</span>
+
+              <span class="inline-flex items-center gap-1 text-ink-muted">
+                <span class="font-bold text-ink" data-i18n="meta-location-label">sede.</span> <span data-i18n="meta-location">Napoli / Remoto</span>
+              </span>
+            </div>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Domenico Pascucci
-          </h1>
-
-          <p class="text-xl sm:text-2xl font-semibold text-brand-600">
-            Technical Architect & Cloud Native Specialist
-          </p>
-
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Esperienza consolidata nel design e nell'implementazione di soluzioni Cloud Native su <strong class="text-slate-900 font-semibold">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e ottimizzazione dei costi (<strong class="text-slate-900 font-semibold">FinOps</strong>).
-          </p>
-
-          <!-- Quick Contacts & Links -->
-          <div class="flex flex-wrap items-center gap-y-2 gap-x-4 pt-2 text-sm text-slate-600">
-            <a href="mailto:pasmimmo@gmail.com" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              pasmimmo@gmail.com
-            </a>
-
-            <span class="text-slate-300">•</span>
-
-            <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
-              <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              linkedin.com/in/pasmimmo
-            </a>
-
-            <span class="text-slate-300">•</span>
-
-            <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
-              <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
-              github.com/pasmimmo
-            </a>
-
-            <span class="text-slate-300">•</span>
-
-            <span class="inline-flex items-center gap-1.5 text-slate-500">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-              Italia
+          <!-- Badge di Ruolo Chiave -->
+          <div class="hidden sm:block text-right shrink-0">
+            <span class="inline-block px-3 py-1.5 rounded-full bg-pdfOrange-light border border-pdfOrange-border text-pdfOrange text-xs font-semibold">
+              Microsoft Azure • FinOps • Team Lead
             </span>
           </div>
+
+        </div>
+      </header>
+
+      <!-- TIMELINE EVOLUZIONE "DELL'INFORMATICO" (Interattiva, hover & click) -->
+      <section class="no-print bg-gradient-to-b from-paper-bg to-white rounded-xl border border-paper-border p-5 sm:p-7 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🧬</span>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-ink-muted" data-i18n="evo-title">
+              L'Evoluzione della Carriera: Dal Cappello Accademico all'Architettura Cloud
+            </h2>
+          </div>
+          <span class="text-[11px] text-ink-faint italic hidden sm:inline" data-i18n="evo-hint">
+            Passa il mouse o clicca per saltare all'esperienza
+          </span>
         </div>
 
-        <!-- Key Metrics Cards -->
-        <div class="grid grid-cols-2 gap-3 w-full md:w-auto shrink-0 print-shadow-none">
-          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
-            <div class="text-3xl font-extrabold text-brand-600">13+</div>
-            <div class="text-xs font-semibold text-slate-700 mt-0.5">Persone Coordinate</div>
-            <div class="text-[11px] text-slate-500">Team leadership & mentoring</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
-            <div class="text-3xl font-extrabold text-emerald-600">-30%</div>
-            <div class="text-xs font-semibold text-slate-700 mt-0.5">Riduzione Costi</div>
-            <div class="text-[11px] text-slate-500">Ottimizzazione & FinOps</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
-            <div class="text-3xl font-extrabold text-indigo-600">Azure</div>
-            <div class="text-xs font-semibold text-slate-700 mt-0.5">Cloud Native</div>
-            <div class="text-[11px] text-slate-500">Serverless & Microservizi</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
-            <div class="text-3xl font-extrabold text-amber-600">Global</div>
-            <div class="text-xs font-semibold text-slate-700 mt-0.5">Clienti Enterprise</div>
-            <div class="text-[11px] text-slate-500">Walgreens Boots Alliance</div>
-          </div>
-        </div>
+        <!-- Barra di Evoluzione Orizzontale a 5 Tappe -->
+        <div class="relative pt-6 pb-2">
+          <!-- Linea sinuosa di connessione (stile infografica evoluzione) -->
+          <div class="absolute top-[4.2rem] left-8 right-8 h-1 bg-gradient-to-r from-amber-200 via-orange-300 to-pdfOrange rounded-full -z-0 hidden md:block"></div>
 
-      </div>
-    </section>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 relative z-10">
 
-    <!-- PROFILO / ABOUT SECTION -->
-    <section id="about" class="space-y-4 page-break-inside-avoid">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
-          01
-        </div>
-        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Profilo Professionale</h2>
-      </div>
-
-      <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-4 print-shadow-none">
-        <p class="text-slate-600 leading-relaxed">
-          <strong class="text-slate-900 font-semibold">Technical Architect</strong> con comprovata esperienza nel design e nella messa in produzione di architetture distribuite su vasta scala in ambiente <strong class="text-slate-900 font-semibold">Microsoft Azure</strong>. Specializzato in pattern <span class="font-medium text-slate-800">Serverless</span>, <span class="font-medium text-slate-800">Microservizi</span>, <span class="font-medium text-slate-800">Message Broker</span> e layer di integrazione aziendali.
-        </p>
-        <p class="text-slate-600 leading-relaxed">
-          Attualmente responsabile della guida e del coordinamento di un team eterogeneo di <strong class="text-slate-900 font-semibold">13 persone</strong>, dedicato allo sviluppo di librerie common e middleware architetturali. Solida esperienza con metodologie <strong class="text-slate-800 font-medium">Agile</strong>, pratiche <strong class="text-slate-800 font-medium">DevOps</strong>, pipeline CI/CD automatizzate, observability e monitoraggio proattivo.
-        </p>
-        <p class="text-slate-600 leading-relaxed">
-          Orientato alla crescita del team tramite attività di formazione per figure junior e affiancamento architetturale per profili senior. Utilizzo quotidiano della lingua inglese per la conduzione di meeting tecnici, stesura di documentazione e interazione diretta con stakeholder e clienti internazionali.
-        </p>
-      </div>
-    </section>
-
-    <!-- ESPERIENZE LAVORATIVE / WORK EXPERIENCES -->
-    <section id="experience" class="space-y-6">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
-            02
-          </div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Esperienze Lavorative</h2>
-        </div>
-        <span class="text-xs font-mono text-slate-500 no-print">In ordine cronologico inverso</span>
-      </div>
-
-      <div class="space-y-6">
-
-        <!-- RUOLO 1: TECHNICAL ARCHITECT -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm relative group hover:border-brand-200 transition-colors print-shadow-none page-break-inside-avoid">
-          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-brand-50 text-brand-700">Ruolo Attuale</span>
-                <span class="text-xs font-medium text-slate-500">Full-time</span>
+            <!-- STEP 1: Lo Studente col tocco di laurea (Salerno 2019) -->
+            <button type="button" onclick="scrollToSection('edu-section')" class="evo-step group text-center flex flex-col items-center focus:outline-hidden text-left sm:text-center">
+              <div class="evo-avatar w-14 h-14 rounded-2xl bg-white border-2 border-amber-300 shadow-sm flex items-center justify-center transition-all duration-300 group-hover:border-pdfOrange">
+                <!-- Icona SVG: Studente con cappello / tocco accademico -->
+                <svg class="w-8 h-8 text-amber-600 group-hover:text-pdfOrange transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mt-1">Technical Architect</h3>
-              <p class="text-brand-600 font-medium text-sm">Magma S.r.l. <span class="text-slate-400">|</span> Cliente: Walgreens Boots Alliance</p>
-            </div>
-            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
-              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Marzo 2021 — Presente</span>
-              <div class="text-xs text-slate-500 mt-1">Napoli, Italia</div>
-            </div>
-          </div>
+              <div class="mt-3">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">2019</span>
+                <p class="text-xs font-bold text-ink mt-0.5 group-hover:text-pdfOrange transition-colors" data-i18n="evo-step-1-title">Laurea in Informatica</p>
+                <p class="text-[11px] text-ink-muted" data-i18n="evo-step-1-sub">Università di Salerno</p>
+              </div>
+            </button>
 
-          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Design Cloud Native su Azure:</strong> Progettazione e implementazione di architetture resilienti e distribuite, con focus primario su scalabilità, elevate performance e ottimizzazione costi.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Ottimizzazione FinOps (-30%):</strong> Sviluppo di un middleware ad alte prestazioni per il protocol conversion, riducendo i costi computazionali e infrastrutturali del 30%.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Modernizzazione Stack & Framework:</strong> Guida dell'adozione tecnologica di Java 11 e .NET 8, orchestrando la migrazione, l'aggiornamento e la dismissione controllata dei sistemi legacy a garanzia della continuità operativa zero-downtime.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Leadership & Governance (13 Devs):</strong> Gestione e coordinamento di un team di 13 persone, garantendo uniformità architetturale, adozione di best practice di sviluppo e standard di riusabilità del codice.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Quality & Production Stability:</strong> Attività continua di early performance testing, fine tuning, benchmarking sistemico, incident management e risoluzione rapida di issue in ambienti di produzione critici.</span>
-            </li>
-          </ul>
+            <!-- STEP 2: Il Ricercatore ML & Bandi Europei (2019-2020) -->
+            <button type="button" onclick="scrollToSection('exp-unisa')" class="evo-step group text-center flex flex-col items-center focus:outline-hidden text-left sm:text-center">
+              <div class="evo-avatar w-14 h-14 rounded-2xl bg-white border-2 border-amber-400 shadow-sm flex items-center justify-center transition-all duration-300 group-hover:border-pdfOrange">
+                <!-- Icona SVG: Machine Learning / Reti neurali & Ricerca -->
+                <svg class="w-8 h-8 text-amber-700 group-hover:text-pdfOrange transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <div class="mt-3">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">2019 - 2020</span>
+                <p class="text-xs font-bold text-ink mt-0.5 group-hover:text-pdfOrange transition-colors" data-i18n="evo-step-2-title">Software & ML Engineer</p>
+                <p class="text-[11px] text-ink-muted" data-i18n="evo-step-2-sub">Progetti PICO & PACIB</p>
+              </div>
+            </button>
 
-          <!-- Stack Tags -->
-          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Azure Functions</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">APIM</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">AKS (Kubernetes)</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">.NET 8</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Java (Spring Boot)</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Cosmos DB</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Azure ServiceBus</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">FinOps</span>
-          </div>
-        </div>
+            <!-- STEP 3: L'Algorithm Engineer (ACT / Cod19, 2020-2021) -->
+            <button type="button" onclick="scrollToSection('exp-act')" class="evo-step group text-center flex flex-col items-center focus:outline-hidden text-left sm:text-center">
+              <div class="evo-avatar w-14 h-14 rounded-2xl bg-white border-2 border-orange-400 shadow-sm flex items-center justify-center transition-all duration-300 group-hover:border-pdfOrange">
+                <!-- Icona SVG: Sviluppatore davanti al codice / algoritmi -->
+                <svg class="w-8 h-8 text-orange-600 group-hover:text-pdfOrange transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="M7 8l3 3-3 3M13 14h4"/>
+                </svg>
+              </div>
+              <div class="mt-3">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-800">2020 - 2021</span>
+                <p class="text-xs font-bold text-ink mt-0.5 group-hover:text-pdfOrange transition-colors" data-i18n="evo-step-3-title">Algorithm Engineer</p>
+                <p class="text-[11px] text-ink-muted" data-i18n="evo-step-3-sub">ACT Operations (Cod19)</p>
+              </div>
+            </button>
 
-        <!-- RUOLO 2: ALGORITHM ENGINEER -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm hover:border-slate-300 transition-colors print-shadow-none page-break-inside-avoid">
-          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
-            <div>
-              <h3 class="text-xl font-bold text-slate-900">Algorithm Engineer</h3>
-              <p class="text-brand-600 font-medium text-sm">ACT Operations Research IT S.r.l.</p>
-            </div>
-            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
-              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Settembre 2020 — Febbraio 2021</span>
-              <div class="text-xs text-slate-500 mt-1">Lomazzo (CO), Italia</div>
-            </div>
-          </div>
+            <!-- STEP 4: Technical Architect & Team Lead (Magma / WBA, 2021-Presente) -->
+            <button type="button" onclick="scrollToSection('exp-magma')" class="evo-step group text-center flex flex-col items-center focus:outline-hidden text-left sm:text-center">
+              <div class="evo-avatar w-14 h-14 rounded-2xl bg-pdfOrange-light border-2 border-pdfOrange shadow-md flex items-center justify-center transition-all duration-300 ring-2 ring-pdfOrange/20">
+                <!-- Icona SVG: Cloud Architect che orchestra sistemi distribuiti -->
+                <svg class="w-8 h-8 text-pdfOrange transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+                  <path d="m12 13 2 2 4-4"/>
+                </svg>
+              </div>
+              <div class="mt-3">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-pdfOrange text-white">2021 - Presente</span>
+                <p class="text-xs font-bold text-pdfOrange mt-0.5" data-i18n="evo-step-4-title">Technical Architect</p>
+                <p class="text-[11px] text-ink-muted" data-i18n="evo-step-4-sub">WBA & Magma (13 Devs)</p>
+              </div>
+            </button>
 
-          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Backend Piattaforma Sanitaria Cod19:</strong> Progettazione e sviluppo backend per il monitoraggio predittivo e la stima dei tempi di ospedalizzazione per i pazienti affetti da Covid-19.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Analisi Dati & Modellazione:</strong> Ricerca algoritmica applicata, modellazione e ottimizzazione computazionale a supporto dei processi decisionali critici.</span>
-            </li>
-          </ul>
+            <!-- STEP 5: Il Nuovo Capitolo (Pronto per le nuove sfide) -->
+            <button type="button" onclick="scrollToSection('contact-section')" class="evo-step group text-center flex flex-col items-center focus:outline-hidden text-left sm:text-center">
+              <div class="evo-avatar w-14 h-14 rounded-2xl bg-white border-2 border-dashed border-slate-300 shadow-xs flex items-center justify-center transition-all duration-300 group-hover:border-pdfOrange">
+                <!-- Icona SVG: Razzo / Nuova sfida -->
+                <svg class="w-7 h-7 text-slate-400 group-hover:text-pdfOrange transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                </svg>
+              </div>
+              <div class="mt-3">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-600" data-i18n="evo-step-5-badge">In corso</span>
+                <p class="text-xs font-bold text-ink mt-0.5 group-hover:text-pdfOrange transition-colors" data-i18n="evo-step-5-title">Nuove Competenze</p>
+                <p class="text-[11px] text-ink-muted" data-i18n="evo-step-5-sub" data-i18n="evo-step-5-sub">Integrazione in arrivo</p>
+              </div>
+            </button>
 
-          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Python</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Algoritmi & Ricerca Operativa</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Data Modeling</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Backend REST</span>
-          </div>
-        </div>
-
-        <!-- RUOLO 3: SOFTWARE ENGINEER & ML RESEARCH -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm hover:border-slate-300 transition-colors print-shadow-none page-break-inside-avoid">
-          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
-            <div>
-              <h3 class="text-xl font-bold text-slate-900">Software Engineer & Machine Learning Engineer</h3>
-              <p class="text-brand-600 font-medium text-sm">Università degli Studi di Salerno | Progetti di Ricerca Europei</p>
-            </div>
-            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
-              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Luglio 2019 — Marzo 2020</span>
-              <div class="text-xs text-slate-500 mt-1">Salerno, Italia</div>
-            </div>
-          </div>
-
-          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Bandi Europei PICO-E-PRO & PACIB:</strong> Partecipazione alla ricerca e allo sviluppo di modelli predittivi di Machine Learning in ambito diagnostico-medico e per l'analisi preventiva di anomalie nei processi industriali.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Computer Vision & Deep Learning:</strong> Implementazione di reti neurali convoluzionali (CNN) per l'analisi avanzata e l'estrazione di feature da immagini biomedicali.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
-              <span><strong>Architettura a Messaggi & Calcolo Distribuito:</strong> Progettazione di una soluzione di orchestrazione scalabile per il calcolo di pannelli proteici per il Dipartimento di Farmacia, imperniata sullo scambio asincrono di messaggi tra micro-moduli.</span>
-            </li>
-          </ul>
-
-          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Machine Learning</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Convolutional Neural Networks (CNN)</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Python</span>
-            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Message Brokers</span>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- COMPETENZE TECNICHE / SKILLS SECTION -->
-    <section id="skills" class="space-y-6 page-break-inside-avoid">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
-          03
-        </div>
-        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Competenze Tecniche</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-        <!-- Card 1: Cloud & DevOps -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2.5 text-brand-600 mb-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
-              </svg>
-              <h3 class="font-bold text-slate-900 text-base">Cloud & DevOps</h3>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Infrastruttura, containerizzazione e orchestrazione cloud nativa.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-semibold">Microsoft Azure</span>
-              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-medium">Azure Functions (Serverless)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-medium">Azure APIM</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Kubernetes (AKS)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Docker</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Azure DevOps</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">FinOps & Cost Optimization</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Backend Development -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2.5 text-indigo-600 mb-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-              </svg>
-              <h3 class="font-bold text-slate-900 text-base">Backend & Architetture</h3>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Linguaggi ad alte prestazioni e pattern architetturali distribuiti.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200/60 text-indigo-800 text-xs font-semibold">Java (Spring Boot, JEE)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200/60 text-indigo-800 text-xs font-semibold">C# / .NET (.NET 8, ASP.NET)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Python</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Architettura a Microservizi</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Event-Driven Architecture</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">REST & Middleware Layer</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Database & Messaging -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2.5 text-emerald-600 mb-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-              </svg>
-              <h3 class="font-bold text-slate-900 text-base">Database & Messaging</h3>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Persistenza relazionale/NoSQL e streaming di eventi asincroni.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">Azure ServiceBus</span>
-              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">Azure EventHub</span>
-              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">RabbitMQ</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Cosmos DB (NoSQL)</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Redis</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Microsoft SQL Server</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">MySQL / SQLite</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4: Observability, Tooling & Quality -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2.5 text-amber-600 mb-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-              </svg>
-              <h3 class="font-bold text-slate-900 text-base">Observability, CI/CD & Tooling</h3>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Monitoraggio ad alta disponibilità, automazione del rilascio e qualità.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-medium">Prometheus & Log Analytics</span>
-              <span class="px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-medium">Azure Monitor & AppInsights</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">SonarQube</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">GitHub Actions & Drone CI</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Git / Jira / Gitea</span>
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Early Performance Testing</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FORMAZIONE & LINGUE -->
-    <section id="education" class="space-y-6 page-break-inside-avoid">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
-          04
-        </div>
-        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Formazione & Lingue</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- SEZIONE 1: PROFILO (Formattazione fedele al PDF originale) -->
+      <section id="profile-section" class="space-y-3">
+        <h2 class="section-title" data-i18n="title-profile">Profilo</h2>
         
-        <!-- Istruzione -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-7 shadow-sm print-shadow-none">
-          <div class="flex items-center gap-2.5 text-slate-900 font-bold mb-3">
-            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
-            </svg>
-            Istruzione Accademica
-          </div>
-          <div>
-            <h4 class="text-base font-bold text-slate-900">Laurea in Informatica</h4>
-            <p class="text-sm text-brand-600 font-medium">Università degli Studi di Salerno</p>
-            <p class="text-xs font-mono text-slate-500 mt-1">Conseguita nel 2019</p>
-            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-              Curriculum orientato all'ingegneria del software, algoritmi, strutture dati e basi di intelligenza artificiale / machine learning.
-            </p>
-          </div>
-        </div>
-
-        <!-- Lingue -->
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-7 shadow-sm print-shadow-none">
-          <div class="flex items-center gap-2.5 text-slate-900 font-bold mb-3">
-            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
-            </svg>
-            Competenze Linguistiche
-          </div>
-          <div class="space-y-4">
-            <div>
-              <div class="flex justify-between items-center text-sm font-semibold text-slate-800">
-                <span>Italiano</span>
-                <span class="text-xs font-mono font-medium text-slate-500">Madrelingua</span>
-              </div>
-              <div class="w-full bg-slate-100 rounded-full h-2 mt-1.5 overflow-hidden">
-                <div class="bg-brand-600 h-2 rounded-full w-full"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between items-center text-sm font-semibold text-slate-800">
-                <span>Inglese</span>
-                <span class="text-xs font-mono font-medium text-slate-500">Professionale / Internazionale</span>
-              </div>
-              <div class="w-full bg-slate-100 rounded-full h-2 mt-1.5 overflow-hidden">
-                <div class="bg-brand-600 h-2 rounded-full w-[80%]"></div>
-              </div>
-              <p class="text-xs text-slate-500 mt-2 font-mono">
-                Lettura: <strong>C2</strong> • Scrittura: <strong>C1</strong> • Conversazione: <strong>B1</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CONTATTI & CALL TO ACTION SECTION -->
-    <section id="contact" class="no-print pt-6">
-      <div class="bg-gradient-to-tr from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl">
-        <div class="max-w-xl mx-auto space-y-3">
-          <h2 class="text-3xl font-extrabold tracking-tight">Mettiamoci in contatto</h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Sei interessato a discutere di architetture Cloud Native, consulenze architetturali o nuove opportunità professionali?
+        <div class="text-sm leading-relaxed text-ink space-y-2.5">
+          <p>
+            <span class="font-bold text-slate-900" data-i18n="p-role">Technical Architect in Walgreens Boots Alliance.</span>
+          </p>
+          <p data-i18n="p-desc-1">
+            Comprovata esperienza nel <strong>design e implementazione di soluzioni Cloud Native su Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi.
+          </p>
+          <p data-i18n="p-desc-2">
+            Competenze di architetture <strong>serverless, microservizi, message broker e integration layer</strong> in ambito Microsoft Azure.
+          </p>
+          <p data-i18n="p-desc-3">
+            Gestisco e coordino un team di <strong>13 persone</strong>, responsabile dello sviluppo di librerie e middleware common. Ho esperienza consolidata con metodologie Agile e strumenti CI/CD, nonché delle metodologie DevOps.
+          </p>
+          <p data-i18n="p-desc-4">
+            Mi occupo della <strong>formazione di figure junior</strong> e fornisco consulenza e affiancamento a colleghi più senior.
+          </p>
+          <p data-i18n="p-desc-5">
+            Utilizzo attivamente <strong>l'inglese in riunioni, documentazione ed email</strong> con clienti internazionali.
           </p>
         </div>
+      </section>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <a href="mailto:pasmimmo@gmail.com" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-500/30">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            Invia una Email
-          </a>
-          <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-            Profilo LinkedIn
-          </a>
-          <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            GitHub
-          </a>
+      <!-- SEZIONE 2: ISTRUZIONE & LINGUE (Fedele al PDF) -->
+      <section id="edu-section" class="space-y-3 border-t border-paper-border/60 pt-6 transition-all">
+        <h2 class="section-title" data-i18n="title-education">Istruzione & Lingue</h2>
+
+        <div class="text-sm space-y-1.5">
+          <p class="text-ink">
+            <strong data-i18n="edu-degree">Laurea in Informatica</strong> | Università di Salerno, 2019
+          </p>
+          <p class="text-ink">
+            <span class="font-semibold" data-i18n="lang-ita-label">Italiano:</span> <span data-i18n="lang-ita-val">Madrelingua</span>
+          </p>
+          <p class="text-ink">
+            <span class="font-semibold" data-i18n="lang-eng-label">Inglese:</span> <span data-i18n="lang-eng-val">lettura C2 | scrittura C1 | conversazione B1</span>
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <!-- SEZIONE 3: ESPERIENZA (Fedele al layout del PDF con tappe dettagliate) -->
+      <section id="experience-section" class="space-y-8 border-t border-paper-border/60 pt-6">
+        <h2 class="section-title" data-i18n="title-experience">Esperienza</h2>
+
+        <div class="space-y-8">
+
+          <!-- RUOLO 1: TECHNICAL ARCHITECT - MAGMA SRL -->
+          <article id="exp-magma" class="space-y-2 rounded-xl p-3 -m-3 transition-colors">
+            <div>
+              <h3 class="text-sm font-bold tracking-wide uppercase text-ink">
+                TECHNICAL ARCHITECT | MAGMA SRL, NAPOLI
+              </h3>
+              <p class="text-xs font-semibold text-pdfOrange uppercase tracking-wider" data-i18n="exp-1-period">
+                MARZO 2021 - PRESENTE
+              </p>
+            </div>
+
+            <ul class="text-sm text-ink space-y-1.5 list-disc list-inside leading-relaxed">
+              <li data-i18n="exp-1-p1">Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi.</li>
+              <li data-i18n="exp-1-p2">Sviluppo di un middleware per protocol conversion, <strong>riducendo i costi del 30%</strong>.</li>
+              <li data-i18n="exp-1-p3">Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando la migrazione, l'aggiornamento e la dismissione controllata degli asset, garantendo la continuità operativa.</li>
+              <li data-i18n="exp-1-p4">Coordinamento di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.</li>
+              <li data-i18n="exp-1-p5">Esperienza con early performance testing, fine tuning, benchmarking e FinOps.</li>
+              <li data-i18n="exp-1-p6">Gestione e risoluzione di issue in produzione, garantendo stabilità e continuità operativa.</li>
+            </ul>
+          </article>
+
+          <!-- RUOLO 2: ALGORITHM ENGINEER - ACT OPERATIONS -->
+          <article id="exp-act" class="space-y-2 rounded-xl p-3 -m-3 transition-colors">
+            <div>
+              <h3 class="text-sm font-bold tracking-wide uppercase text-ink">
+                ALGORITHM ENGINEER | ACT OPERATIONS RESEARCH IT S.R.L., LOMAZZO (CO)
+              </h3>
+              <p class="text-xs font-semibold text-ink-muted uppercase tracking-wider" data-i18n="exp-2-period">
+                SETTEMBRE 2020 - FEBBRAIO 2021
+              </p>
+            </div>
+
+            <ul class="text-sm text-ink space-y-1.5 list-disc list-inside leading-relaxed">
+              <li data-i18n="exp-2-p1">Sviluppo backend per <strong>Cod19</strong>, piattaforma di monitoraggio e stima dei tempi di ospedalizzazione per pazienti Covid.</li>
+              <li data-i18n="exp-2-p2">Analisi dati, ricerca e ottimizzazione algoritmica per il miglioramento dei processi decisionali.</li>
+            </ul>
+          </article>
+
+          <!-- RUOLO 3: SOFTWARE ENGINEER & ML - UNISA RICERCA -->
+          <article id="exp-unisa" class="space-y-2 rounded-xl p-3 -m-3 transition-colors">
+            <div>
+              <h3 class="text-sm font-bold tracking-wide uppercase text-ink">
+                SOFTWARE ENGINEER & MACHINE LEARNING ENGINEER | UNIVERSITÀ DI SALERNO | PROGETTI RICERCA
+              </h3>
+              <p class="text-xs font-semibold text-ink-muted uppercase tracking-wider" data-i18n="exp-3-period">
+                LUGLIO 2019 - MARZO 2020
+              </p>
+            </div>
+
+            <ul class="text-sm text-ink space-y-1.5 list-disc list-inside leading-relaxed">
+              <li data-i18n="exp-3-p1">Partecipazione a bandi europei <strong>PICO-E-PRO</strong> e <strong>PACIB</strong>, con sviluppo di sistemi di Machine Learning in ambito medico e industriale per l'analisi preventiva di anomalie.</li>
+              <li data-i18n="exp-3-p2">Background accademico nel Machine Learning, con focus su <strong>reti convoluzionali</strong> applicate all'analisi delle immagini.</li>
+              <li data-i18n="exp-3-p3">Sviluppo di una soluzione per l'orchestrazione del calcolo di pannelli proteici per il Dipartimento di Farmacia (basata su scambio di messaggi tra moduli software).</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- SEZIONE 4: COMPETENZE TECNICHE (Fedele al PDF) -->
+      <section id="skills-section" class="space-y-4 border-t border-paper-border/60 pt-6">
+        <h2 class="section-title" data-i18n="title-skills">Competenze Tecniche</h2>
+
+        <div class="space-y-4 text-sm">
+
+          <!-- Sottosezione Cloud & DevOps -->
+          <div>
+            <h3 class="text-xs font-bold text-ink uppercase tracking-wider">CLOUD & DEVOPS</h3>
+            <ul class="mt-1 space-y-1 text-ink list-disc list-inside">
+              <li><strong>Azure:</strong> Azure Functions, APIM, Kubernetes, SpringBoot, Cosmos DB, Azure ServiceBus, Azure EventHub</li>
+              <li>Docker, Kubernetes, Azure DevOps</li>
+            </ul>
+          </div>
+
+          <!-- Sottosezione Backend Development -->
+          <div>
+            <h3 class="text-xs font-bold text-ink uppercase tracking-wider">BACKEND DEVELOPMENT</h3>
+            <ul class="mt-1 space-y-1 text-ink list-disc list-inside">
+              <li>Java, Python, C#, .NET, Spring Boot, JEE, Asp .net</li>
+              <li>Microservizi, Event-Driven Architecture, Serverless</li>
+            </ul>
+          </div>
+
+          <!-- Sottosezione Database & Messaging -->
+          <div>
+            <h3 class="text-xs font-bold text-ink uppercase tracking-wider">DATABASE & MESSAGING</h3>
+            <ul class="mt-1 space-y-1 text-ink list-disc list-inside">
+              <li>SQL (Microsoft SQL, SQLite, MySql). NoSQL (CosmosDb, Redis)</li>
+              <li>Message Broker (RabbitMQ, Azure ServiceBus)</li>
+            </ul>
+          </div>
+
+          <!-- Sottosezione Tooling -->
+          <div>
+            <h3 class="text-xs font-bold text-ink uppercase tracking-wider">SOFTWARE DEVELOPMENT & TOOLING</h3>
+            <ul class="mt-1 space-y-1 text-ink list-disc list-inside">
+              <li>CI/CD (Git, Azure DevOps, SonarQube, Drone CI, Github Action)</li>
+              <li>Monitoraggio e observability con Prometheus, Azure Monitor, AppInsight e Log Analytics</li>
+              <li>Jira, GitHub, Gitea</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEZIONE CONTATTI / FOOTER DEL FOGLIO -->
+      <footer id="contact-section" class="no-print border-t border-paper-border/60 pt-6 text-center space-y-3">
+        <p class="text-xs text-ink-muted">
+          Domenico Pascucci • <a href="mailto:pasmimmo@gmail.com" class="text-pdfOrange hover:underline font-medium">pasmimmo@gmail.com</a> • <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="text-pdfOrange hover:underline font-medium">LinkedIn</a>
+        </p>
+      </footer>
+
+    </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="no-print border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500">
-    <div class="max-w-5xl mx-auto px-4 space-y-2">
-      <p>© 2026 Domenico Pascucci • Curriculum Vitae & Portfolio Personale</p>
-      <p class="text-slate-400">Ospitato su GitHub Pages con architettura zero-dependency</p>
-    </div>
-  </footer>
+  <!-- JAVASCRIPT: Gestione Multilingua (ITA / ENG) & Navigazione fluida -->
+  <script>
+    const translations = {
+      it: {
+        "status-online": "CV Online & Versione Interattiva",
+        "btn-print": "Stampa / Salva PDF",
+        "hero-subtitle": "Technical Architect & Cloud Native Specialist",
+        "meta-location-label": "sede.",
+        "meta-location": "Napoli / Remoto",
+        "evo-title": "L'Evoluzione della Carriera: Dal Cappello Accademico all'Architettura Cloud",
+        "evo-hint": "Passa il mouse o clicca per saltare all'esperienza",
+        "evo-step-1-title": "Laurea in Informatica",
+        "evo-step-1-sub": "Università di Salerno",
+        "evo-step-2-title": "Software & ML Engineer",
+        "evo-step-2-sub": "Progetti PICO & PACIB",
+        "evo-step-3-title": "Algorithm Engineer",
+        "evo-step-3-sub": "ACT Operations (Cod19)",
+        "evo-step-4-title": "Technical Architect",
+        "evo-step-4-sub": "WBA & Magma (13 Devs)",
+        "evo-step-5-badge": "In corso",
+        "evo-step-5-title": "Nuove Competenze",
+        "evo-step-5-sub": "Integrazione in arrivo",
+        "title-profile": "Profilo",
+        "p-role": "Technical Architect in Walgreens Boots Alliance.",
+        "p-desc-1": "Comprovata esperienza nel <strong>design e implementazione di soluzioni Cloud Native su Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi.",
+        "p-desc-2": "Competenze di architetture <strong>serverless, microservizi, message broker e integration layer</strong> in ambito Microsoft Azure.",
+        "p-desc-3": "Gestisco e coordino un team di <strong>13 persone</strong>, responsabile dello sviluppo di librerie e middleware common. Ho esperienza consolidata con metodologie Agile e strumenti CI/CD, nonché delle metodologie DevOps.",
+        "p-desc-4": "Mi occupo della <strong>formazione di figure junior</strong> e fornisco consulenza e affiancamento a colleghi più senior.",
+        "p-desc-5": "Utilizzo attivamente <strong>l'inglese in riunioni, documentazione ed email</strong> con clienti internazionali.",
+        "title-education": "Istruzione & Lingue",
+        "edu-degree": "Laurea in Informatica",
+        "lang-ita-label": "Italiano:",
+        "lang-ita-val": "Madrelingua",
+        "lang-eng-label": "Inglese:",
+        "lang-eng-val": "lettura C2 | scrittura C1 | conversazione B1",
+        "title-experience": "Esperienza",
+        "exp-1-period": "MARZO 2021 - PRESENTE",
+        "exp-1-p1": "Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e ottimizzazione dei costi.",
+        "exp-1-p2": "Sviluppo di un middleware per protocol conversion, <strong>riducendo i costi del 30%</strong>.",
+        "exp-1-p3": "Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando la migrazione, l'aggiornamento e la dismissione controllata degli asset, garantendo la continuità operativa.",
+        "exp-1-p4": "Coordinamento di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.",
+        "exp-1-p5": "Esperienza con early performance testing, fine tuning, benchmarking e FinOps.",
+        "exp-1-p6": "Gestione e risoluzione di issue in produzione, garantendo stabilità e continuità operativa.",
+        "exp-2-period": "SETTEMBRE 2020 - FEBBRAIO 2021",
+        "exp-2-p1": "Sviluppo backend per <strong>Cod19</strong>, piattaforma di monitoraggio e stima dei tempi di ospedalizzazione per pazienti Covid.",
+        "exp-2-p2": "Analisi dati, ricerca e ottimizzazione algoritmica per il miglioramento dei processi decisionali.",
+        "exp-3-period": "LUGLIO 2019 - MARZO 2020",
+        "exp-3-p1": "Partecipazione a bandi europei <strong>PICO-E-PRO</strong> e <strong>PACIB</strong>, con sviluppo di sistemi di Machine Learning in ambito medico e industriale per l'analisi preventiva di anomalie.",
+        "exp-3-p2": "Background accademico nel Machine Learning, con focus su <strong>reti convoluzionali</strong> applicate all'analisi delle immagini.",
+        "exp-3-p3": "Sviluppo di una soluzione per l'orchestrazione del calcolo di pannelli proteici per il Dipartimento di Farmacia (basata su scambio di messaggi tra moduli software).",
+        "title-skills": "Competenze Tecniche"
+      },
+      en: {
+        "status-online": "Live Interactive CV",
+        "btn-print": "Print / Save PDF",
+        "hero-subtitle": "Technical Architect & Cloud Native Specialist",
+        "meta-location-label": "location.",
+        "meta-location": "Naples, Italy / Remote",
+        "evo-title": "Career Evolution: From Academic Cap to Cloud Architecture",
+        "evo-hint": "Hover or click to jump directly to an experience",
+        "evo-step-1-title": "B.Sc. Computer Science",
+        "evo-step-1-sub": "University of Salerno",
+        "evo-step-2-title": "Software & ML Engineer",
+        "evo-step-2-sub": "PICO & PACIB Projects",
+        "evo-step-3-title": "Algorithm Engineer",
+        "evo-step-3-sub": "ACT Operations (Cod19)",
+        "evo-step-4-title": "Technical Architect",
+        "evo-step-4-sub": "WBA & Magma (13 Devs)",
+        "evo-step-5-badge": "Ongoing",
+        "evo-step-5-title": "New Horizons",
+        "evo-step-5-sub": "Integration pending",
+        "title-profile": "Profile",
+        "p-role": "Technical Architect at Walgreens Boots Alliance.",
+        "p-desc-1": "Proven experience in the <strong>design and implementation of Cloud Native solutions on Azure</strong>, focusing on scalability, high performance, and cost optimization.",
+        "p-desc-2": "Extensive expertise in <strong>serverless architectures, microservices, message brokers, and enterprise integration layers</strong> on Microsoft Azure.",
+        "p-desc-3": "Leading and coordinating a cross-functional team of <strong>13 engineers</strong>, responsible for common libraries and architectural middleware development. Solid experience in Agile methodologies, CI/CD toolsets, and DevOps culture.",
+        "p-desc-4": "Mentoring junior engineers while providing architectural consultancy and peer guidance to senior colleagues.",
+        "p-desc-5": "Daily professional use of <strong>English in technical meetings, architectural documentation, and correspondence</strong> with international clients.",
+        "title-education": "Education & Languages",
+        "edu-degree": "Bachelor's Degree in Computer Science",
+        "lang-ita-label": "Italian:",
+        "lang-ita-val": "Native speaker",
+        "lang-eng-label": "English:",
+        "lang-eng-val": "Reading C2 | Writing C1 | Speaking B1",
+        "title-experience": "Experience",
+        "exp-1-period": "MARCH 2021 - PRESENT",
+        "exp-1-p1": "Design and implementation of <strong>Cloud Native architectures on Azure</strong>, with focus on scalability, performance, and cost optimization.",
+        "exp-1-p2": "Development of a protocol conversion middleware, <strong>reducing infrastructure costs by 30%</strong>.",
+        "exp-1-p3": "Led adoption of <strong>Java 11 and .NET 8</strong>, orchestrating seamless migration, upgrades, and decommissioning while ensuring zero downtime.",
+        "exp-1-p4": "Coordinated a team of <strong>13 developers</strong>, establishing architectural guidelines, best practices, and code reusability.",
+        "exp-1-p5": "Hands-on experience with early performance testing, benchmarking, fine-tuning, and FinOps.",
+        "exp-1-p6": "Proactive production incident management, ensuring system reliability and continuous operation.",
+        "exp-2-period": "SEPTEMBER 2020 - FEBRUARY 2021",
+        "exp-2-p1": "Backend development for <strong>Cod19</strong>, an emergency healthcare platform estimating patient hospitalization times.",
+        "exp-2-p2": "Applied data analysis, mathematical modeling, and algorithmic optimization to support critical decision-making.",
+        "exp-3-period": "JULY 2019 - MARCH 2020",
+        "exp-3-p1": "Contributed to European research grants (<strong>PICO-E-PRO</strong> and <strong>PACIB</strong>), developing Machine Learning solutions for anomaly prevention in medical and industrial environments.",
+        "exp-3-p2": "Academic background in Machine Learning, with a specific focus on <strong>Convolutional Neural Networks (CNNs)</strong> for image analysis.",
+        "exp-3-p3": "Architected a distributed computation orchestrator for protein panel calculations for the Pharmacy Department via asynchronous message queuing.",
+        "title-skills": "Technical Skills"
+      }
+    };
+
+    let currentLang = 'it';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const dict = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // Aggiorna stato bottoni
+      const btnIt = document.getElementById('btn-lang-it');
+      const btnEn = document.getElementById('btn-lang-en');
+      if (lang === 'it') {
+        btnIt.className = "px-2.5 py-1 text-xs font-semibold rounded-md transition-colors bg-pdfOrange text-white shadow-xs";
+        btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded-md transition-colors text-ink-muted hover:text-ink";
+      } else {
+        btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded-md transition-colors bg-pdfOrange text-white shadow-xs";
+        btnIt.className = "px-2.5 py-1 text-xs font-semibold rounded-md transition-colors text-ink-muted hover:text-ink";
+      }
+    }
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.remove('flash-highlight');
+        void target.offsetWidth; // Trigger reflow
+        target.classList.add('flash-highlight');
+      }
+    }
+  </script>
 
 </body>
 </html>

@@ -74,6 +74,9 @@
       .no-print {
         display: none !important;
       }
+      .exp-details {
+        display: block !important;
+      }
       .poster-card {
         box-shadow: none !important;
         border: none !important;
@@ -512,10 +515,6 @@
                   Progettazione e implementazione di architetture <strong class="text-poster-charcoal">Cloud Native su Azure</strong> con focus su scalabilità, performance e governance. Sviluppo di middleware di protocol conversion con <strong class="text-poster-charcoal">ottimizzazione dei costi infrastrutturali (FinOps)</strong>. Guida dell'adozione tecnologica di <strong class="text-poster-charcoal">Java 11 e .NET 8</strong> curando migrazione e continuità operativa.
                 </p>
 
-                <p class="text-xs sm:text-sm text-poster-muted leading-relaxed" data-i18n="exp-1-desc-2">
-                  Coordinamento e leadership tecnica di un <strong class="text-poster-charcoal">team di 13 persone</strong> per lo sviluppo di librerie common e middleware, early performance testing, benchmarking e gestione incidenti di produzione.
-                </p>
-
                 <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono">
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Azure Functions</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">APIM</span>
@@ -523,6 +522,26 @@
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">.NET 8</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Spring Boot</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">FinOps</span>
+                </div>
+
+                <!-- TASTO EXPAND -->
+                <button type="button" onclick="toggleExpDetails('exp-1-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
+                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
+                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+
+                <!-- DETTAGLI APPROFONDITI (ESPANDIBILI) -->
+                <div id="exp-1-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
+                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-1-bullets">
+                    <li>Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e governance.</li>
+                    <li>Sviluppo di un middleware per protocol conversion, ottimizzando i costi computazionali.</li>
+                    <li>Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando migrazione, aggiornamento e dismissione controllata degli asset senza disservizi.</li>
+                    <li>Coordinamento e mentoring di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.</li>
+                    <li>Early performance testing, fine tuning, benchmarking ed esecuzione di test di carico su servizi critici.</li>
+                    <li>Gestione e risoluzione rapida di issue critiche in produzione a tutela della stabilità e continuità operativa.</li>
+                  </ul>
                 </div>
               </article>
 
@@ -547,6 +566,23 @@
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Algoritmi</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">REST Backend</span>
                 </div>
+
+                <!-- TASTO EXPAND -->
+                <button type="button" onclick="toggleExpDetails('exp-2-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
+                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
+                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+
+                <!-- DETTAGLI APPROFONDITI -->
+                <div id="exp-2-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
+                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-2-bullets">
+                    <li>Sviluppo backend e API REST per il monitoraggio dei pazienti e stima delle curve di ospedalizzazione.</li>
+                    <li>Modellazione e ottimizzazione algoritmica applicata a dataset complessi in contesti d'emergenza pandemica.</li>
+                    <li>Interazione interdisciplinare tra ingegneria algoritmica, ricerca operativa e ambito sanitario.</li>
+                  </ul>
+                </div>
               </article>
 
               <!-- ESPERIENZA 3: SOFTWARE ENGINEER & ML RESEARCH (UNISA) -->
@@ -569,6 +605,23 @@
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">CNN</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Message Brokers</span>
                   <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Python</span>
+                </div>
+
+                <!-- TASTO EXPAND -->
+                <button type="button" onclick="toggleExpDetails('exp-3-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
+                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
+                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+
+                <!-- DETTAGLI APPROFONDITI -->
+                <div id="exp-3-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
+                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-3-bullets">
+                    <li>Sviluppo di modelli predittivi con reti convoluzionali (CNN) per l'analisi e classificazione di immagini.</li>
+                    <li>Progettazione dell'orchestrazione distribuita per il calcolo di pannelli proteici basata sullo scambio asincrono di messaggi software (Dipartimento di Farmacia).</li>
+                    <li>Sperimentazione e validazione dei risultati computazionali in ambito di bandi europei competitivi.</li>
+                  </ul>
                 </div>
               </article>
 
@@ -617,13 +670,16 @@
         "edu-2-degree": "Bandi Europei Ricerca ML",
         "edu-2-school": "PICO-E-PRO & PACIB",
         "title-experience": "Experience",
+        "btn-expand-more": "+ Mostra dettagli & impatto",
         "exp-1-date": "2021 — PRESENTE",
         "exp-1-desc": "Progettazione e implementazione di architetture <strong class=\"text-poster-charcoal\">Cloud Native su Azure</strong> con focus su scalabilità, performance e governance. Sviluppo di middleware di protocol conversion con <strong class=\"text-poster-charcoal\">ottimizzazione dei costi infrastrutturali (FinOps)</strong>. Guida dell'adozione tecnologica di <strong class=\"text-poster-charcoal\">Java 11 e .NET 8</strong> curando migrazione e continuità operativa.",
-        "exp-1-desc-2": "Coordinamento e leadership tecnica di un <strong class=\"text-poster-charcoal\">team di 13 persone</strong> per lo sviluppo di librerie common e middleware, early performance testing, benchmarking e gestione incidenti di produzione.",
+        "exp-1-bullets": "<li>Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e governance.</li><li>Sviluppo di un middleware per protocol conversion, ottimizzando i costi computazionali.</li><li>Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando migrazione, aggiornamento e dismissione controllata degli asset senza disservizi.</li><li>Coordinamento e mentoring di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.</li><li>Early performance testing, fine tuning, benchmarking ed esecuzione di test di carico su servizi critici.</li><li>Gestione e risoluzione rapida di issue critiche in produzione a tutela della stabilità e continuità operativa.</li>",
         "exp-2-date": "2020 — 2021",
         "exp-2-desc": "Sviluppo backend per <strong class=\"text-poster-charcoal\">Cod19</strong>, piattaforma di monitoraggio e stima predittiva dei tempi di ospedalizzazione per pazienti affetti da Covid-19. Attività di analisi dati avanzata, ricerca e ottimizzazione algoritmica a supporto diretto dei processi decisionali sanitari.",
+        "exp-2-bullets": "<li>Sviluppo backend e API REST per il monitoraggio dei pazienti e stima delle curve di ospedalizzazione.</li><li>Modellazione e ottimizzazione algoritmica applicata a dataset complessi in contesti d'emergenza pandemica.</li><li>Interazione interdisciplinare tra ingegneria algoritmica, ricerca operativa e ambito sanitario.</li>",
         "exp-3-date": "2019 — 2020",
-        "exp-3-desc": "Partecipazione ai bandi europei <strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> e <strong class=\"text-poster-charcoal\">PACIB</strong>, con sviluppo di sistemi predittivi di Machine Learning in ambito biomedicale e industriale. Focus su <strong class=\"text-poster-charcoal\">reti neurali convoluzionali (CNN)</strong> e sviluppo dell'orchestrazione a scambio di messaggi per il calcolo di pannelli proteici."
+        "exp-3-desc": "Partecipazione ai bandi europei <strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> e <strong class=\"text-poster-charcoal\">PACIB</strong>, con sviluppo di sistemi predittivi di Machine Learning in ambito biomedicale e industriale. Focus su <strong class=\"text-poster-charcoal\">reti neurali convoluzionali (CNN)</strong> e sviluppo dell'orchestrazione a scambio di messaggi per il calcolo di pannelli proteici.",
+        "exp-3-bullets": "<li>Sviluppo di modelli predittivi con reti convoluzionali (CNN) per l'analisi e classificazione di immagini.</li><li>Progettazione dell'orchestrazione distribuita per il calcolo di pannelli proteici basata sullo scambio asincrono di messaggi software (Dipartimento di Farmacia).</li><li>Sperimentazione e validazione dei risultati computazionali in ambito di bandi europei competitivi.</li>"
       },
       en: {
         "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
@@ -650,13 +706,16 @@
         "edu-2-degree": "European Research Grants",
         "edu-2-school": "PICO-E-PRO & PACIB",
         "title-experience": "Experience",
+        "btn-expand-more": "+ View details & impact",
         "exp-1-date": "2021 — PRESENT",
         "exp-1-desc": "Design and implementation of <strong class=\"text-poster-charcoal\">Cloud Native architectures on Azure</strong> with focus on scalability, performance, and governance. Protocol conversion middleware engineering delivering <strong class=\"text-poster-charcoal\">infrastructure cost optimization (FinOps)</strong>. Led technological adoption of <strong class=\"text-poster-charcoal\">Java 11 and .NET 8</strong>.",
-        "exp-1-desc-2": "Led and coordinated an engineering <strong class=\"text-poster-charcoal\">team of 13 people</strong> building common libraries and enterprise middleware, early performance testing, benchmarking, and production incident management.",
+        "exp-1-bullets": "<li>Architected and implemented enterprise <strong>Cloud Native architectures on Azure</strong> with focus on scalability, resilience, and governance.</li><li>Engineered custom protocol conversion middleware, substantially optimizing computational and infrastructure costs.</li><li>Led modernization towards <strong>Java 11 and .NET 8</strong>, orchestrating zero-downtime asset decommissioning.</li><li>Technical leadership and mentoring for a <strong>team of 13 developers</strong>, establishing software quality and code reuse standards.</li><li>Early performance testing, fine-tuning, system benchmarking, and high-load stress testing.</li><li>Proactive production incident resolution and continuous operational stability for mission-critical systems.</li>",
         "exp-2-date": "2020 — 2021",
         "exp-2-desc": "Backend engineering for <strong class=\"text-poster-charcoal\">Cod19</strong>, an emergency pandemic platform estimating patient hospitalization windows. Applied statistical analysis, mathematical modeling, and algorithmic optimization for healthcare decision support.",
+        "exp-2-bullets": "<li>Backend and REST API development for patient tracking and hospital admission curve predictions.</li><li>Mathematical modeling and algorithmic optimization applied to complex pandemic data streams.</li><li>Close collaboration with operations researchers, healthcare professionals, and technical teams.</li>",
         "exp-3-date": "2019 — 2020",
-        "exp-3-desc": "Participated in European research programs (<strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> & <strong class=\"text-poster-charcoal\">PACIB</strong>), engineering predictive Machine Learning models in medical and industrial anomaly detection. Focus on <strong class=\"text-poster-charcoal\">Convolutional Neural Networks (CNN)</strong> and message-driven orchestrations."
+        "exp-3-desc": "Participated in European research programs (<strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> & <strong class=\"text-poster-charcoal\">PACIB</strong>), engineering predictive Machine Learning models in medical and industrial anomaly detection. Focus on <strong class=\"text-poster-charcoal\">Convolutional Neural Networks (CNN)</strong> and message-driven orchestrations.",
+        "exp-3-bullets": "<li>Developed predictive models with Convolutional Neural Networks (CNN) for biomedical and industrial imaging.</li><li>Architected distributed computation orchestrator for pharmacy protein panel analysis via asynchronous message broker communication.</li><li>Authored scientific research documentation and benchmark reports within European competitive grants.</li>"
       }
     };
 
@@ -688,6 +747,28 @@
         setTimeout(() => {
           target.classList.remove('bg-poster-yellow/20');
         }, 1500);
+      }
+    }
+
+    function toggleExpDetails(id, btn) {
+      const container = document.getElementById(id);
+      if (!container) return;
+      const isHidden = container.classList.contains('hidden');
+      const textSpan = btn.querySelector('.btn-text');
+      const chevron = btn.querySelector('.chevron-icon');
+
+      if (isHidden) {
+        container.classList.remove('hidden');
+        chevron.classList.add('rotate-180');
+        if (textSpan) {
+          textSpan.textContent = currentLang === 'it' ? '- Nascondi dettagli' : '- Hide details';
+        }
+      } else {
+        container.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+        if (textSpan) {
+          textSpan.textContent = currentLang === 'it' ? '+ Mostra dettagli & impatto' : '+ View details & impact';
+        }
       }
     }
   </script>

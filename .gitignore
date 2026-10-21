@@ -42,3 +42,6 @@ yarn-error.log*
 *.swp
 *.swo
 .DS_Store
+
+# Cartella locale vecchio cv (privacy)
+vecchio cv/

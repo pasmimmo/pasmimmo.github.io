@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domenico Pascucci | Technical Architect & Cloud Native Specialist</title>
+  <meta name="description" content="Curriculum Vitae e Portfolio di Domenico Pascucci - Technical Architect, Cloud Native & Azure Specialist, Team Lead.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='900' fill='white'>DP</text></svg>">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Print Styles: Optimized for 2-page clean PDF export */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 11pt;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+      .page-break-inside-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      header, footer {
+        display: none !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #0f172a !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="no-print sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-sm shadow-brand-500/30 group-hover:scale-105 transition-transform">
+          DP
+        </div>
+        <div>
+          <span class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Domenico Pascucci</span>
+          <span class="hidden sm:block text-xs text-slate-500 font-mono">Technical Architect</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="#about" class="hover:text-brand-600 transition-colors">Profilo</a>
+        <a href="#experience" class="hover:text-brand-600 transition-colors">Esperienze</a>
+        <a href="#skills" class="hover:text-brand-600 transition-colors">Competenze</a>
+        <a href="#education" class="hover:text-brand-600 transition-colors">Formazione</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <button onclick="window.print()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 text-sm font-medium shadow-sm transition-all active:scale-95">
+          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+          </svg>
+          <span class="hidden sm:inline">Stampa / Salva</span> PDF
+        </button>
+        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm shadow-brand-500/25 transition-all hover:shadow-brand-500/40 active:scale-95">
+          Contattami
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-16">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-2">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-10 border-b border-slate-200">
+        
+        <div class="space-y-4 max-w-2xl">
+          <!-- Availability Pill -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Cloud Architecture • FinOps • Team Leadership
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Domenico Pascucci
+          </h1>
+
+          <p class="text-xl sm:text-2xl font-semibold text-brand-600">
+            Technical Architect & Cloud Native Specialist
+          </p>
+
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Esperienza consolidata nel design e nell'implementazione di soluzioni Cloud Native su <strong class="text-slate-900 font-semibold">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e ottimizzazione dei costi (<strong class="text-slate-900 font-semibold">FinOps</strong>).
+          </p>
+
+          <!-- Quick Contacts & Links -->
+          <div class="flex flex-wrap items-center gap-y-2 gap-x-4 pt-2 text-sm text-slate-600">
+            <a href="mailto:pasmimmo@gmail.com" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              pasmimmo@gmail.com
+            </a>
+
+            <span class="text-slate-300">•</span>
+
+            <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
+              <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              linkedin.com/in/pasmimmo
+            </a>
+
+            <span class="text-slate-300">•</span>
+
+            <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-brand-600 transition-colors font-medium">
+              <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              github.com/pasmimmo
+            </a>
+
+            <span class="text-slate-300">•</span>
+
+            <span class="inline-flex items-center gap-1.5 text-slate-500">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              Italia
+            </span>
+          </div>
+        </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-2 gap-3 w-full md:w-auto shrink-0 print-shadow-none">
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
+            <div class="text-3xl font-extrabold text-brand-600">13+</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Persone Coordinate</div>
+            <div class="text-[11px] text-slate-500">Team leadership & mentoring</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
+            <div class="text-3xl font-extrabold text-emerald-600">-30%</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Riduzione Costi</div>
+            <div class="text-[11px] text-slate-500">Ottimizzazione & FinOps</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
+            <div class="text-3xl font-extrabold text-indigo-600">Azure</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Cloud Native</div>
+            <div class="text-[11px] text-slate-500">Serverless & Microservizi</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm flex flex-col justify-center">
+            <div class="text-3xl font-extrabold text-amber-600">Global</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Clienti Enterprise</div>
+            <div class="text-[11px] text-slate-500">Walgreens Boots Alliance</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROFILO / ABOUT SECTION -->
+    <section id="about" class="space-y-4 page-break-inside-avoid">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
+          01
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Profilo Professionale</h2>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-4 print-shadow-none">
+        <p class="text-slate-600 leading-relaxed">
+          <strong class="text-slate-900 font-semibold">Technical Architect</strong> con comprovata esperienza nel design e nella messa in produzione di architetture distribuite su vasta scala in ambiente <strong class="text-slate-900 font-semibold">Microsoft Azure</strong>. Specializzato in pattern <span class="font-medium text-slate-800">Serverless</span>, <span class="font-medium text-slate-800">Microservizi</span>, <span class="font-medium text-slate-800">Message Broker</span> e layer di integrazione aziendali.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          Attualmente responsabile della guida e del coordinamento di un team eterogeneo di <strong class="text-slate-900 font-semibold">13 persone</strong>, dedicato allo sviluppo di librerie common e middleware architetturali. Solida esperienza con metodologie <strong class="text-slate-800 font-medium">Agile</strong>, pratiche <strong class="text-slate-800 font-medium">DevOps</strong>, pipeline CI/CD automatizzate, observability e monitoraggio proattivo.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          Orientato alla crescita del team tramite attività di formazione per figure junior e affiancamento architetturale per profili senior. Utilizzo quotidiano della lingua inglese per la conduzione di meeting tecnici, stesura di documentazione e interazione diretta con stakeholder e clienti internazionali.
+        </p>
+      </div>
+    </section>
+
+    <!-- ESPERIENZE LAVORATIVE / WORK EXPERIENCES -->
+    <section id="experience" class="space-y-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
+            02
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Esperienze Lavorative</h2>
+        </div>
+        <span class="text-xs font-mono text-slate-500 no-print">In ordine cronologico inverso</span>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- RUOLO 1: TECHNICAL ARCHITECT -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm relative group hover:border-brand-200 transition-colors print-shadow-none page-break-inside-avoid">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-brand-50 text-brand-700">Ruolo Attuale</span>
+                <span class="text-xs font-medium text-slate-500">Full-time</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mt-1">Technical Architect</h3>
+              <p class="text-brand-600 font-medium text-sm">Magma S.r.l. <span class="text-slate-400">|</span> Cliente: Walgreens Boots Alliance</p>
+            </div>
+            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
+              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Marzo 2021 — Presente</span>
+              <div class="text-xs text-slate-500 mt-1">Napoli, Italia</div>
+            </div>
+          </div>
+
+          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Design Cloud Native su Azure:</strong> Progettazione e implementazione di architetture resilienti e distribuite, con focus primario su scalabilità, elevate performance e ottimizzazione costi.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Ottimizzazione FinOps (-30%):</strong> Sviluppo di un middleware ad alte prestazioni per il protocol conversion, riducendo i costi computazionali e infrastrutturali del 30%.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Modernizzazione Stack & Framework:</strong> Guida dell'adozione tecnologica di Java 11 e .NET 8, orchestrando la migrazione, l'aggiornamento e la dismissione controllata dei sistemi legacy a garanzia della continuità operativa zero-downtime.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Leadership & Governance (13 Devs):</strong> Gestione e coordinamento di un team di 13 persone, garantendo uniformità architetturale, adozione di best practice di sviluppo e standard di riusabilità del codice.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Quality & Production Stability:</strong> Attività continua di early performance testing, fine tuning, benchmarking sistemico, incident management e risoluzione rapida di issue in ambienti di produzione critici.</span>
+            </li>
+          </ul>
+
+          <!-- Stack Tags -->
+          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Azure Functions</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">APIM</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">AKS (Kubernetes)</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">.NET 8</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Java (Spring Boot)</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Cosmos DB</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Azure ServiceBus</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">FinOps</span>
+          </div>
+        </div>
+
+        <!-- RUOLO 2: ALGORITHM ENGINEER -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm hover:border-slate-300 transition-colors print-shadow-none page-break-inside-avoid">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Algorithm Engineer</h3>
+              <p class="text-brand-600 font-medium text-sm">ACT Operations Research IT S.r.l.</p>
+            </div>
+            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
+              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Settembre 2020 — Febbraio 2021</span>
+              <div class="text-xs text-slate-500 mt-1">Lomazzo (CO), Italia</div>
+            </div>
+          </div>
+
+          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Backend Piattaforma Sanitaria Cod19:</strong> Progettazione e sviluppo backend per il monitoraggio predittivo e la stima dei tempi di ospedalizzazione per i pazienti affetti da Covid-19.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Analisi Dati & Modellazione:</strong> Ricerca algoritmica applicata, modellazione e ottimizzazione computazionale a supporto dei processi decisionali critici.</span>
+            </li>
+          </ul>
+
+          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Python</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Algoritmi & Ricerca Operativa</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Data Modeling</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Backend REST</span>
+          </div>
+        </div>
+
+        <!-- RUOLO 3: SOFTWARE ENGINEER & ML RESEARCH -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm hover:border-slate-300 transition-colors print-shadow-none page-break-inside-avoid">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Software Engineer & Machine Learning Engineer</h3>
+              <p class="text-brand-600 font-medium text-sm">Università degli Studi di Salerno | Progetti di Ricerca Europei</p>
+            </div>
+            <div class="text-sm font-mono text-slate-500 sm:text-right shrink-0">
+              <span class="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-semibold text-xs">Luglio 2019 — Marzo 2020</span>
+              <div class="text-xs text-slate-500 mt-1">Salerno, Italia</div>
+            </div>
+          </div>
+
+          <ul class="mt-4 space-y-2.5 text-slate-600 text-sm leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Bandi Europei PICO-E-PRO & PACIB:</strong> Partecipazione alla ricerca e allo sviluppo di modelli predittivi di Machine Learning in ambito diagnostico-medico e per l'analisi preventiva di anomalie nei processi industriali.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Computer Vision & Deep Learning:</strong> Implementazione di reti neurali convoluzionali (CNN) per l'analisi avanzata e l'estrazione di feature da immagini biomedicali.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold leading-none mt-1">▹</span>
+              <span><strong>Architettura a Messaggi & Calcolo Distribuito:</strong> Progettazione di una soluzione di orchestrazione scalabile per il calcolo di pannelli proteici per il Dipartimento di Farmacia, imperniata sullo scambio asincrono di messaggi tra micro-moduli.</span>
+            </li>
+          </ul>
+
+          <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 font-mono text-xs">
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Machine Learning</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Convolutional Neural Networks (CNN)</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Python</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Message Brokers</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPETENZE TECNICHE / SKILLS SECTION -->
+    <section id="skills" class="space-y-6 page-break-inside-avoid">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
+          03
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Competenze Tecniche</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Card 1: Cloud & DevOps -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 text-brand-600 mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/>
+              </svg>
+              <h3 class="font-bold text-slate-900 text-base">Cloud & DevOps</h3>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Infrastruttura, containerizzazione e orchestrazione cloud nativa.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-semibold">Microsoft Azure</span>
+              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-medium">Azure Functions (Serverless)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-medium">Azure APIM</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Kubernetes (AKS)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Docker</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Azure DevOps</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">FinOps & Cost Optimization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Backend Development -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 text-indigo-600 mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+              <h3 class="font-bold text-slate-900 text-base">Backend & Architetture</h3>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Linguaggi ad alte prestazioni e pattern architetturali distribuiti.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200/60 text-indigo-800 text-xs font-semibold">Java (Spring Boot, JEE)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200/60 text-indigo-800 text-xs font-semibold">C# / .NET (.NET 8, ASP.NET)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Python</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Architettura a Microservizi</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Event-Driven Architecture</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">REST & Middleware Layer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Database & Messaging -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 text-emerald-600 mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+              </svg>
+              <h3 class="font-bold text-slate-900 text-base">Database & Messaging</h3>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Persistenza relazionale/NoSQL e streaming di eventi asincroni.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">Azure ServiceBus</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">Azure EventHub</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-medium">RabbitMQ</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Cosmos DB (NoSQL)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Redis</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Microsoft SQL Server</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">MySQL / SQLite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Observability, Tooling & Quality -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm print-shadow-none flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 text-amber-600 mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+              <h3 class="font-bold text-slate-900 text-base">Observability, CI/CD & Tooling</h3>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Monitoraggio ad alta disponibilità, automazione del rilascio e qualità.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-medium">Prometheus & Log Analytics</span>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-medium">Azure Monitor & AppInsights</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">SonarQube</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">GitHub Actions & Drone CI</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Git / Jira / Gitea</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-medium">Early Performance Testing</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMAZIONE & LINGUE -->
+    <section id="education" class="space-y-6 page-break-inside-avoid">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">
+          04
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Formazione & Lingue</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Istruzione -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-7 shadow-sm print-shadow-none">
+          <div class="flex items-center gap-2.5 text-slate-900 font-bold mb-3">
+            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+            </svg>
+            Istruzione Accademica
+          </div>
+          <div>
+            <h4 class="text-base font-bold text-slate-900">Laurea in Informatica</h4>
+            <p class="text-sm text-brand-600 font-medium">Università degli Studi di Salerno</p>
+            <p class="text-xs font-mono text-slate-500 mt-1">Conseguita nel 2019</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              Curriculum orientato all'ingegneria del software, algoritmi, strutture dati e basi di intelligenza artificiale / machine learning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lingue -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-7 shadow-sm print-shadow-none">
+          <div class="flex items-center gap-2.5 text-slate-900 font-bold mb-3">
+            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+            </svg>
+            Competenze Linguistiche
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold text-slate-800">
+                <span>Italiano</span>
+                <span class="text-xs font-mono font-medium text-slate-500">Madrelingua</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-2 mt-1.5 overflow-hidden">
+                <div class="bg-brand-600 h-2 rounded-full w-full"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold text-slate-800">
+                <span>Inglese</span>
+                <span class="text-xs font-mono font-medium text-slate-500">Professionale / Internazionale</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-2 mt-1.5 overflow-hidden">
+                <div class="bg-brand-600 h-2 rounded-full w-[80%]"></div>
+              </div>
+              <p class="text-xs text-slate-500 mt-2 font-mono">
+                Lettura: <strong>C2</strong> • Scrittura: <strong>C1</strong> • Conversazione: <strong>B1</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTATTI & CALL TO ACTION SECTION -->
+    <section id="contact" class="no-print pt-6">
+      <div class="bg-gradient-to-tr from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl">
+        <div class="max-w-xl mx-auto space-y-3">
+          <h2 class="text-3xl font-extrabold tracking-tight">Mettiamoci in contatto</h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Sei interessato a discutere di architetture Cloud Native, consulenze architetturali o nuove opportunità professionali?
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <a href="mailto:pasmimmo@gmail.com" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-500/30">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Invia una Email
+          </a>
+          <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            Profilo LinkedIn
+          </a>
+          <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="no-print border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-4 space-y-2">
+      <p>© 2026 Domenico Pascucci • Curriculum Vitae & Portfolio Personale</p>
+      <p class="text-slate-400">Ospitato su GitHub Pages con architettura zero-dependency</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domenico Pascucci (pasmimmo) — Curriculum Vitae</title>
-  <meta name="description" content="Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect, Cloud Native & Azure Specialist.">
+  <title>Domenico Pascucci (pasmimmo) — Technical Architect & DevSecOps Specialist</title>
+  <meta name="description" content="Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect, Cloud Native & DevSecOps Specialist.">
 
   <!-- Google Fonts: Space Grotesk, Syne e Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +76,9 @@
       }
       .exp-details {
         display: block !important;
+      }
+      .skill-tooltip {
+        display: none !important;
       }
       .poster-card {
         box-shadow: none !important;
@@ -161,17 +164,23 @@
             <!-- Ruolo e Breve Descrizione -->
             <div class="pt-1">
               <p class="text-base sm:text-lg font-bold font-heading text-poster-coral" data-i18n="hero-title">
-                Technical Architect & Cloud Native Specialist
+                Technical Architect & DevSecOps Specialist
               </p>
               <p class="text-xs sm:text-sm text-poster-muted leading-relaxed mt-1" data-i18n="hero-summary">
-                Comprovata esperienza nel design e implementazione di soluzioni Cloud Native su <strong class="text-poster-charcoal">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e metodologie <strong class="text-poster-charcoal">FinOps</strong>. Guida e coordinamento di un team di 13 persone.
+                Technical Architect con comprovata esperienza nel design di architetture <strong class="text-poster-charcoal">Cloud Native scalabili</strong> (Azure, OCI) e nell'implementazione di ecosistemi <strong class="text-poster-charcoal">DevSecOps enterprise</strong> (CI/CD, GitOps, shift-left security). Forte background nella guida di team ingegneristici (fino a 13 persone), FinOps e resilienza di sistemi critici.
               </p>
             </div>
 
-            <!-- Badge Progetto Enterprise -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
-              <span class="w-2 h-2 rounded-full bg-poster-teal"></span>
-              <span>Walgreens Boots Alliance • Cloud Native • Team Lead</span>
+            <!-- Badge Progetti Enterprise -->
+            <div class="flex flex-wrap items-center gap-2 pt-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
+                <span class="w-2 h-2 rounded-full bg-poster-coral"></span>
+                <span data-i18n="hero-badge-1">Sisal (Flutter SEA) • DevSecOps & Platform</span>
+              </div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
+                <span class="w-2 h-2 rounded-full bg-poster-teal"></span>
+                <span data-i18n="hero-badge-2">Walgreens Boots Alliance • Tech Architect</span>
+              </div>
             </div>
           </div>
 
@@ -198,7 +207,7 @@
                 H
               </span>
               <div class="absolute bottom-2 left-6 px-2.5 py-1 rounded-lg bg-white/90 border border-poster-line shadow-xs text-[10px] font-mono font-bold text-poster-charcoal tracking-wider">
-                AZURE ARCHITECT
+                TECH & CLOUD ARCHITECT
               </div>
             </div>
 
@@ -221,52 +230,64 @@
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 pt-1">
           
           <!-- TAPPA 1: Formazione Accademica & Ricerca Iniziale -->
           <button type="button" onclick="scrollToId('section-education')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2.5">
-              <span class="text-2xl">🎓</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl">🎓</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019 • BASE ACCADEMICA</span>
+                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2019 • BASE</span>
                 <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s1">Laurea Informatica</span>
-                <span class="block text-[10px] text-poster-muted">Università di Salerno</span>
+                <span class="block text-[10px] text-poster-muted">Uni Salerno</span>
               </div>
             </div>
           </button>
 
           <!-- TAPPA 2: Reti Neurali & Bandi Europei -->
           <button type="button" onclick="scrollToId('exp-unisa')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2.5">
-              <span class="text-2xl">🧠</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl">🧠</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2019 — 2020 • BANDI UE</span>
+                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2019 — 2020</span>
                 <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s2">Deep Learning & ML</span>
-                <span class="block text-[10px] text-poster-muted">PICO-E-PRO & PACIB</span>
+                <span class="block text-[10px] text-poster-muted">PICO-E-PRO</span>
               </div>
             </div>
           </button>
 
           <!-- TAPPA 3: Algoritmi & Impatto Sanitario (ACT) -->
           <button type="button" onclick="scrollToId('exp-act')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2.5">
-              <span class="text-2xl">💻</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl">💻</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2020 — 2021 • COD19</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s3">Algorithm Engineering</span>
-                <span class="block text-[10px] text-poster-muted">Modelli decisionali sanitari</span>
+                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2020 — 2021</span>
+                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s3">Algorithm Eng.</span>
+                <span class="block text-[10px] text-poster-muted">Cod19 Platform</span>
               </div>
             </div>
           </button>
 
           <!-- TAPPA 4: Cloud Enterprise & Leadership (WBA) -->
-          <button type="button" onclick="scrollToId('exp-magma')" class="evo-pill text-left p-3 rounded-xl bg-poster-coralLight border border-poster-coral/40 hover:border-poster-coral transition-all ring-1 ring-poster-coral/20">
-            <div class="flex items-center gap-2.5">
-              <span class="text-2xl">☁️</span>
+          <button type="button" onclick="scrollToId('exp-magma')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl">☁️</span>
               <div>
-                <span class="block text-[10px] font-mono font-bold text-poster-coral">2021 — OGG • ARCHITETTO</span>
-                <span class="block text-xs font-bold font-heading text-poster-coral" data-i18n="evo-s4">Cloud Native Architect</span>
-                <span class="block text-[10px] text-poster-charcoal font-semibold">WBA • Team 13 Devs • FinOps</span>
+                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2021 — 2025</span>
+                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s4">Cloud Architect</span>
+                <span class="block text-[10px] text-poster-muted">WBA • Team 13</span>
+              </div>
+            </div>
+          </button>
+
+          <!-- TAPPA 5: DevSecOps & Platform (Sisal / Flutter SEA) -->
+          <button type="button" onclick="scrollToId('exp-alten')" class="evo-pill text-left p-3 rounded-xl bg-poster-coralLight border border-poster-coral/40 hover:border-poster-coral transition-all ring-1 ring-poster-coral/20 col-span-2 sm:col-span-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl">🛡️</span>
+              <div>
+                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2025 — OGG</span>
+                <span class="block text-xs font-bold font-heading text-poster-coral" data-i18n="evo-s5">DevSecOps & Platform</span>
+                <span class="block text-[10px] text-poster-charcoal font-semibold">Alten • Sisal (Flutter)</span>
               </div>
             </div>
           </button>
@@ -322,108 +343,102 @@
             </div>
           </a>
 
-          <!-- ================= SEZIONE SKILLS IN FORTE EVIDENZA ================= -->
-          <section id="section-skills" class="space-y-4">
+          <!-- ================= SEZIONE SKILLS CONDENSATA & CURATA ================= -->
+          <section id="section-skills" class="space-y-3">
             <div class="flex items-center justify-between">
-              <h2 class="poster-section-title" data-i18n="title-skills">Skills & Expertise</h2>
-              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-poster-yellow text-poster-charcoal">STACK COMPLETO</span>
+              <h2 class="poster-section-title" data-i18n="title-skills">Skills &amp; Expertise</h2>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-poster-yellow text-poster-charcoal" data-i18n="skills-tag">CORE STACK</span>
             </div>
 
-            <!-- CARD CATEGORIZZATE CON PALLINI CONCENTRICI E TAG AD ALTO IMPATTO -->
-            <div class="space-y-3.5">
-
-              <!-- 1. CLOUD & AZURE (CORE) -->
-              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
-                  </div>
-                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
-                    Cloud & Azure (Native)
-                  </h3>
-                </div>
-                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Azure Functions</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">APIM</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Kubernetes (AKS)</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Cosmos DB</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Docker</span>
-                </div>
+            <div class="p-4 rounded-2xl bg-white border border-poster-line shadow-xs space-y-3.5 text-xs">
+              
+              <!-- 1. KUBERNETES & GITOPS -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">☸️</span>
+                  <span data-i18n="skill-k8s-title">Kubernetes &amp; GitOps</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-k8s-desc">
+                  K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s
+                </p>
               </div>
 
-              <!-- 2. BACKEND & FRAMEWORK -->
-              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
-                  </div>
-                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
-                    Backend & Frameworks
-                  </h3>
-                </div>
-                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Java (Spring Boot)</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">.NET 8 (C#)</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Python</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Microservizi</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Serverless</span>
-                </div>
+              <hr class="border-poster-line/60">
+
+              <!-- 2. CI/CD & AUTOMATION -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">🚀</span>
+                  <span data-i18n="skill-cicd-title">CI/CD &amp; Automation</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-cicd-desc">
+                  GitHub Actions (Reusable &amp; Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash
+                </p>
               </div>
 
-              <!-- 3. MESSAGING, EVENT-DRIVEN & DATABASES -->
-              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
-                  </div>
-                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
-                    Messaging & Databases
-                  </h3>
-                </div>
-                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Azure ServiceBus</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">EventHub</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">RabbitMQ</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Redis</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">SQL Server / MySQL</span>
-                </div>
+              <hr class="border-poster-line/60">
+
+              <!-- 3. APPSEC & GOVERNANCE -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">🛡️</span>
+                  <span data-i18n="skill-sec-title">AppSec &amp; Governance</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-sec-desc">
+                  Veracode (SAST &amp; SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets
+                </p>
               </div>
 
-              <!-- 4. LEADERSHIP & FINOPS -->
-              <div class="skill-card p-3 rounded-xl bg-poster-coralLight/60 border border-poster-coral/30 shadow-2xs space-y-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0 bg-white">
-                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
-                  </div>
-                  <h3 class="text-xs font-bold font-heading text-poster-coral uppercase tracking-wide">
-                    Governance, FinOps & Leadership
-                  </h3>
-                </div>
-                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Team Lead (13 Devs)</span>
-                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">FinOps & Cost Governance</span>
-                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Mentoring</span>
-                  <span class="px-2 py-0.5 rounded bg-white text-poster-charcoal font-semibold border border-poster-coral/30">Agile / Scrum</span>
-                </div>
+              <hr class="border-poster-line/60">
+
+              <!-- 4. CLOUD & CONTAINERS -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">☁️</span>
+                  <span data-i18n="skill-cloud-title">Cloud &amp; Containers</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-cloud-desc">
+                  Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker
+                </p>
               </div>
 
-              <!-- 5. DEVOPS, TESTING & OBSERVABILITY -->
-              <div class="skill-card p-3 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-5 h-5 rounded-full border-2 border-poster-coral flex items-center justify-center shrink-0">
-                    <div class="skill-dot w-2 h-2 rounded-full bg-poster-coral transition-transform"></div>
-                  </div>
-                  <h3 class="text-xs font-bold font-heading text-poster-charcoal uppercase tracking-wide">
-                    Observability & CI/CD
-                  </h3>
-                </div>
-                <div class="flex flex-wrap gap-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Prometheus</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">AppInsights</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">SonarQube</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">GitHub Actions</span>
-                  <span class="px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal font-semibold border border-poster-line">Performance Tuning</span>
-                </div>
+              <hr class="border-poster-line/60">
+
+              <!-- 5. BACKEND & LANGUAGES -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">💻</span>
+                  <span data-i18n="skill-backend-title">Backend &amp; Languages</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-backend-desc">
+                  Java (Spring Boot), C# (.NET 8), Python, Microservizi, Serverless
+                </p>
+              </div>
+
+              <hr class="border-poster-line/60">
+
+              <!-- 6. MESSAGING & DATA -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">🔄</span>
+                  <span data-i18n="skill-data-title">Messaging &amp; Data</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-data-desc">
+                  Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL
+                </p>
+              </div>
+
+              <hr class="border-poster-line/60">
+
+              <!-- 7. LEADERSHIP & FINOPS -->
+              <div class="space-y-1">
+                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+                  <span class="text-poster-coral">👥</span>
+                  <span data-i18n="skill-lead-title">Leadership &amp; FinOps</span>
+                </span>
+                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-lead-desc">
+                  Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum
+                </p>
               </div>
 
             </div>
@@ -477,134 +492,210 @@
           </section>
 
           <!-- BLOCCO 2: EXPERIENCE -->
-          <section id="section-experience" class="space-y-8">
-            <h2 class="poster-section-title" data-i18n="title-experience">Experience</h2>
+          <section id="section-experience" class="space-y-6">
+            <div>
+              <h2 class="poster-section-title" data-i18n="title-experience">Experience</h2>
+            </div>
 
-            <div class="space-y-8">
+            <div class="space-y-6">
 
-              <!-- ESPERIENZA 1: TECHNICAL ARCHITECT (MAGMA / WBA) -->
-              <article id="exp-magma" class="space-y-2 p-3 -m-3 rounded-xl transition-colors">
-                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <span class="text-xs font-mono font-bold text-poster-coral uppercase tracking-wider shrink-0" data-i18n="exp-1-date">
-                    2021 — PRESENTE
+              <!-- ================= ESPERIENZA 1: ALTEN (SISAL / FLUTTER SEA) ================= -->
+              <article id="exp-alten" class="p-5 sm:p-6 rounded-2xl bg-white border-2 border-poster-coral/40 shadow-xs space-y-4 hover:border-poster-coral transition-all">
+                
+                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-0-role">
+                        DevSecOps Engineer
+                      </h3>
+                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-0-company">
+                        Alten Italia
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
+                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
+                      <span data-i18n="exp-0-client">Sisal (Flutter SEA)</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-coralLight text-poster-coral border border-poster-coral/30 uppercase tracking-wider shrink-0 self-start" data-i18n="exp-0-date">
+                    08/2025 — PRESENTE
                   </span>
-                  <h3 class="text-sm sm:text-base font-extrabold text-poster-charcoal tracking-tight">
-                    Technical Architect | Magma S.r.l. (Walgreens Boots Alliance)
-                  </h3>
                 </div>
 
-                <p class="text-xs sm:text-sm text-poster-muted leading-relaxed" data-i18n="exp-1-desc">
-                  Progettazione e implementazione di architetture <strong class="text-poster-charcoal">Cloud Native su Azure</strong> con focus su scalabilità, performance e governance. Sviluppo di middleware di protocol conversion con <strong class="text-poster-charcoal">ottimizzazione dei costi infrastrutturali (FinOps)</strong>. Guida dell'adozione tecnologica di <strong class="text-poster-charcoal">Java 11 e .NET 8</strong> curando migrazione e continuità operativa.
+                <!-- NARRATIVA -->
+                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-0-desc">
+                  In Sisal ho operato come DevSecOps all'interno di un contesto enterprise ad alto traffico. Oltre al supporto tecnico quotidiano (BAU) ai team di sviluppo su problematiche di build e deployment, mi sono occupato della standardizzazione delle pipeline CI/CD e delle pratiche GitOps, gestendo deploy dichiarativi su cluster Kubernetes (OKE su Oracle Cloud). Parallelamente ho presidiato la sicurezza applicativa (Shift-Left) integrando controlli di qualità e sicurezza direttamente nel ciclo di merge, definendo i Quality Gates di SonarQube sul New Code e gestendo scansioni SAST e SCA con Veracode.
                 </p>
 
-                <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Azure Functions</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">APIM</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">AKS</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">.NET 8</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Spring Boot</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">FinOps</span>
+                <!-- STRUMENTI & TECNOLOGIE -->
+                <div class="pt-1 space-y-2">
+                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-0-tools">
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">GitHub Actions (Reusable &amp; Composite)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Kubernetes (OKE)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">ArgoCD</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Oracle Cloud (OCI)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">ARC (Runner effimeri su Pod)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Veracode (SAST &amp; SCA)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SonarQube (Quality Gates &amp; KPI)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Helm &amp; Kustomize</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Trivy</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">CrowdStrike</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">OCI Vault &amp; Sealed Secrets</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Bash</span>
+                  </div>
                 </div>
 
-                <!-- TASTO EXPAND -->
-                <button type="button" onclick="toggleExpDetails('exp-1-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
-                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
-                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                  </svg>
-                </button>
-
-                <!-- DETTAGLI APPROFONDITI (ESPANDIBILI) -->
-                <div id="exp-1-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
-                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-1-bullets">
-                    <li>Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e governance.</li>
-                    <li>Sviluppo di un middleware per protocol conversion, ottimizzando i costi computazionali.</li>
-                    <li>Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando migrazione, aggiornamento e dismissione controllata degli asset senza disservizi.</li>
-                    <li>Coordinamento e mentoring di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.</li>
-                    <li>Early performance testing, fine tuning, benchmarking ed esecuzione di test di carico su servizi critici.</li>
-                    <li>Gestione e risoluzione rapida di issue critiche in produzione a tutela della stabilità e continuità operativa.</li>
-                  </ul>
-                </div>
               </article>
 
-              <!-- ESPERIENZA 2: ALGORITHM ENGINEER (ACT OPERATIONS) -->
-              <article id="exp-act" class="space-y-2 p-3 -m-3 rounded-xl transition-colors">
-                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <span class="text-xs font-mono font-bold text-poster-muted uppercase tracking-wider shrink-0" data-i18n="exp-2-date">
-                    2020 — 2021
+              <!-- ================= ESPERIENZA 2: MAGMA (WALGREENS BOOTS ALLIANCE) ================= -->
+              <article id="exp-magma" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
+                
+                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-1-role">
+                        Technical Architect
+                      </h3>
+                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-1-company">
+                        Magma S.r.l.
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
+                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
+                      <span data-i18n="exp-1-client">Walgreens Boots Alliance (WBA)</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-1-date">
+                    03/2021 — 08/2025
                   </span>
-                  <h3 class="text-sm sm:text-base font-extrabold text-poster-charcoal tracking-tight">
-                    Algorithm Engineer | ACT Operations Research IT S.r.l.
-                  </h3>
                 </div>
 
-                <p class="text-xs sm:text-sm text-poster-muted leading-relaxed" data-i18n="exp-2-desc">
-                  Sviluppo backend per <strong class="text-poster-charcoal">Cod19</strong>, piattaforma di monitoraggio e stima predittiva dei tempi di ospedalizzazione per pazienti affetti da Covid-19. Attività di analisi dati avanzata, ricerca e ottimizzazione algoritmica a supporto diretto dei processi decisionali sanitari.
+                <!-- NARRATIVA -->
+                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-1-desc">
+                  Per Walgreens Boots Alliance ho ricoperto il ruolo di Technical Architect, progettando e guidando l'implementazione di architetture Cloud Native su Microsoft Azure con focus su scalabilità, decoupling a microservizi e approccio serverless ed event-driven. Ho coordinato e supportato un team di 13 sviluppatori nella creazione di librerie e middleware condivisi, curando anche la migrazione e l'adozione di Java 11 e .NET 8 a zero downtime. Tra i risultati principali, l'ingegnerizzazione di un middleware di protocol conversion che ha permesso un'ottimizzazione del 30% sui costi computazionali (FinOps).
                 </p>
 
-                <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Python</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Data Modeling</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Algoritmi</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">REST Backend</span>
+                <!-- STRUMENTI & TECNOLOGIE -->
+                <div class="pt-1 space-y-2">
+                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-1-tools">
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Microsoft Azure (Functions, APIM, AKS)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Azure ServiceBus &amp; EventHub</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Java (Spring Boot)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">C# (.NET 8)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Docker</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Cosmos DB</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Redis</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SonarQube</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">FinOps &amp; Cost Optimization</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">CI/CD</span>
+                  </div>
                 </div>
 
-                <!-- TASTO EXPAND -->
-                <button type="button" onclick="toggleExpDetails('exp-2-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
-                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
-                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                  </svg>
-                </button>
-
-                <!-- DETTAGLI APPROFONDITI -->
-                <div id="exp-2-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
-                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-2-bullets">
-                    <li>Sviluppo backend e API REST per il monitoraggio dei pazienti e stima delle curve di ospedalizzazione.</li>
-                    <li>Modellazione e ottimizzazione algoritmica applicata a dataset complessi in contesti d'emergenza pandemica.</li>
-                    <li>Interazione interdisciplinare tra ingegneria algoritmica, ricerca operativa e ambito sanitario.</li>
-                  </ul>
-                </div>
               </article>
 
-              <!-- ESPERIENZA 3: SOFTWARE ENGINEER & ML RESEARCH (UNISA) -->
-              <article id="exp-unisa" class="space-y-2 p-3 -m-3 rounded-xl transition-colors">
-                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <span class="text-xs font-mono font-bold text-poster-muted uppercase tracking-wider shrink-0" data-i18n="exp-3-date">
-                    2019 — 2020
+              <!-- ================= ESPERIENZA 3: ACT OPERATIONS (COD19) ================= -->
+              <article id="exp-act" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
+                
+                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-2-role">
+                        Algorithm Engineer
+                      </h3>
+                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-2-company">
+                        ACT Operations Research IT S.r.l.
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
+                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
+                      <span data-i18n="exp-2-client">Cod19 (Piattaforma Ospedaliera Emergenza Covid)</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-2-date">
+                    09/2020 — 02/2021
                   </span>
-                  <h3 class="text-sm sm:text-base font-extrabold text-poster-charcoal tracking-tight">
-                    Software & ML Engineer | Università di Salerno (Progetti Ricerca)
-                  </h3>
                 </div>
 
-                <p class="text-xs sm:text-sm text-poster-muted leading-relaxed" data-i18n="exp-3-desc">
-                  Partecipazione ai bandi europei <strong class="text-poster-charcoal">PICO-E-PRO</strong> e <strong class="text-poster-charcoal">PACIB</strong>, con sviluppo di sistemi predittivi di Machine Learning in ambito biomedicale e industriale. Focus su <strong class="text-poster-charcoal">reti neurali convoluzionali (CNN)</strong> e sviluppo dell'orchestrazione a scambio di messaggi per il calcolo di pannelli proteici.
+                <!-- NARRATIVA -->
+                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-2-desc">
+                  Durante la prima fase pandemica ho sviluppato il backend per Cod19, una piattaforma a supporto decisionale dei presidi ospedalieri finalizzata a monitorare e stimare i tempi di degenza dei pazienti Covid-19. Ho lavorato a stretto contatto con ricercatori operativi e medici, occupandomi di analisi dati e ingegnerizzazione di modelli algoritmici predittivi per anticipare i picchi di occupazione dei reparti.
                 </p>
 
-                <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Machine Learning</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">CNN</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Message Brokers</span>
-                  <span class="px-2 py-0.5 rounded bg-white border border-poster-line text-poster-charcoal">Python</span>
+                <!-- STRUMENTI & TECNOLOGIE -->
+                <div class="pt-1 space-y-2">
+                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-2-tools">
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Python</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">REST APIs</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Algoritmi Predittivi</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Time-Series Modeling</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">MySQL</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SQLite</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Git</span>
+                  </div>
                 </div>
 
-                <!-- TASTO EXPAND -->
-                <button type="button" onclick="toggleExpDetails('exp-3-details', this)" class="no-print mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-poster-coral hover:text-poster-charcoal transition-colors cursor-pointer">
-                  <span class="btn-text" data-i18n="btn-expand-more">+ Mostra dettagli & impatto</span>
-                  <svg class="chevron-icon w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                  </svg>
-                </button>
+              </article>
 
-                <!-- DETTAGLI APPROFONDITI -->
-                <div id="exp-3-details" class="exp-details hidden mt-3 pt-3 border-t border-dashed border-poster-line space-y-2 text-xs sm:text-sm text-poster-muted">
-                  <ul class="space-y-1.5 list-disc list-inside leading-relaxed text-poster-charcoal" data-i18n="exp-3-bullets">
-                    <li>Sviluppo di modelli predittivi con reti convoluzionali (CNN) per l'analisi e classificazione di immagini.</li>
-                    <li>Progettazione dell'orchestrazione distribuita per il calcolo di pannelli proteici basata sullo scambio asincrono di messaggi software (Dipartimento di Farmacia).</li>
-                    <li>Sperimentazione e validazione dei risultati computazionali in ambito di bandi europei competitivi.</li>
-                  </ul>
+              <!-- ================= ESPERIENZA 4: UNISA (BANDI EUROPEI) ================= -->
+              <article id="exp-unisa" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
+                
+                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-3-role">
+                        Software &amp; ML Engineer
+                      </h3>
+                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-3-company">
+                        Università di Salerno
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
+                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
+                      <span data-i18n="exp-3-client">Bandi UE PICO-E-PRO &amp; PACIB (Dip. Farmacia)</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-3-date">
+                    07/2019 — 03/2020
+                  </span>
                 </div>
+
+                <!-- NARRATIVA -->
+                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-3-desc">
+                  Ho partecipato ad attività di ricerca applicata e sviluppo software all'interno di bandi europei competitivi, realizzando modelli predittivi basati su reti neurali convoluzionali (CNN) per l'analisi preventiva di anomalie biomedicali e industriali. Per il Dipartimento di Farmacia ho inoltre progettato un layer di orchestrazione distribuita basato sullo scambio asincrono di messaggi tra moduli software per il calcolo di pannelli proteici.
+                </p>
+
+                <!-- STRUMENTI & TECNOLOGIE -->
+                <div class="pt-1 space-y-2">
+                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-3-tools">
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Python</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Machine Learning &amp; CNN</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Message Brokers (Code Asincrone)</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Elaborazione Immagini Biomediche</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Linux</span>
+                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Git</span>
+                  </div>
+                </div>
+
               </article>
 
             </div>
@@ -617,7 +708,7 @@
       <!-- FOOTER POSTER -->
       <footer class="no-print pt-6 border-t border-poster-line text-center">
         <p class="text-xs text-poster-muted font-medium">
-          Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
+          Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect & DevSecOps Specialist • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
         </p>
       </footer>
 
@@ -626,24 +717,44 @@
 
   <!-- JAVASCRIPT: Switch Lingua ITA / ENG e Navigazione -->
   <script>
+    let currentLang = 'it';
+
     const translations = {
       it: {
         "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
         "btn-print": "Stampa / Salva",
         "hero-greeting": "Hello! I'm",
         "hero-nickname-prefix": "...but you can call me",
-        "hero-title": "Technical Architect & Cloud Native Specialist",
-        "hero-summary": "Comprovata esperienza nel design e implementazione di soluzioni Cloud Native su <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, architetture a microservizi, serverless ed event-driven, con forte orientamento alla scalabilità, performance e metodologie <strong class=\"text-poster-charcoal\">FinOps</strong>. Guida e coordinamento di un team di 13 persone.",
+        "hero-title": "Technical Architect & DevSecOps Specialist",
+        "hero-summary": "Technical Architect con comprovata esperienza nel design di architetture <strong class=\"text-poster-charcoal\">Cloud Native scalabili</strong> (Azure, OCI) e nell'implementazione di ecosistemi <strong class=\"text-poster-charcoal\">DevSecOps enterprise</strong> (CI/CD, GitOps, shift-left security). Forte background nella guida di team ingegneristici (fino a 13 persone), FinOps e resilienza di sistemi critici.",
+        "hero-badge-1": "Sisal (Flutter SEA) • DevSecOps & Platform",
+        "hero-badge-2": "Walgreens Boots Alliance • Tech Architect",
         "evo-heading": "Esperienze Più Significative & Tappe Chiave",
         "evo-sub": "Clicca per saltare all'esperienza",
         "evo-s1": "Laurea Informatica",
         "evo-s2": "Deep Learning & ML",
-        "evo-s3": "Algorithm Engineering",
-        "evo-s4": "Cloud Native Architect",
+        "evo-s3": "Algorithm Eng.",
+        "evo-s4": "Cloud Architect",
+        "evo-s5": "DevSecOps & Platform",
         "title-contact": "Contact",
         "qr-text": "Scansiona o clicca per il CV online",
         "contact-loc": "Napoli / Remoto (Italia)",
         "title-skills": "Skills & Expertise",
+        "skills-tag": "CORE STACK",
+        "skill-k8s-title": "Kubernetes & GitOps",
+        "skill-k8s-desc": "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s",
+        "skill-cicd-title": "CI/CD & Automation",
+        "skill-cicd-desc": "GitHub Actions (Reusable & Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash",
+        "skill-sec-title": "AppSec & Governance",
+        "skill-sec-desc": "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets",
+        "skill-cloud-title": "Cloud & Containers",
+        "skill-cloud-desc": "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker",
+        "skill-backend-title": "Backend & Languages",
+        "skill-backend-desc": "Java (Spring Boot), C# (.NET 8), Python, Microservizi, Serverless",
+        "skill-data-title": "Messaging & Data",
+        "skill-data-desc": "Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL",
+        "skill-lead-title": "Leadership & FinOps",
+        "skill-lead-desc": "Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum",
         "title-languages": "Lingue / Languages",
         "lang-ita": "Madrelingua",
         "lang-eng": "C2 Lettura • C1 Scrittura • B1 Parlato",
@@ -653,34 +764,72 @@
         "edu-2-degree": "Bandi Europei Ricerca ML",
         "edu-2-school": "PICO-E-PRO & PACIB",
         "title-experience": "Experience",
-        "btn-expand-more": "+ Mostra dettagli & impatto",
-        "exp-1-date": "2021 — PRESENTE",
-        "exp-1-desc": "Progettazione e implementazione di architetture <strong class=\"text-poster-charcoal\">Cloud Native su Azure</strong> con focus su scalabilità, performance e governance. Sviluppo di middleware di protocol conversion con <strong class=\"text-poster-charcoal\">ottimizzazione dei costi infrastrutturali (FinOps)</strong>. Guida dell'adozione tecnologica di <strong class=\"text-poster-charcoal\">Java 11 e .NET 8</strong> curando migrazione e continuità operativa.",
-        "exp-1-bullets": "<li>Progettazione e implementazione di architetture <strong>Cloud Native su Azure</strong>, con focus su scalabilità, performance e governance.</li><li>Sviluppo di un middleware per protocol conversion, ottimizzando i costi computazionali.</li><li>Guida dell'adozione di <strong>Java 11 e .NET 8</strong>, curando migrazione, aggiornamento e dismissione controllata degli asset senza disservizi.</li><li>Coordinamento e mentoring di un <strong>team di 13 persone</strong>, garantendo best practice e riusabilità del codice.</li><li>Early performance testing, fine tuning, benchmarking ed esecuzione di test di carico su servizi critici.</li><li>Gestione e risoluzione rapida di issue critiche in produzione a tutela della stabilità e continuità operativa.</li>",
-        "exp-2-date": "2020 — 2021",
-        "exp-2-desc": "Sviluppo backend per <strong class=\"text-poster-charcoal\">Cod19</strong>, piattaforma di monitoraggio e stima predittiva dei tempi di ospedalizzazione per pazienti affetti da Covid-19. Attività di analisi dati avanzata, ricerca e ottimizzazione algoritmica a supporto diretto dei processi decisionali sanitari.",
-        "exp-2-bullets": "<li>Sviluppo backend e API REST per il monitoraggio dei pazienti e stima delle curve di ospedalizzazione.</li><li>Modellazione e ottimizzazione algoritmica applicata a dataset complessi in contesti d'emergenza pandemica.</li><li>Interazione interdisciplinare tra ingegneria algoritmica, ricerca operativa e ambito sanitario.</li>",
-        "exp-3-date": "2019 — 2020",
-        "exp-3-desc": "Partecipazione ai bandi europei <strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> e <strong class=\"text-poster-charcoal\">PACIB</strong>, con sviluppo di sistemi predittivi di Machine Learning in ambito biomedicale e industriale. Focus su <strong class=\"text-poster-charcoal\">reti neurali convoluzionali (CNN)</strong> e sviluppo dell'orchestrazione a scambio di messaggi per il calcolo di pannelli proteici.",
-        "exp-3-bullets": "<li>Sviluppo di modelli predittivi con reti convoluzionali (CNN) per l'analisi e classificazione di immagini.</li><li>Progettazione dell'orchestrazione distribuita per il calcolo di pannelli proteici basata sullo scambio asincrono di messaggi software (Dipartimento di Farmacia).</li><li>Sperimentazione e validazione dei risultati computazionali in ambito di bandi europei competitivi.</li>"
+        "label-client": "CLIENTE",
+        "label-tools": "Strumenti & Tecnologie",
+        
+        "exp-0-role": "DevSecOps Engineer",
+        "exp-0-company": "Alten Italia",
+        "exp-0-client": "Sisal (Flutter SEA)",
+        "exp-0-date": "08/2025 — PRESENTE",
+        "exp-0-desc": "In Sisal ho operato come DevSecOps all'interno di un contesto enterprise ad alto traffico. Oltre al supporto tecnico quotidiano (BAU) ai team di sviluppo su problematiche di build e deployment, mi sono occupato della standardizzazione delle pipeline CI/CD e delle pratiche GitOps, gestendo deploy dichiarativi su cluster Kubernetes (OKE su Oracle Cloud). Parallelamente ho presidiato la sicurezza applicativa (Shift-Left) integrando controlli di qualità e sicurezza direttamente nel ciclo di merge, definendo i Quality Gates di SonarQube sul New Code e gestendo scansioni SAST e SCA con Veracode.",
+        "exp-0-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">GitHub Actions (Reusable & Composite)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Kubernetes (OKE)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ArgoCD</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Oracle Cloud (OCI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ARC (Runner effimeri su Pod)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Veracode (SAST & SCA)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube (Quality Gates & KPI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Helm & Kustomize</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Trivy</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CrowdStrike</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">OCI Vault & Sealed Secrets</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Bash</span>",
+
+        "exp-1-role": "Technical Architect",
+        "exp-1-company": "Magma S.r.l.",
+        "exp-1-client": "Walgreens Boots Alliance (WBA)",
+        "exp-1-date": "03/2021 — 08/2025",
+        "exp-1-desc": "Per Walgreens Boots Alliance ho ricoperto il ruolo di Technical Architect, progettando e guidando l'implementazione di architetture Cloud Native su Microsoft Azure con focus su scalabilità, decoupling a microservizi e approccio serverless ed event-driven. Ho coordinato e supportato un team di 13 sviluppatori nella creazione di librerie e middleware condivisi, curando anche la migrazione e l'adozione di Java 11 e .NET 8 a zero downtime. Tra i risultati principali, l'ingegnerizzazione di un middleware di protocol conversion che ha permesso un'ottimizzazione del 30% sui costi computazionali (FinOps).",
+        "exp-1-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Microsoft Azure (Functions, APIM, AKS)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Azure ServiceBus & EventHub</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Java (Spring Boot)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">C# (.NET 8)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Docker</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Cosmos DB</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Redis</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">FinOps & Cost Optimization</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CI/CD</span>",
+
+        "exp-2-role": "Algorithm Engineer",
+        "exp-2-company": "ACT Operations Research IT S.r.l.",
+        "exp-2-client": "Cod19 (Piattaforma Ospedaliera Emergenza Covid)",
+        "exp-2-date": "09/2020 — 02/2021",
+        "exp-2-desc": "Durante la prima fase pandemica ho sviluppato il backend per Cod19, una piattaforma a supporto decisionale dei presidi ospedalieri finalizzata a monitorare e stimare i tempi di degenza dei pazienti Covid-19. Ho lavorato a stretto contatto con ricercatori operativi e medici, occupandomi di analisi dati e ingegnerizzazione di modelli algoritmici predittivi per anticipare i picchi di occupazione dei reparti.",
+        "exp-2-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">REST APIs</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Algoritmi Predittivi</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Time-Series Modeling</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">MySQL</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SQLite</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>",
+
+        "exp-3-role": "Software & ML Engineer",
+        "exp-3-company": "Università di Salerno",
+        "exp-3-client": "Bandi UE PICO-E-PRO & PACIB (Dip. Farmacia)",
+        "exp-3-date": "07/2019 — 03/2020",
+        "exp-3-desc": "Ho partecipato ad attività di ricerca applicata e sviluppo software all'interno di bandi europei competitivi, realizzando modelli predittivi basati su reti neurali convoluzionali (CNN) per l'analisi preventiva di anomalie biomedicali e industriali. Per il Dipartimento di Farmacia ho inoltre progettato un layer di orchestrazione distribuita basato sullo scambio asincrono di messaggi tra moduli software per il calcolo di pannelli proteici.",
+        "exp-3-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Machine Learning & CNN</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Message Brokers (Code Asincrone)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Elaborazione Immagini Biomediche</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Linux</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>"
       },
       en: {
         "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
         "btn-print": "Print / Save",
         "hero-greeting": "Hello! I'm",
         "hero-nickname-prefix": "...but you can call me",
-        "hero-title": "Technical Architect & Cloud Native Specialist",
-        "hero-summary": "Proven track record in designing and delivering enterprise Cloud Native solutions on <strong class=\"text-poster-charcoal\">Microsoft Azure</strong>, microservices, serverless, and event-driven architectures with strong focus on scalability, performance, and <strong class=\"text-poster-charcoal\">FinOps</strong> practices. Guiding and leading an engineering team of 13 people.",
+        "hero-title": "Technical Architect & DevSecOps Specialist",
+        "hero-summary": "Technical Architect with proven expertise in designing scalable <strong class=\"text-poster-charcoal\">Cloud Native architectures</strong> (Azure, OCI) and leading enterprise <strong class=\"text-poster-charcoal\">DevSecOps ecosystems</strong> (CI/CD, GitOps, shift-left security). Strong background leading engineering teams (up to 13 developers), FinOps governance, and critical systems resilience.",
+        "hero-badge-1": "Sisal (Flutter SEA) • DevSecOps & Platform",
+        "hero-badge-2": "Walgreens Boots Alliance • Tech Architect",
         "evo-heading": "Key Milestones & Significant Experiences",
         "evo-sub": "Click to jump to experience",
         "evo-s1": "B.Sc. CompSci",
         "evo-s2": "Deep Learning & ML",
-        "evo-s3": "Algorithm Engineering",
-        "evo-s4": "Cloud Native Architect",
+        "evo-s3": "Algorithm Eng.",
+        "evo-s4": "Cloud Architect",
+        "evo-s5": "DevSecOps & Platform",
         "title-contact": "Contact",
         "qr-text": "Scansiona o clicca per il CV online",
         "contact-loc": "Naples, Italy / Remote",
         "title-skills": "Skills & Expertise",
+        "skills-tag": "CORE STACK",
+        "skill-k8s-title": "Kubernetes & GitOps",
+        "skill-k8s-desc": "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s",
+        "skill-cicd-title": "CI/CD & Automation",
+        "skill-cicd-desc": "GitHub Actions (Reusable & Composite Workflows), ARC (Ephemeral Runners on Pods), Azure DevOps, Bash",
+        "skill-sec-title": "AppSec & Governance",
+        "skill-sec-desc": "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets",
+        "skill-cloud-title": "Cloud & Containers",
+        "skill-cloud-desc": "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker",
+        "skill-backend-title": "Backend & Languages",
+        "skill-backend-desc": "Java (Spring Boot), C# (.NET 8), Python, Microservices, Serverless",
+        "skill-data-title": "Messaging & Data",
+        "skill-data-desc": "Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL",
+        "skill-lead-title": "Leadership & FinOps",
+        "skill-lead-desc": "Technical Architecture, Team Lead (13 devs), FinOps (-30% costs), Agile / Scrum",
         "title-languages": "Languages",
         "lang-ita": "Native speaker",
         "lang-eng": "C2 Reading • C1 Writing • B1 Speaking",
@@ -690,20 +839,41 @@
         "edu-2-degree": "European Research Grants",
         "edu-2-school": "PICO-E-PRO & PACIB",
         "title-experience": "Experience",
-        "btn-expand-more": "+ View details & impact",
-        "exp-1-date": "2021 — PRESENT",
-        "exp-1-desc": "Design and implementation of <strong class=\"text-poster-charcoal\">Cloud Native architectures on Azure</strong> with focus on scalability, performance, and governance. Protocol conversion middleware engineering delivering <strong class=\"text-poster-charcoal\">infrastructure cost optimization (FinOps)</strong>. Led technological adoption of <strong class=\"text-poster-charcoal\">Java 11 and .NET 8</strong>.",
-        "exp-1-bullets": "<li>Architected and implemented enterprise <strong>Cloud Native architectures on Azure</strong> with focus on scalability, resilience, and governance.</li><li>Engineered custom protocol conversion middleware, substantially optimizing computational and infrastructure costs.</li><li>Led modernization towards <strong>Java 11 and .NET 8</strong>, orchestrating zero-downtime asset decommissioning.</li><li>Technical leadership and mentoring for a <strong>team of 13 developers</strong>, establishing software quality and code reuse standards.</li><li>Early performance testing, fine-tuning, system benchmarking, and high-load stress testing.</li><li>Proactive production incident resolution and continuous operational stability for mission-critical systems.</li>",
-        "exp-2-date": "2020 — 2021",
-        "exp-2-desc": "Backend engineering for <strong class=\"text-poster-charcoal\">Cod19</strong>, an emergency pandemic platform estimating patient hospitalization windows. Applied statistical analysis, mathematical modeling, and algorithmic optimization for healthcare decision support.",
-        "exp-2-bullets": "<li>Backend and REST API development for patient tracking and hospital admission curve predictions.</li><li>Mathematical modeling and algorithmic optimization applied to complex pandemic data streams.</li><li>Close collaboration with operations researchers, healthcare professionals, and technical teams.</li>",
-        "exp-3-date": "2019 — 2020",
-        "exp-3-desc": "Participated in European research programs (<strong class=\"text-poster-charcoal\">PICO-E-PRO</strong> & <strong class=\"text-poster-charcoal\">PACIB</strong>), engineering predictive Machine Learning models in medical and industrial anomaly detection. Focus on <strong class=\"text-poster-charcoal\">Convolutional Neural Networks (CNN)</strong> and message-driven orchestrations.",
-        "exp-3-bullets": "<li>Developed predictive models with Convolutional Neural Networks (CNN) for biomedical and industrial imaging.</li><li>Architected distributed computation orchestrator for pharmacy protein panel analysis via asynchronous message broker communication.</li><li>Authored scientific research documentation and benchmark reports within European competitive grants.</li>"
+        "label-client": "CLIENT",
+        "label-tools": "Tools & Technologies",
+
+        "exp-0-role": "DevSecOps Engineer",
+        "exp-0-company": "Alten Italia",
+        "exp-0-client": "Sisal (Flutter SEA)",
+        "exp-0-date": "08/2025 — PRESENT",
+        "exp-0-desc": "At Sisal (Flutter SEA), I worked as a DevSecOps engineer within a high-traffic enterprise environment. Alongside day-to-day business-as-usual (BAU) technical support for development teams on build and deployment issues, I focused on standardizing CI/CD pipelines and GitOps practices, managing declarative deployments on Kubernetes clusters (OKE on Oracle Cloud). In parallel, I championed application security (Shift-Left) by integrating quality and security checks directly into the merge cycle, defining SonarQube Quality Gates for New Code and automating SAST and SCA scanning with Veracode.",
+        "exp-0-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">GitHub Actions (Reusable & Composite)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Kubernetes (OKE)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ArgoCD</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Oracle Cloud (OCI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ARC (Ephemeral Runners on Pods)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Veracode (SAST & SCA)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube (Quality Gates & KPI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Helm & Kustomize</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Trivy</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-charcoal font-medium border border-poster-line/70\">CrowdStrike</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">OCI Vault & Sealed Secrets</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Bash</span>",
+
+        "exp-1-role": "Technical Architect",
+        "exp-1-company": "Magma S.r.l.",
+        "exp-1-client": "Walgreens Boots Alliance (WBA)",
+        "exp-1-date": "03/2021 — 08/2025",
+        "exp-1-desc": "For Walgreens Boots Alliance, I served as Technical Architect, designing and leading the delivery of Cloud Native architectures on Microsoft Azure with an emphasis on scalability, microservices decoupling, and serverless/event-driven patterns. I led and mentored a team of 13 engineers in developing enterprise common libraries and middleware, while executing zero-downtime migrations to Java 11 and .NET 8. Key achievements include engineering a protocol conversion middleware that delivered a 30% reduction in cloud compute costs (FinOps).",
+        "exp-1-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Microsoft Azure (Functions, APIM, AKS)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Azure ServiceBus & EventHub</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Java (Spring Boot)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">C# (.NET 8)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Docker</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Cosmos DB</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Redis</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">FinOps & Cost Optimization</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CI/CD</span>",
+
+        "exp-2-role": "Algorithm Engineer",
+        "exp-2-company": "ACT Operations Research IT S.r.l.",
+        "exp-2-client": "Cod19 (Emergency Hospital Platform)",
+        "exp-2-date": "09/2020 — 02/2021",
+        "exp-2-desc": "During the initial pandemic wave, I developed the backend for Cod19, a clinical decision-support platform designed to monitor and forecast Covid-19 patient hospitalization windows. Working in close collaboration with operations researchers and medical staff, I focused on data modeling and computational engineering of predictive time-series algorithms to anticipate hospital ward bed saturation.",
+        "exp-2-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">REST APIs</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Algoritmi Predittivi</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Time-Series Modeling</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">MySQL</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SQLite</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>",
+
+        "exp-3-role": "Software & ML Engineer",
+        "exp-3-company": "University of Salerno",
+        "exp-3-client": "EU Grants PICO-E-PRO & PACIB (Pharmacy Dept.)",
+        "exp-3-date": "07/2019 — 03/2020",
+        "exp-3-desc": "I contributed to applied research and software development within competitive European Union grant projects, engineering predictive models based on convolutional neural networks (CNNs) for anomaly detection in biomedical and industrial imaging. For the Department of Pharmacy, I additionally designed a distributed orchestration layer powered by asynchronous message queues across software compute nodes for protein panel calculations.",
+        "exp-3-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Machine Learning & CNN</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Message Brokers (Async Queues)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Biomedical Image Processing</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Linux</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>"
       }
     };
 
     function setLanguage(lang) {
+      currentLang = lang;
       const dict = translations[lang];
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -731,28 +901,6 @@
         setTimeout(() => {
           target.classList.remove('bg-poster-yellow/20');
         }, 1500);
-      }
-    }
-
-    function toggleExpDetails(id, btn) {
-      const container = document.getElementById(id);
-      if (!container) return;
-      const isHidden = container.classList.contains('hidden');
-      const textSpan = btn.querySelector('.btn-text');
-      const chevron = btn.querySelector('.chevron-icon');
-
-      if (isHidden) {
-        container.classList.remove('hidden');
-        chevron.classList.add('rotate-180');
-        if (textSpan) {
-          textSpan.textContent = currentLang === 'it' ? '- Nascondi dettagli' : '- Hide details';
-        }
-      } else {
-        container.classList.add('hidden');
-        chevron.classList.remove('rotate-180');
-        if (textSpan) {
-          textSpan.textContent = currentLang === 'it' ? '+ Mostra dettagli & impatto' : '+ View details & impact';
-        }
       }
     }
   </script>

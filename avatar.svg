@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" width="100%" height="100%">
+  <defs>
+    <!-- Ombreggiatura leggera stile cartoon -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.18" />
+    </filter>
+    
+    <!-- Sfumatura pelle -->
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4c6a8" />
+      <stop offset="100%" stop-color="#e2ac89" />
+    </linearGradient>
+
+    <!-- Riflesso verde lenti occhiali -->
+    <linearGradient id="lensGlare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#4ade80" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- LIVELLO 1: SCHELETRO                       -->
+  <!-- ========================================== -->
+  <g id="livello-scheletro" style="display: inline;" filter="url(#shadow)">
+    <!-- Cranio -->
+    <path d="M 155 110 C 155 65, 245 65, 245 110 C 245 135, 232 155, 225 168 L 222 195 C 222 202, 178 202, 178 195 L 175 168 C 168 155, 155 135, 155 110 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+    <!-- Cavità oculari -->
+    <circle cx="180" cy="135" r="14" fill="#334155" />
+    <circle cx="220" cy="135" r="14" fill="#334155" />
+    <!-- Cavità nasale -->
+    <polygon points="200,148 193,165 207,165" fill="#334155" />
+    <!-- Denti / Mascella -->
+    <line x1="182" y1="182" x2="218" y2="182" stroke="#94a3b8" stroke-width="3" />
+    <line x1="190" y1="176" x2="190" y2="188" stroke="#94a3b8" stroke-width="2" />
+    <line x1="200" y1="176" x2="200" y2="188" stroke="#94a3b8" stroke-width="2" />
+    <line x1="210" y1="176" x2="210" y2="188" stroke="#94a3b8" stroke-width="2" />
+
+    <!-- Colonna vertebrale -->
+    <rect x="194" y="200" width="12" height="190" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="3" />
+    <!-- Segni vertebre -->
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="194" y1="220" x2="206" y2="220" />
+      <line x1="194" y1="240" x2="206" y2="240" />
+      <line x1="194" y1="260" x2="206" y2="260" />
+      <line x1="194" y1="280" x2="206" y2="280" />
+      <line x1="194" y1="300" x2="206" y2="300" />
+      <line x1="194" y1="320" x2="206" y2="320" />
+      <line x1="194" y1="340" x2="206" y2="340" />
+      <line x1="194" y1="360" x2="206" y2="360" />
+    </g>
+
+    <!-- Clavicole -->
+    <path d="M 125 235 Q 160 225 194 235" fill="none" stroke="#f1f5f9" stroke-width="10" stroke-linecap="round" />
+    <path d="M 125 235 Q 160 225 194 235" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+    <path d="M 275 235 Q 240 225 206 235" fill="none" stroke="#f1f5f9" stroke-width="10" stroke-linecap="round" />
+    <path d="M 275 235 Q 240 225 206 235" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Cassa Toracica (Sterno + Costole) -->
+    <rect x="193" y="235" width="14" height="90" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+    <g fill="none" stroke="#f1f5f9" stroke-width="9" stroke-linecap="round">
+      <path d="M 193 250 C 160 250, 150 265, 165 275" />
+      <path d="M 193 270 C 155 270, 145 288, 162 298" />
+      <path d="M 193 290 C 155 290, 150 308, 168 318" />
+      <path d="M 193 310 C 165 310, 160 325, 175 332" />
+      <path d="M 207 250 C 240 250, 250 265, 235 275" />
+      <path d="M 207 270 C 245 270, 255 288, 238 298" />
+      <path d="M 207 290 C 245 290, 250 308, 232 318" />
+      <path d="M 207 310 C 235 310, 240 325, 225 332" />
+    </g>
+    <g fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 193 250 C 160 250, 150 265, 165 275" />
+      <path d="M 193 270 C 155 270, 145 288, 162 298" />
+      <path d="M 193 290 C 155 290, 150 308, 168 318" />
+      <path d="M 193 310 C 165 310, 160 325, 175 332" />
+      <path d="M 207 250 C 240 250, 250 265, 235 275" />
+      <path d="M 207 270 C 245 270, 255 288, 238 298" />
+      <path d="M 207 290 C 245 290, 250 308, 232 318" />
+      <path d="M 207 310 C 235 310, 240 325, 225 332" />
+    </g>
+
+    <!-- Bacino -->
+    <path d="M 155 380 C 145 380, 145 425, 175 430 L 200 415 L 225 430 C 255 425, 255 380, 245 380 C 230 375, 215 390, 200 390 C 185 390, 170 375, 155 380 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+    <circle cx="170" cy="405" r="9" fill="#334155" />
+    <circle cx="230" cy="405" r="9" fill="#334155" />
+
+    <!-- Ossa Braccio Destro Tuo (Sinistra nell'immagine) -->
+    <g stroke="#94a3b8" stroke-width="3" fill="#f1f5f9">
+      <!-- Omero -->
+      <rect x="115" y="240" width="12" height="90" rx="6" transform="rotate(6 121 240)" />
+      <!-- Radio/Ulna -->
+      <rect x="108" y="330" width="10" height="80" rx="5" transform="rotate(-4 113 330)" />
+      <!-- Mano ossea -->
+      <circle cx="115" cy="422" r="10" />
+    </g>
+
+    <!-- Ossa Braccio Sinistro Tuo (Destra nell'immagine) -->
+    <g stroke="#94a3b8" stroke-width="3" fill="#f1f5f9">
+      <!-- Omero -->
+      <rect x="273" y="240" width="12" height="90" rx="6" transform="rotate(-6 279 240)" />
+      <!-- Radio/Ulna -->
+      <rect x="282" y="330" width="10" height="80" rx="5" transform="rotate(4 287 330)" />
+      <!-- Mano ossea -->
+      <circle cx="285" cy="422" r="10" />
+    </g>
+
+    <!-- Ossa Gambe -->
+    <g stroke="#94a3b8" stroke-width="3" fill="#f1f5f9">
+      <!-- Femore SX -->
+      <rect x="164" y="425" width="14" height="110" rx="7" />
+      <!-- Rotula SX -->
+      <circle cx="171" cy="542" r="8" />
+      <!-- Tibia/Perone SX -->
+      <rect x="165" y="550" width="12" height="105" rx="6" />
+      <!-- Piede SX -->
+      <ellipse cx="165" cy="665" rx="22" ry="8" />
+
+      <!-- Femore DX -->
+      <rect x="222" y="425" width="14" height="110" rx="7" />
+      <!-- Rotula DX -->
+      <circle cx="229" cy="542" r="8" />
+      <!-- Tibia/Perone DX -->
+      <rect x="223" y="550" width="12" height="105" rx="6" />
+      <!-- Piede DX -->
+      <ellipse cx="235" cy="665" rx="22" ry="8" />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- LIVELLO 2: PELLE (CORPO E VISO BASE)       -->
+  <!-- ========================================== -->
+  <g id="livello-pelle" style="display: inline;" filter="url(#shadow)">
+    <!-- Gambe -->
+    <rect x="153" y="410" width="36" height="245" rx="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <rect x="211" y="410" width="36" height="245" rx="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <!-- Piedi -->
+    <ellipse cx="163" cy="662" rx="28" ry="12" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <ellipse cx="237" cy="662" rx="28" ry="12" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+    <!-- Braccia -->
+    <!-- Braccio Destro (a sinistra) -->
+    <path d="M 135 230 C 110 235, 98 320, 102 415 L 128 415 C 128 330, 138 265, 145 245 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <circle cx="115" cy="424" r="16" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    
+    <!-- Braccio Sinistro (a destra) -->
+    <path d="M 265 230 C 290 235, 302 320, 298 415 L 272 415 C 272 330, 262 265, 255 245 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <circle cx="285" cy="424" r="16" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+    <!-- Torso e Collo -->
+    <rect x="182" y="185" width="36" height="50" rx="10" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <!-- Ombra sotto il mento -->
+    <path d="M 182 200 Q 200 215 218 200 L 218 190 L 182 190 Z" fill="#d49a79" />
+    <path d="M 135 225 C 165 215, 235 215, 265 225 L 252 425 C 252 440, 148 440, 148 425 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+    <!-- Orecchie -->
+    <ellipse cx="144" cy="142" rx="10" ry="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <path d="M 142 135 Q 147 142 142 150" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+    <ellipse cx="256" cy="142" rx="10" ry="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+    <path d="M 258 135 Q 253 142 258 150" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Testa / Viso -->
+    <path d="M 146 112 C 146 58, 254 58, 254 112 C 254 162, 232 204, 200 204 C 168 204, 146 162, 146 112 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2.5" />
+
+    <!-- Occhi -->
+    <g id="occhi">
+      <!-- Occhio SX -->
+      <ellipse cx="177" cy="134" rx="12" ry="8" fill="#ffffff" />
+      <circle cx="178" cy="134" r="5.5" fill="#3b2618" />
+      <circle cx="178" cy="134" r="2.5" fill="#111111" />
+      <circle cx="180" cy="132" r="2" fill="#ffffff" />
+      <!-- Occhio DX -->
+      <ellipse cx="223" cy="134" rx="12" ry="8" fill="#ffffff" />
+      <circle cx="222" cy="134" r="5.5" fill="#3b2618" />
+      <circle cx="222" cy="134" r="2.5" fill="#111111" />
+      <circle cx="224" cy="132" r="2" fill="#ffffff" />
+    </g>
+
+    <!-- Sopracciglia -->
+    <path d="M 161 118 Q 177 112 191 118" fill="none" stroke="#4a3728" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 209 118 Q 223 112 239 118" fill="none" stroke="#4a3728" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Naso -->
+    <path d="M 200 132 L 196 156 Q 200 161 206 157" fill="none" stroke="#bd8262" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Bocca -->
+    <path d="M 186 177 Q 200 182 214 176" fill="none" stroke="#a86454" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M 193 183 Q 200 186 207 183" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- LIVELLO 3: PERSONA (VESTITI, CAPELLI, ECC) -->
+  <!-- ========================================== -->
+  <g id="livello-persona" style="display: inline;" filter="url(#shadow)">
+    
+    <!-- Barba leggera / Stubble (come in foto) -->
+    <path d="M 150 148 C 152 178, 172 203, 200 203 C 228 203, 248 178, 250 148 C 246 168, 232 192, 200 192 C 168 192, 154 168, 150 148 Z" fill="#4a3728" fill-opacity="0.28" />
+    <!-- Baffi leggeri -->
+    <path d="M 181 172 Q 200 165 219 172 Q 212 176 200 173 Q 188 176 181 172 Z" fill="#4a3728" fill-opacity="0.38" />
+    <!-- Mosca / Pizzetto sotto il labbro -->
+    <ellipse cx="200" cy="186" rx="6" ry="4" fill="#4a3728" fill-opacity="0.32" />
+
+    <!-- Capelli Castani (corti ai lati, ciuffo morbido sopra) -->
+    <path d="M 146 122 C 142 95, 146 65, 178 58 C 202 52, 238 56, 250 78 C 258 92, 256 112, 254 122 C 251 102, 244 88, 226 84 C 204 80, 172 88, 158 98 C 150 104, 148 114, 146 122 Z" fill="#4e3829" stroke="#38271c" stroke-width="2" />
+    <!-- Ciuffo frontale sfumato -->
+    <path d="M 155 95 Q 185 72 228 82 Q 198 62 165 75 Z" fill="#5c4332" />
+
+    <!-- Occhiali (Montatura scura tartarugata/nera + riflesso verde) -->
+    <g id="occhiali">
+      <!-- Lente SX -->
+      <rect x="154" y="119" width="41" height="31" rx="9" fill="url(#lensGlare)" stroke="#262220" stroke-width="4.5" />
+      <!-- Lente DX -->
+      <rect x="205" y="119" width="41" height="31" rx="9" fill="url(#lensGlare)" stroke="#262220" stroke-width="4.5" />
+      <!-- Ponte centrale -->
+      <path d="M 195 129 Q 200 125 205 129" fill="none" stroke="#262220" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Stanghette laterali -->
+      <line x1="145" y1="128" x2="154" y2="127" stroke="#262220" stroke-width="4" stroke-linecap="round" />
+      <line x1="246" y1="127" x2="255" y2="128" stroke="#262220" stroke-width="4" stroke-linecap="round" />
+      <!-- Riflesso diagonale verde/bianco (tipico della tua foto) -->
+      <polygon points="160,124 170,124 163,144 156,144" fill="#4ade80" opacity="0.45" />
+      <polygon points="211,124 221,124 214,144 207,144" fill="#4ade80" opacity="0.45" />
+    </g>
+
+    <!-- Pantaloni (Jeans / Chino blu scuro) -->
+    <path d="M 147 415 L 253 415 L 249 645 L 209 645 L 200 470 L 191 645 L 151 645 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2.5" />
+
+    <!-- Scarpe (Sneakers casual scure con suola bianca) -->
+    <g id="scarpe">
+      <path d="M 132 658 C 132 642, 165 640, 192 645 L 192 668 L 132 668 Z" fill="#334155" stroke="#1e293b" stroke-width="2" />
+      <rect x="130" y="665" width="64" height="7" rx="3.5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <path d="M 268 658 C 268 642, 235 640, 208 645 L 208 668 L 268 668 Z" fill="#334155" stroke="#1e293b" stroke-width="2" />
+      <rect x="206" y="665" width="64" height="7" rx="3.5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    </g>
+
+    <!-- Camicia azzurra (Colletto che spunta) -->
+    <polygon points="175,212 200,242 185,252 167,225" fill="#93c5fd" stroke="#60a5fa" stroke-width="2" />
+    <polygon points="225,212 200,242 215,252 233,225" fill="#93c5fd" stroke="#60a5fa" stroke-width="2" />
+    <!-- Puntini texture camicia -->
+    <circle cx="182" cy="232" r="1.2" fill="#3b82f6" />
+    <circle cx="177" cy="226" r="1.2" fill="#3b82f6" />
+    <circle cx="218" cy="232" r="1.2" fill="#3b82f6" />
+    <circle cx="223" cy="226" r="1.2" fill="#3b82f6" />
+
+    <!-- Maglioncino / Felpa bianca girocollo -->
+    <path d="M 142 224 C 172 242, 228 242, 258 224 L 254 422 L 146 422 Z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+    <!-- Bordo collo maglioncino bianco -->
+    <path d="M 164 222 Q 200 248 236 222 Q 200 256 164 222 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+
+    <!-- Cinturino / Orologio Rosso al polso destro (a sinistra nell'immagine) -->
+    <rect x="99" y="394" width="31" height="12" rx="4" fill="#dc2626" stroke="#991b1b" stroke-width="2" />
+    <!-- Polsino bianco maglioncino sotto la giacca -->
+    <rect x="98" y="402" width="33" height="9" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+    <!-- Giacca / Cappotto Grigio Scuro Antracite -->
+    <g id="giacca">
+      <!-- Lato Destro Tuo (Sinistra nell'immagine) -->
+      <path d="M 166 218 L 125 228 C 105 235, 94 315, 96 402 L 131 402 C 131 335, 138 280, 142 265 L 142 432 L 182 432 L 182 285 Z" fill="#2d3130" stroke="#1c1f1e" stroke-width="2.5" stroke-linejoin="round" />
+      
+      <!-- Lato Sinistro Tuo (Destra nell'immagine) -->
+      <path d="M 234 218 L 275 228 C 295 235, 306 315, 304 402 L 269 402 C 269 335, 262 280, 258 265 L 258 432 L 218 432 L 218 285 Z" fill="#2d3130" stroke="#1c1f1e" stroke-width="2.5" stroke-linejoin="round" />
+
+      <!-- Rever (Risvolti della giacca) -->
+      <polygon points="166,218 148,258 164,264 156,282 182,345 182,255" fill="#3a3f3d" stroke="#1c1f1e" stroke-width="2" stroke-linejoin="round" />
+      <polygon points="234,218 252,258 236,264 244,282 218,345 218,255" fill="#3a3f3d" stroke="#1c1f1e" stroke-width="2" stroke-linejoin="round" />
+
+      <!-- Bottoni sulla manica (come nella foto) -->
+      <circle cx="105" cy="375" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+      <circle cx="106" cy="383" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+      <circle cx="107" cy="391" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+    </g>
+
+  </g>
+</svg>

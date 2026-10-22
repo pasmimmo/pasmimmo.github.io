@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Domenico Pascucci (pasmimmo) — Technical Architect & DevSecOps Specialist</title>
-  <meta name="description" content="Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect, Cloud Native & DevSecOps Specialist.">
+  <meta name="description" content="Portfolio e Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect & DevSecOps Specialist. Architetture Cloud Native, GitOps, Kubernetes, AppSec e Interactive X-Ray dello stack.">
 
   <!-- Google Fonts: Space Grotesk, Syne e Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -42,6 +43,9 @@
     }
   </script>
 
+  <!-- Centralized Single Source of Truth Data Module -->
+  <script src="cv-data.js"></script>
+
   <style>
     body {
       background-color: #00a885;
@@ -51,653 +55,650 @@
 
     .poster-section-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       color: #181615;
     }
 
     .evo-pill:hover {
-      transform: translateY(-3px) scale(1.03);
+      transform: translateY(-2px) scale(1.02);
     }
 
-    /* Stile per badge skill interattivi */
-    .skill-card:hover .skill-dot {
-      transform: scale(1.25);
+    /* Effetto Raggi X su avatar.svg */
+    #livello-scheletro,
+    #livello-pelle,
+    #livello-persona {
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), filter 0.35s ease;
+      cursor: pointer;
     }
 
+    #livello-scheletro:hover {
+      filter: drop-shadow(0 0 8px rgba(0, 168, 133, 0.8));
+    }
+    #livello-pelle:hover {
+      filter: drop-shadow(0 0 8px rgba(226, 81, 58, 0.8));
+    }
+    #livello-persona:hover {
+      filter: drop-shadow(0 0 8px rgba(255, 209, 82, 0.8));
+    }
+
+    /* Linea Scanner Lenta ed Elegante */
+    .xray-scan-beam {
+      animation: scanVertical 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes scanVertical {
+      0% { top: 3%; opacity: 0.25; }
+      50% { opacity: 0.85; }
+      100% { top: 94%; opacity: 0.25; }
+    }
+
+    /* Stampa A4 ATS */
     @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm 12mm;
+      }
       body {
         background: white !important;
+        color: #181615 !important;
         padding: 0 !important;
+        margin: 0 !important;
       }
       .no-print {
         display: none !important;
       }
-      .exp-details {
+      .print-only {
         display: block !important;
       }
-      .skill-tooltip {
+      .page-break-avoid {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+    }
+
+    @media screen {
+      .print-only {
         display: none !important;
-      }
-      .poster-card {
-        box-shadow: none !important;
-        border: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        max-width: 100% !important;
-        background: white !important;
-      }
-      .page-break {
-        page-break-before: always;
-        break-before: page;
       }
     }
   </style>
 </head>
-<body class="selection:bg-poster-yellow selection:text-poster-charcoal p-0 sm:p-6 md:p-10 min-h-screen flex flex-col items-center justify-start">
+<body class="selection:bg-poster-yellow selection:text-poster-charcoal p-2 sm:p-5 md:p-6 min-h-screen flex flex-col items-center justify-start">
 
-  <!-- TOP BAR SOSPESA: Switch Lingua ITA / ENG e Stampa PDF -->
-  <aside aria-label="Controlli CV" class="no-print sticky top-3 z-50 mb-6 flex items-center justify-between gap-3 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-poster-line shadow-lg max-w-4xl w-full mx-4">
-    <div class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-poster-teal animate-pulse"></span>
-      <span class="text-xs font-bold font-heading tracking-wide uppercase text-poster-charcoal" data-i18n="badge-top">Curriculum Vitae • Domenico Pascucci (pasmimmo)</span>
-    </div>
-
-    <div class="flex items-center gap-2 sm:gap-3">
-      <!-- Selettore Lingua -->
-      <div class="inline-flex rounded-xl bg-poster-cream p-1 border border-poster-line">
-        <button id="btn-lang-it" onclick="setLanguage('it')" class="px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all bg-poster-coral text-white shadow-xs">
-          🇮🇹 IT
-        </button>
-        <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
-          🇬🇧 EN
-        </button>
+  <!-- ================= INTESTAZIONE IN RILIEVO SULLO SFONDO VERDE CON CONTROLLI INTEGRATI ================= -->
+  <header class="no-print w-full max-w-7xl mx-auto px-4 sm:px-6 pt-2 pb-4 text-white select-none">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-3 border-b border-white/20 pb-3">
+      
+      <!-- SINISTRA: HELLO I'M DOMENICO PASCUCCI -->
+      <div>
+        <p id="hero-greeting" class="text-xs sm:text-sm font-bold font-heading text-white/90 tracking-tight uppercase drop-shadow-xs">
+          Hello! I'm
+        </p>
+        <div class="flex flex-wrap items-baseline gap-3 sm:gap-4 mt-0.5">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-display text-white tracking-tight leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)]">
+            Domenico Pascucci
+          </h1>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white/95 italic">
+            <span id="hero-nickname-prefix">...but you can call me</span>
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-poster-coral text-white font-mono font-extrabold text-sm sm:text-base shadow-lg rotate-[-1.5deg] hover:rotate-0 transition-transform">
+              <span>@</span><span>pasmimmo</span>
+            </span>
+          </div>
+        </div>
       </div>
 
-      <!-- Tasto Stampa PDF -->
-      <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-poster-charcoal bg-poster-yellow hover:bg-poster-yellowDark rounded-xl shadow-xs transition-all active:scale-95">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-        </svg>
-        <span class="hidden sm:inline" data-i18n="btn-print">Stampa / Salva</span> PDF
-      </button>
-    </div>
-  </aside>
-
-  <!-- FOGLIO POSTER (Stile Peter Robinson: Sfondo crema, linguette laterali, grafica artistica e griglia strutturata) -->
-  <main class="poster-card relative w-full max-w-4xl bg-poster-cream rounded-none sm:rounded-3xl shadow-2xl overflow-hidden border border-poster-line/70">
-    
-    <!-- LINGUETTE DECORATIVE GIALLE SUL BORDO -->
-    <div class="hidden sm:block absolute left-0 top-[38%] w-2.5 h-16 bg-poster-yellow rounded-r-md z-20"></div>
-    <div class="hidden sm:block absolute left-0 top-[65%] w-2.5 h-20 bg-poster-yellow rounded-r-md z-20"></div>
-    <div class="hidden sm:block absolute right-0 top-[45%] w-2.5 h-16 bg-poster-yellow rounded-l-md z-20"></div>
-
-    <div class="p-6 sm:p-12 md:p-14 space-y-10">
-
-      <!-- ================= HEADER SECTION CON EVIDENZA AL NICKNAME ================= -->
-      <header class="relative pb-8 border-b-2 border-poster-line">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <!-- DESTRA: BADGE CONTROLLI COMPATTO (IN ALTO A DESTRA, LINEA ROSSA 2) + RUOLO E SEDE -->
+      <div class="flex flex-col items-start lg:items-end gap-2">
+        
+        <!-- BADGE CONTROLLI COMPATTO (SOLO X-RAY / CV CLASSICO / IT-EN / PDF) -->
+        <aside aria-label="Controlli CV" class="inline-flex items-center flex-wrap gap-1.5 bg-white/95 backdrop-blur-md p-1.5 rounded-2xl border border-poster-line shadow-lg">
           
-          <div class="md:col-span-7 space-y-3.5">
-            
-            <!-- Saluto e Nome -->
-            <div>
-              <p class="text-base sm:text-lg font-bold font-heading text-poster-charcoal tracking-tight" data-i18n="hero-greeting">
-                Hello! I'm
-              </p>
-              <h1 class="text-4xl sm:text-5xl font-black font-display text-poster-charcoal tracking-tight leading-none mt-1">
-                Domenico Pascucci
-              </h1>
-            </div>
-
-            <!-- EVIDENZA AL NICKNAME (pasmimmo) stile sticker/badge iconico -->
-            <div class="flex items-center flex-wrap gap-2 pt-0.5">
-              <span class="text-xs sm:text-sm font-semibold text-poster-muted italic" data-i18n="hero-nickname-prefix">
-                ...but you can call me
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-poster-coral text-white font-mono font-extrabold text-sm sm:text-base shadow-sm rotate-[-1.5deg] hover:rotate-0 transition-transform">
-                <span>@</span><span>pasmimmo</span>
-              </span>
-            </div>
-
-            <!-- Ruolo e Breve Descrizione -->
-            <div class="pt-1">
-              <p class="text-base sm:text-lg font-bold font-heading text-poster-coral" data-i18n="hero-title">
-                Technical Architect & DevSecOps Specialist
-              </p>
-              <p class="text-xs sm:text-sm text-poster-muted leading-relaxed mt-1" data-i18n="hero-summary">
-                Technical Architect con comprovata esperienza nel design di architetture <strong class="text-poster-charcoal">Cloud Native scalabili</strong> (Azure, OCI) e nell'implementazione di ecosistemi <strong class="text-poster-charcoal">DevSecOps enterprise</strong> (CI/CD, GitOps, shift-left security). Forte background nella guida di team ingegneristici (fino a 13 persone), FinOps e resilienza di sistemi critici.
-              </p>
-            </div>
-
-            <!-- Badge Progetti Enterprise -->
-            <div class="flex flex-wrap items-center gap-2 pt-1">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
-                <span class="w-2 h-2 rounded-full bg-poster-coral"></span>
-                <span data-i18n="hero-badge-1">Sisal (Flutter SEA) • DevSecOps & Platform</span>
-              </div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-poster-line text-xs font-semibold text-poster-charcoal">
-                <span class="w-2 h-2 rounded-full bg-poster-teal"></span>
-                <span data-i18n="hero-badge-2">Walgreens Boots Alliance • Tech Architect</span>
-              </div>
-            </div>
+          <!-- Switcher Modalità Vista: X-Ray vs Classico -->
+          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner">
+            <button id="btn-view-xray" onclick="setViewMode('xray')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs">
+              🔬 X-Ray Stack
+            </button>
+            <button id="btn-view-classic" onclick="setViewMode('classic')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
+              📄 CV Classico
+            </button>
           </div>
 
-          <!-- Composizione Artistica Cubista con Sunburst Stella Gialla e lettere ARCH -->
-          <div class="md:col-span-5 relative flex items-center justify-center min-h-[170px] select-none">
-            
-            <!-- Stella gialla a raggiera -->
-            <svg class="absolute -top-6 left-4 w-16 h-16 text-poster-yellow animate-[spin_25s_linear_infinite] opacity-90" viewBox="0 0 100 100" fill="currentColor">
-              <polygon points="50,0 63,33 98,35 70,57 79,91 50,70 21,91 30,57 2,35 37,33"/>
-            </svg>
+          <!-- Switcher Lingua Bilingue -->
+          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner">
+            <button id="btn-lang-it" onclick="setLanguage('it')" class="px-2 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs">
+              🇮🇹 IT
+            </button>
+            <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
+              🇬🇧 EN
+            </button>
+          </div>
 
-            <!-- Lettere ad incastro corallo, teal, nero e giallo -->
-            <div class="relative w-full max-w-[240px] h-[160px] flex items-center justify-center">
-              <span class="absolute top-0 left-2 text-7xl font-display font-black text-poster-coral opacity-95 leading-none rotate-[-6deg]">
-                A
-              </span>
-              <span class="absolute top-2 left-16 text-7xl font-display font-black text-poster-teal leading-none">
-                R
-              </span>
-              <span class="absolute top-6 right-8 text-8xl font-display font-black text-poster-charcoal leading-none">
-                C
-              </span>
-              <span class="absolute bottom-0 right-2 text-7xl font-display font-black text-poster-yellowDark opacity-90 leading-none rotate-[8deg]">
-                H
-              </span>
-              <div class="absolute bottom-2 left-6 px-2.5 py-1 rounded-lg bg-white/90 border border-poster-line shadow-xs text-[10px] font-mono font-bold text-poster-charcoal tracking-wider">
-                TECH & CLOUD ARCHITECT
-              </div>
+          <!-- Tasto Stampa PDF ATS -->
+          <button onclick="window.print()" class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-poster-charcoal bg-poster-yellow hover:bg-poster-yellowDark rounded-xl shadow-xs transition-all active:scale-95 font-heading">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+            </svg>
+            <span>PDF</span>
+          </button>
+        </aside>
+
+        <!-- RUOLO E LOCALITÀ (CON A CAPO SU TECH ARCH & DEVSECOPS) -->
+        <div class="text-left lg:text-right">
+          <p id="hero-role" class="text-xs sm:text-sm font-bold font-heading text-poster-yellow tracking-wide drop-shadow-xs leading-tight">
+            Technical Architect &amp;<br class="hidden sm:inline">DevSecOps Specialist
+          </p>
+          <p id="hero-location-sub" class="text-[11px] text-white/80 font-mono mt-0.5">
+            Napoli / Remoto (Italia)
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= FOGLIO POSTER ALLARGATO (PUNTO 1, CORPO PIÙ LARGO) ================= -->
+  <main class="poster-card no-print relative w-full max-w-7xl bg-poster-cream rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-poster-line/70 p-5 sm:p-8 md:p-10 space-y-7">
+    
+    <!-- LINGUETTE DECORATIVE GIALLE SUL BORDO -->
+    <div class="hidden sm:block absolute left-0 top-[30%] w-2.5 h-16 bg-poster-yellow rounded-r-md z-20"></div>
+    <div class="hidden sm:block absolute left-0 top-[60%] w-2.5 h-20 bg-poster-yellow rounded-r-md z-20"></div>
+    <div class="hidden sm:block absolute right-0 top-[40%] w-2.5 h-16 bg-poster-yellow rounded-l-md z-20"></div>
+
+    <!-- ================= VISTA A: INTERACTIVE X-RAY ================= -->
+    <section id="xray-view-container" class="space-y-6">
+
+      <!-- SCANNER RADIOGRAFICO (L'OMINIO A TUTTA LARGHEZZA) -->
+      <div class="p-5 sm:p-7 rounded-3xl bg-white border-2 border-poster-line shadow-sm relative overflow-hidden flex flex-col items-center w-full">
+        
+        <!-- Header Scanner con Titolo e Sottotitolo Integrati (Senza Box Esterno) -->
+        <div class="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-poster-line">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-poster-teal animate-pulse"></span>
+              <h2 id="xray-section-title" class="poster-section-title text-base sm:text-xl text-poster-charcoal leading-none">
+                🔬 Domenico Pascucci, un dev ai raggi x
+              </h2>
+            </div>
+            <p id="xray-section-sub" class="text-xs text-poster-muted mt-1.5 pl-4.5">
+              Ispezione dello stack a 3 livelli: dal kernel barebone alle piattaforme cloud distribuite.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 self-start sm:self-center shrink-0">
+            <span id="xray-shortcuts-hint" class="text-[11px] font-mono font-bold text-poster-charcoal bg-poster-cream px-2.5 py-1 rounded-lg border border-poster-line flex items-center gap-1.5 shadow-2xs">
+              <span class="w-2 h-2 rounded-full bg-poster-coral animate-ping"></span>
+              <span>Clicca su un livello per filtrare</span>
+            </span>
+            <span id="xray-hud-layer-tag" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
+              ALL
+            </span>
+          </div>
+        </div>
+
+        <!-- VIEWPORT RADIOGRAFICO CON AVATAR.SVG (Allargato per occupare il corpo dello scanner) -->
+        <div class="relative my-5 w-full max-w-[380px] sm:max-w-[440px] h-[500px] sm:h-[560px] flex items-center justify-center bg-poster-cream/50 rounded-2xl border-2 border-poster-line overflow-hidden select-none shadow-inner">
+              
+              <!-- Reticolo Tecnico Radiografico Sottile -->
+              <div class="absolute inset-0 bg-[radial-gradient(#e8e1d5_1.5px,transparent_1.5px)] [background-size:16px_16px] opacity-75 pointer-events-none"></div>
+
+              <!-- Fascio Laser Scanner Animato -->
+              <div class="xray-scan-beam absolute left-2 right-2 h-0.5 bg-gradient-to-r from-transparent via-poster-coral to-transparent z-20 pointer-events-none shadow-[0_0_8px_#e2513a]"></div>
+
+              <!-- AVATAR.SVG INLINE -->
+              <svg id="xray-avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" class="w-full h-full max-h-[540px] drop-shadow-md">
+                <defs>
+                  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12" />
+                  </filter>
+                  
+                  <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f4c6a8" />
+                    <stop offset="100%" stop-color="#e2ac89" />
+                  </linearGradient>
+
+                  <linearGradient id="lensGlare" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4ade80" stop-opacity="0.45" />
+                    <stop offset="50%" stop-color="#4ade80" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+
+                <!-- ========================================== -->
+                <!-- LIVELLO 0: SCHELETRO (OSSA & FONDAMENTA)   -->
+                <!-- ========================================== -->
+                <g id="livello-scheletro" onclick="selectLayer('0')" filter="url(#shadow)">
+                  <!-- Cranio -->
+                  <path d="M 155 110 C 155 65, 245 65, 245 110 C 245 135, 232 155, 225 168 L 222 195 C 222 202, 178 202, 178 195 L 175 168 C 168 155, 155 135, 155 110 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+                  <circle cx="180" cy="135" r="14" fill="#64748b" />
+                  <circle cx="220" cy="135" r="14" fill="#64748b" />
+                  <polygon points="200,148 193,165 207,165" fill="#64748b" />
+                  <line x1="182" y1="182" x2="218" y2="182" stroke="#94a3b8" stroke-width="3" />
+                  <line x1="190" y1="176" x2="190" y2="188" stroke="#94a3b8" stroke-width="2" />
+                  <line x1="200" y1="176" x2="200" y2="188" stroke="#94a3b8" stroke-width="2" />
+                  <line x1="210" y1="176" x2="210" y2="188" stroke="#94a3b8" stroke-width="2" />
+
+                  <!-- Colonna vertebrale -->
+                  <rect x="194" y="200" width="12" height="190" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="3" />
+                  <g stroke="#94a3b8" stroke-width="2">
+                    <line x1="194" y1="220" x2="206" y2="220" />
+                    <line x1="194" y1="240" x2="206" y2="240" />
+                    <line x1="194" y1="260" x2="206" y2="260" />
+                    <line x1="194" y1="280" x2="206" y2="280" />
+                    <line x1="194" y1="300" x2="206" y2="300" />
+                    <line x1="194" y1="320" x2="206" y2="320" />
+                    <line x1="194" y1="340" x2="206" y2="340" />
+                    <line x1="194" y1="360" x2="206" y2="360" />
+                  </g>
+
+                  <!-- Clavicole -->
+                  <path d="M 125 235 Q 160 225 194 235" fill="none" stroke="#f1f5f9" stroke-width="10" stroke-linecap="round" />
+                  <path d="M 125 235 Q 160 225 194 235" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+                  <path d="M 275 235 Q 240 225 206 235" fill="none" stroke="#f1f5f9" stroke-width="10" stroke-linecap="round" />
+                  <path d="M 275 235 Q 240 225 206 235" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+
+                  <!-- Cassa Toracica -->
+                  <rect x="193" y="235" width="14" height="90" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+                  <g fill="none" stroke="#f1f5f9" stroke-width="9" stroke-linecap="round">
+                    <path d="M 193 250 C 160 250, 150 265, 165 275" />
+                    <path d="M 193 270 C 155 270, 145 288, 162 298" />
+                    <path d="M 193 290 C 155 290, 150 308, 168 318" />
+                    <path d="M 193 310 C 165 310, 160 325, 175 332" />
+                    <path d="M 207 250 C 240 250, 250 265, 235 275" />
+                    <path d="M 207 270 C 245 270, 255 288, 238 298" />
+                    <path d="M 207 290 C 245 290, 250 308, 232 318" />
+                    <path d="M 207 310 C 235 310, 240 325, 225 332" />
+                  </g>
+                  <g fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round">
+                    <path d="M 193 250 C 160 250, 150 265, 165 275" />
+                    <path d="M 193 270 C 155 270, 145 288, 162 298" />
+                    <path d="M 193 290 C 155 290, 150 308, 168 318" />
+                    <path d="M 193 310 C 165 310, 160 325, 175 332" />
+                    <path d="M 207 250 C 240 250, 250 265, 235 275" />
+                    <path d="M 207 270 C 245 270, 255 288, 238 298" />
+                    <path d="M 207 290 C 245 290, 250 308, 232 318" />
+                    <path d="M 207 310 C 235 310, 240 325, 225 332" />
+                  </g>
+
+                  <!-- Bacino -->
+                  <path d="M 155 380 C 145 380, 145 425, 175 430 L 200 415 L 225 430 C 255 425, 255 380, 245 380 C 230 375, 215 390, 200 390 C 185 390, 170 375, 155 380 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="3" />
+                  <circle cx="170" cy="405" r="9" fill="#64748b" />
+                  <circle cx="230" cy="405" r="9" fill="#64748b" />
+
+                  <!-- Ossa Braccia -->
+                  <g stroke="#94a3b8" stroke-width="3" fill="#f1f5f9">
+                    <rect x="115" y="240" width="12" height="90" rx="6" transform="rotate(6 121 240)" />
+                    <rect x="108" y="330" width="10" height="80" rx="5" transform="rotate(-4 113 330)" />
+                    <circle cx="115" cy="422" r="10" />
+                    <rect x="273" y="240" width="12" height="90" rx="6" transform="rotate(-6 279 240)" />
+                    <rect x="282" y="330" width="10" height="80" rx="5" transform="rotate(4 287 330)" />
+                    <circle cx="285" cy="422" r="10" />
+                  </g>
+
+                  <!-- Ossa Gambe -->
+                  <g stroke="#94a3b8" stroke-width="3" fill="#f1f5f9">
+                    <rect x="164" y="425" width="14" height="110" rx="7" />
+                    <circle cx="171" cy="542" r="8" />
+                    <rect x="165" y="550" width="12" height="105" rx="6" />
+                    <ellipse cx="165" cy="665" rx="22" ry="8" />
+                    <rect x="222" y="425" width="14" height="110" rx="7" />
+                    <circle cx="229" cy="542" r="8" />
+                    <rect x="223" y="550" width="12" height="105" rx="6" />
+                    <ellipse cx="235" cy="665" rx="22" ry="8" />
+                  </g>
+                </g>
+
+                <!-- ========================================== -->
+                <!-- LIVELLO 1: PELLE (CORPO & PIATTAFORMA)    -->
+                <!-- ========================================== -->
+                <g id="livello-pelle" onclick="selectLayer('1')" filter="url(#shadow)">
+                  <rect x="153" y="410" width="36" height="245" rx="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <rect x="211" y="410" width="36" height="245" rx="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <ellipse cx="163" cy="662" rx="28" ry="12" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <ellipse cx="237" cy="662" rx="28" ry="12" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+                  <!-- Braccia -->
+                  <path d="M 135 230 C 110 235, 98 320, 102 415 L 128 415 C 128 330, 138 265, 145 245 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <circle cx="115" cy="424" r="16" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <path d="M 265 230 C 290 235, 302 320, 298 415 L 272 415 C 272 330, 262 265, 255 245 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <circle cx="285" cy="424" r="16" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+                  <!-- Torso e Collo -->
+                  <rect x="182" y="185" width="36" height="50" rx="10" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <path d="M 182 200 Q 200 215 218 200 L 218 190 L 182 190 Z" fill="#d49a79" />
+                  <path d="M 135 225 C 165 215, 235 215, 265 225 L 252 425 C 252 440, 148 440, 148 425 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+
+                  <!-- Orecchie -->
+                  <ellipse cx="144" cy="142" rx="10" ry="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <path d="M 142 135 Q 147 142 142 150" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+                  <ellipse cx="256" cy="142" rx="10" ry="18" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2" />
+                  <path d="M 258 135 Q 253 142 258 150" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+
+                  <!-- Viso e Lineamenti -->
+                  <path d="M 146 112 C 146 58, 254 58, 254 112 C 254 162, 232 204, 200 204 C 168 204, 146 162, 146 112 Z" fill="url(#skinGrad)" stroke="#c58c6d" stroke-width="2.5" />
+
+                  <g id="occhi">
+                    <ellipse cx="177" cy="134" rx="12" ry="8" fill="#ffffff" />
+                    <circle cx="178" cy="134" r="5.5" fill="#3b2618" />
+                    <circle cx="178" cy="134" r="2.5" fill="#111111" />
+                    <circle cx="180" cy="132" r="2" fill="#ffffff" />
+                    <ellipse cx="223" cy="134" rx="12" ry="8" fill="#ffffff" />
+                    <circle cx="222" cy="134" r="5.5" fill="#3b2618" />
+                    <circle cx="222" cy="134" r="2.5" fill="#111111" />
+                    <circle cx="224" cy="132" r="2" fill="#ffffff" />
+                  </g>
+
+                  <path d="M 161 118 Q 177 112 191 118" fill="none" stroke="#4a3728" stroke-width="4.5" stroke-linecap="round" />
+                  <path d="M 209 118 Q 223 112 239 118" fill="none" stroke="#4a3728" stroke-width="4.5" stroke-linecap="round" />
+                  <path d="M 200 132 L 196 156 Q 200 161 206 157" fill="none" stroke="#bd8262" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M 186 177 Q 200 182 214 176" fill="none" stroke="#a86454" stroke-width="3.5" stroke-linecap="round" />
+                  <path d="M 193 183 Q 200 186 207 183" fill="none" stroke="#c58c6d" stroke-width="2" stroke-linecap="round" />
+                </g>
+
+                <!-- ========================================== -->
+                <!-- LIVELLO 2: PERSONA (VESTITI & CLOUD)       -->
+                <!-- ========================================== -->
+                <g id="livello-persona" onclick="selectLayer('2')" filter="url(#shadow)">
+                  <path d="M 150 148 C 152 178, 172 203, 200 203 C 228 203, 248 178, 250 148 C 246 168, 232 192, 200 192 C 168 192, 154 168, 150 148 Z" fill="#4a3728" fill-opacity="0.28" />
+                  <path d="M 181 172 Q 200 165 219 172 Q 212 176 200 173 Q 188 176 181 172 Z" fill="#4a3728" fill-opacity="0.38" />
+                  <ellipse cx="200" cy="186" rx="6" ry="4" fill="#4a3728" fill-opacity="0.32" />
+
+                  <!-- Capelli -->
+                  <path d="M 146 122 C 142 95, 146 65, 178 58 C 202 52, 238 56, 250 78 C 258 92, 256 112, 254 122 C 251 102, 244 88, 226 84 C 204 80, 172 88, 158 98 C 150 104, 148 114, 146 122 Z" fill="#4e3829" stroke="#38271c" stroke-width="2" />
+                  <path d="M 155 95 Q 185 72 228 82 Q 198 62 165 75 Z" fill="#5c4332" />
+
+                  <!-- Occhiali -->
+                  <g id="occhiali">
+                    <rect x="154" y="119" width="41" height="31" rx="9" fill="url(#lensGlare)" stroke="#262220" stroke-width="4.5" />
+                    <rect x="205" y="119" width="41" height="31" rx="9" fill="url(#lensGlare)" stroke="#262220" stroke-width="4.5" />
+                    <path d="M 195 129 Q 200 125 205 129" fill="none" stroke="#262220" stroke-width="4.5" stroke-linecap="round" />
+                    <line x1="145" y1="128" x2="154" y2="127" stroke="#262220" stroke-width="4" stroke-linecap="round" />
+                    <line x1="246" y1="127" x2="255" y2="128" stroke="#262220" stroke-width="4" stroke-linecap="round" />
+                    <polygon points="160,124 170,124 163,144 156,144" fill="#4ade80" opacity="0.45" />
+                    <polygon points="211,124 221,124 214,144 207,144" fill="#4ade80" opacity="0.45" />
+                  </g>
+
+                  <!-- Pantaloni -->
+                  <path d="M 147 415 L 253 415 L 249 645 L 209 645 L 200 470 L 191 645 L 151 645 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2.5" />
+
+                  <!-- Scarpe -->
+                  <g id="scarpe">
+                    <path d="M 132 658 C 132 642, 165 640, 192 645 L 192 668 L 132 668 Z" fill="#334155" stroke="#1e293b" stroke-width="2" />
+                    <rect x="130" y="665" width="64" height="7" rx="3.5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+                    <path d="M 268 658 C 268 642, 235 640, 208 645 L 208 668 L 268 668 Z" fill="#334155" stroke="#1e293b" stroke-width="2" />
+                    <rect x="206" y="665" width="64" height="7" rx="3.5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+                  </g>
+
+                  <!-- Camicia e Maglioncino -->
+                  <polygon points="175,212 200,242 185,252 167,225" fill="#93c5fd" stroke="#60a5fa" stroke-width="2" />
+                  <polygon points="225,212 200,242 215,252 233,225" fill="#93c5fd" stroke="#60a5fa" stroke-width="2" />
+                  <circle cx="182" cy="232" r="1.2" fill="#3b82f6" />
+                  <circle cx="177" cy="226" r="1.2" fill="#3b82f6" />
+                  <circle cx="218" cy="232" r="1.2" fill="#3b82f6" />
+                  <circle cx="223" cy="226" r="1.2" fill="#3b82f6" />
+
+                  <path d="M 142 224 C 172 242, 228 242, 258 224 L 254 422 L 146 422 Z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+                  <path d="M 164 222 Q 200 248 236 222 Q 200 256 164 222 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+
+                  <!-- Orologio Rosso -->
+                  <rect x="99" y="394" width="31" height="12" rx="4" fill="#dc2626" stroke="#991b1b" stroke-width="2" />
+                  <rect x="98" y="402" width="33" height="9" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+                  <!-- Giacca Antracite -->
+                  <g id="giacca">
+                    <path d="M 166 218 L 125 228 C 105 235, 94 315, 96 402 L 131 402 C 131 335, 138 280, 142 265 L 142 432 L 182 432 L 182 285 Z" fill="#2d3130" stroke="#1c1f1e" stroke-width="2.5" stroke-linejoin="round" />
+                    <path d="M 234 218 L 275 228 C 295 235, 306 315, 304 402 L 269 402 C 269 335, 262 280, 258 265 L 258 432 L 218 432 L 218 285 Z" fill="#2d3130" stroke="#1c1f1e" stroke-width="2.5" stroke-linejoin="round" />
+                    <polygon points="166,218 148,258 164,264 156,282 182,345 182,255" fill="#3a3f3d" stroke="#1c1f1e" stroke-width="2" stroke-linejoin="round" />
+                    <polygon points="234,218 252,258 236,264 244,282 218,345 218,255" fill="#3a3f3d" stroke="#1c1f1e" stroke-width="2" stroke-linejoin="round" />
+                    <circle cx="105" cy="375" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+                    <circle cx="106" cy="383" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+                    <circle cx="107" cy="391" r="2.5" fill="#111111" stroke="#4b5563" stroke-width="1" />
+                  </g>
+                </g>
+              </svg>
+
             </div>
 
+            <!-- SELETTORE LIVELLO: L0 - main // L1 - @Framework // mimmoctl -d // ALL -->
+            <div class="w-full max-w-xl space-y-3 pt-2">
+              
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-poster-muted font-bold">SELEZIONE LIVELLO:</span>
+                <span id="xray-current-code" class="font-extrabold text-poster-charcoal">ALL</span>
+              </div>
+              
+              <!-- Griglia Selettori: L0 - main // L1 - @Framework // mimmoctl -d // ALL -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono font-bold">
+                <button id="btn-layer-0" onclick="selectLayer('0')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="L0 - main: Barebone, OS & Core Frameworks">
+                  L0 - main
+                </button>
+                <button id="btn-layer-1" onclick="selectLayer('1')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="L1 - @Framework: Container, Delivery, AppSec & Quality">
+                  L1 - @Framework
+                </button>
+                <button id="btn-layer-2" onclick="selectLayer('2')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="mimmoctl -d: Cloud, Orchestrazione Distribuita & Dati">
+                  mimmoctl -d
+                </button>
+                <button id="btn-layer-all" onclick="selectLayer('ALL')" class="py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal transition-all text-center font-extrabold flex items-center justify-center shadow-2xs" title="Stack Completo">
+                  ALL
+                </button>
+              </div>
+
+              <!-- Slider Profondità: L0 - main, L1 - @Framework, mimmoctl -d, ALL -->
+              <div class="pt-1.5 space-y-1">
+                <div class="flex items-center justify-between text-[11px] font-mono text-poster-muted">
+                  <span id="xray-depth-label">Profondità Raggi X</span>
+                  <span id="xray-depth-value" class="text-poster-coral font-bold">3 / 3 (ALL)</span>
+                </div>
+                <input type="range" id="xray-depth-slider" min="0" max="3" value="3" step="1" oninput="handleSliderDepth(this.value)" class="w-full accent-poster-coral bg-poster-cream border border-poster-line rounded-lg h-2 cursor-pointer">
+                <div class="flex justify-between text-[10px] font-mono text-poster-muted px-0.5">
+                  <span>L0 - main</span>
+                  <span>L1 - @Framework</span>
+                  <span>mimmoctl -d</span>
+                  <span>ALL</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+      <!-- ================= 2 COLONNE SOTTO ALL'OMINIO (PUNTO 4) ================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start pt-2">
+        
+        <!-- COLONNA 1 (SINISTRA, 6 COLS): ARCHITECTURAL LAYER INSPECTOR + TECHNOLOGIES -->
+        <div class="lg:col-span-6 space-y-5">
+          
+          <!-- SCHEDA INFORMAZIONI LIVELLO ATTIVO -->
+          <div id="inspector-layer-header" class="p-5 rounded-2xl bg-white border border-poster-line shadow-xs space-y-3">
+            <!-- Popolato dinamicamente da cvData -->
+          </div>
+
+          <!-- CARDS TECNOLOGIE DEL LIVELLO -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 id="xray-tech-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal flex items-center gap-1.5">
+                <span class="text-poster-coral">⚡</span> Tecnologie &amp; Competenze del Livello
+              </h3>
+              <span id="xray-tech-count-badge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal border border-poster-line">
+                <!-- Conteggio -->
+              </span>
+            </div>
+
+            <div id="inspector-tech-list" class="space-y-2.5">
+              <!-- Popolato dinamicamente -->
+            </div>
           </div>
 
         </div>
-      </header>
 
-      <!-- ================= BARRA ESPERIENZE PIÙ SIGNIFICATIVE ================= -->
-      <section class="no-print bg-white/85 rounded-2xl border border-poster-line p-4 sm:p-5 space-y-3">
+        <!-- COLONNA 2 (DESTRA, 6 COLS): ESPERIENZE + TROUBLESHOOTING STAR + HOMELAB -->
+        <div class="lg:col-span-6 space-y-5">
+          
+          <!-- ESPERIENZE LAVORATIVE COLLEGATE AL LIVELLO -->
+          <div class="space-y-3">
+            <h3 id="xray-related-exp-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal flex items-center gap-1.5">
+              <span class="text-poster-coral">💼</span> Esperienze Lavorative Collegate
+            </h3>
+
+            <div id="inspector-exp-list" class="space-y-3">
+              <!-- Popolato dinamicamente -->
+            </div>
+          </div>
+
+          <!-- SCHEDE STAR STORIES (DEEP TROUBLESHOOTING) -->
+          <div id="inspector-star-section" class="space-y-3 pt-1">
+            <div>
+              <h3 id="xray-star-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal flex items-center gap-1.5">
+                <span class="text-poster-coral">🚨</span> Schede di Troubleshooting &amp; STAR Stories
+              </h3>
+              <p id="xray-star-sub" class="text-xs text-poster-muted mt-0.5">
+                Evidenze pratiche e risoluzione incidenti critici per colloqui tecnici.
+              </p>
+            </div>
+
+            <div id="inspector-star-list" class="space-y-2.5">
+              <!-- Popolato dinamicamente -->
+            </div>
+          </div>
+
+          <!-- HOMELAB & PROGETTI EDGE IoT -->
+          <div id="inspector-homelab-section" class="space-y-3 pt-1">
+            <h3 id="xray-homelab-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal flex items-center gap-1.5">
+              <span class="text-poster-coral">🏡</span> Homelab &amp; Progetti Edge Collegati
+            </h3>
+
+            <div id="inspector-homelab-list" class="space-y-2.5">
+              <!-- Popolato dinamicamente -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= VISTA B: CV CLASSICO (LAYOUT INTEGRALE) ================= -->
+    <section id="classic-view-container" class="space-y-8 hidden">
+      
+      <!-- BARRA TAPPE CHIAVE -->
+      <section class="bg-white/85 rounded-2xl border border-poster-line p-4 sm:p-5 space-y-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="text-base">⭐</span>
-            <h2 class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal" data-i18n="evo-heading">
-              Esperienze Più Significative & Tappe Chiave
+            <h2 id="classic-milestones-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal">
+              Esperienze Più Significative &amp; Tappe Chiave
             </h2>
           </div>
-          <span class="text-[11px] font-medium text-poster-muted hidden sm:inline" data-i18n="evo-sub">
+          <span id="classic-milestones-sub" class="text-[11px] font-medium text-poster-muted hidden sm:inline">
             Clicca per saltare all'esperienza
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 pt-1">
-          
-          <!-- TAPPA 1: Formazione Accademica & Ricerca Iniziale -->
-          <button type="button" onclick="scrollToId('section-education')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl">🎓</span>
-              <div>
-                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2019 • BASE</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s1">Laurea Informatica</span>
-                <span class="block text-[10px] text-poster-muted">Uni Salerno</span>
-              </div>
-            </div>
-          </button>
-
-          <!-- TAPPA 2: Reti Neurali & Bandi Europei -->
-          <button type="button" onclick="scrollToId('exp-unisa')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl">🧠</span>
-              <div>
-                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2019 — 2020</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s2">Deep Learning & ML</span>
-                <span class="block text-[10px] text-poster-muted">PICO-E-PRO</span>
-              </div>
-            </div>
-          </button>
-
-          <!-- TAPPA 3: Algoritmi & Impatto Sanitario (ACT) -->
-          <button type="button" onclick="scrollToId('exp-act')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl">💻</span>
-              <div>
-                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2020 — 2021</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s3">Algorithm Eng.</span>
-                <span class="block text-[10px] text-poster-muted">Cod19 Platform</span>
-              </div>
-            </div>
-          </button>
-
-          <!-- TAPPA 4: Cloud Enterprise & Leadership (WBA) -->
-          <button type="button" onclick="scrollToId('exp-magma')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl">☁️</span>
-              <div>
-                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2021 — 2025</span>
-                <span class="block text-xs font-bold font-heading text-poster-charcoal" data-i18n="evo-s4">Cloud Architect</span>
-                <span class="block text-[10px] text-poster-muted">WBA • Team 13</span>
-              </div>
-            </div>
-          </button>
-
-          <!-- TAPPA 5: DevSecOps & Platform (Sisal / Flutter SEA) -->
-          <button type="button" onclick="scrollToId('exp-alten')" class="evo-pill text-left p-3 rounded-xl bg-poster-coralLight border border-poster-coral/40 hover:border-poster-coral transition-all ring-1 ring-poster-coral/20 col-span-2 sm:col-span-1">
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl">🛡️</span>
-              <div>
-                <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">2025 — OGG</span>
-                <span class="block text-xs font-bold font-heading text-poster-coral" data-i18n="evo-s5">DevSecOps & Platform</span>
-                <span class="block text-[10px] text-poster-charcoal font-semibold">Alten • Sisal (Flutter)</span>
-              </div>
-            </div>
-          </button>
-
+        <div id="classic-milestones-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 pt-1">
+          <!-- Popolato dinamicamente -->
         </div>
       </section>
 
-      <!-- ================= GRIGLIA A 2 COLONNE: SKILLS IN GRANDE EVIDENZA ================= -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <!-- GRIGLIA A 2 COLONNE: SKILLS A SINISTRA, EDUCATION & EXP A DESTRA -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 
-        <!-- ================= COLONNA SINISTRA: CONTACT + QR + SKILLS DETTAGLIATE ================= -->
-        <div class="md:col-span-5 space-y-8">
+        <!-- COLONNA SINISTRA: CONTACT + QR + SKILLS -->
+        <div class="md:col-span-5 space-y-7">
 
           <!-- CONTACT -->
-          <section id="section-contact" class="space-y-3">
-            <h2 class="poster-section-title" data-i18n="title-contact">Contact</h2>
+          <section class="space-y-2.5">
+            <h2 id="classic-contact-title" class="poster-section-title">Contact</h2>
             <div class="text-xs sm:text-sm text-poster-muted space-y-2 font-medium">
               <p class="flex items-center gap-2 text-poster-charcoal font-semibold">
                 <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
-                <a href="mailto:pasmimmo@gmail.com" class="hover:text-poster-coral transition-colors">pasmimmo@gmail.com</a>
+                <a id="classic-contact-email" href="mailto:pasmimmo@gmail.com" class="hover:text-poster-coral transition-colors">pasmimmo@gmail.com</a>
               </p>
               <p class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-poster-coral shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
-                <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">linkedin.com/in/pasmimmo/</a>
+                <a id="classic-contact-linkedin" href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">linkedin.com/in/pasmimmo/</a>
               </p>
               <p class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-poster-coral shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
                 </svg>
-                <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">github.com/pasmimmo</a>
+                <a id="classic-contact-github" href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">github.com/pasmimmo</a>
               </p>
               <p class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
-                <span data-i18n="contact-loc">Napoli / Remoto (Italia)</span>
+                <span id="classic-contact-location">Napoli / Remoto (Italia)</span>
               </p>
             </div>
           </section>
 
-          <!-- QR CODE E SITO (Reale e scansionabile) -->
+          <!-- QR CODE E SITO -->
           <a href="https://pasmimmo.github.io" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 bg-white rounded-2xl border-2 border-poster-charcoal shadow-sm hover:border-poster-coral transition-all group block">
             <img src="qr-code.svg" alt="QR Code pasmimmo.github.io" class="w-20 h-20 shrink-0 object-contain rounded-lg group-hover:scale-105 transition-transform">
             <div class="space-y-1">
-              <span class="inline-block px-2 py-0.5 rounded-full bg-poster-coral text-white text-[10px] font-mono font-bold">PORTFOLIO LIVE</span>
-              <p class="text-xs font-bold text-poster-charcoal font-heading leading-tight group-hover:text-poster-coral transition-colors" data-i18n="qr-text">Scansiona o clicca per il CV online</p>
+              <span id="classic-qr-tag" class="inline-block px-2 py-0.5 rounded-full bg-poster-coral text-white text-[10px] font-mono font-bold">PORTFOLIO LIVE</span>
+              <p id="classic-qr-text" class="text-xs font-bold text-poster-charcoal font-heading leading-tight group-hover:text-poster-coral transition-colors">
+                Scansiona o clicca per il CV online
+              </p>
               <p class="text-[11px] font-mono text-poster-coral font-bold">pasmimmo.github.io</p>
             </div>
           </a>
 
-          <!-- ================= SEZIONE SKILLS CONDENSATA & CURATA ================= -->
-          <section id="section-skills" class="space-y-3">
+          <!-- SKILLS MATRIX CONDENSATA -->
+          <section class="space-y-3">
             <div class="flex items-center justify-between">
-              <h2 class="poster-section-title" data-i18n="title-skills">Skills &amp; Expertise</h2>
-              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-poster-yellow text-poster-charcoal" data-i18n="skills-tag">CORE STACK</span>
+              <h2 id="classic-skills-title" class="poster-section-title">Skills &amp; Expertise</h2>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-poster-yellow text-poster-charcoal">
+                CORE STACK
+              </span>
             </div>
 
-            <div class="p-4 rounded-2xl bg-white border border-poster-line shadow-xs space-y-3.5 text-xs">
-              
-              <!-- 1. KUBERNETES & GITOPS -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">☸️</span>
-                  <span data-i18n="skill-k8s-title">Kubernetes &amp; GitOps</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-k8s-desc">
-                  K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 2. CI/CD & AUTOMATION -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">🚀</span>
-                  <span data-i18n="skill-cicd-title">CI/CD &amp; Automation</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-cicd-desc">
-                  GitHub Actions (Reusable &amp; Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 3. APPSEC & GOVERNANCE -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">🛡️</span>
-                  <span data-i18n="skill-sec-title">AppSec &amp; Governance</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-sec-desc">
-                  Veracode (SAST &amp; SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 4. CLOUD & CONTAINERS -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">☁️</span>
-                  <span data-i18n="skill-cloud-title">Cloud &amp; Containers</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-cloud-desc">
-                  Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 5. BACKEND & LANGUAGES -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">💻</span>
-                  <span data-i18n="skill-backend-title">Backend &amp; Languages</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-backend-desc">
-                  Java (Spring Boot), C# (.NET 8), Python, Microservizi, Serverless
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 6. MESSAGING & DATA -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">🔄</span>
-                  <span data-i18n="skill-data-title">Messaging &amp; Data</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-data-desc">
-                  Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL
-                </p>
-              </div>
-
-              <hr class="border-poster-line/60">
-
-              <!-- 7. LEADERSHIP & FINOPS -->
-              <div class="space-y-1">
-                <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
-                  <span class="text-poster-coral">👥</span>
-                  <span data-i18n="skill-lead-title">Leadership &amp; FinOps</span>
-                </span>
-                <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed" data-i18n="skill-lead-desc">
-                  Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum
-                </p>
-              </div>
-
+            <div id="classic-skills-matrix" class="p-4 rounded-2xl bg-white border border-poster-line shadow-xs space-y-3 text-xs">
+              <!-- Popolato dinamicamente -->
             </div>
           </section>
 
           <!-- LINGUE -->
           <section class="space-y-2 pt-2 border-t border-poster-line">
-            <h3 class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal" data-i18n="title-languages">
+            <h3 id="classic-lang-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal">
               Lingue / Languages
             </h3>
-            <p class="text-xs text-poster-muted">
-              <strong class="text-poster-charcoal">Italiano:</strong> <span data-i18n="lang-ita">Madrelingua</span>
-            </p>
-            <p class="text-xs text-poster-muted">
-              <strong class="text-poster-charcoal">Inglese:</strong> <span data-i18n="lang-eng">C2 Lettura • C1 Scrittura • B1 Parlato</span>
-            </p>
+            <div id="classic-lang-list" class="space-y-1 text-xs text-poster-muted">
+              <!-- Popolato dinamicamente -->
+            </div>
           </section>
 
         </div>
 
-        <!-- ================= COLONNA DESTRA: EDUCATION + EXPERIENCE ================= -->
-        <div class="md:col-span-7 space-y-10">
+        <!-- COLONNA DESTRA: EDUCATION + EXPERIENCE -->
+        <div class="md:col-span-7 space-y-8">
 
-          <!-- BLOCCO 1: EDUCATION -->
-          <section id="section-education" class="space-y-4">
-            <h2 class="poster-section-title" data-i18n="title-education">Education</h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
-              <div class="flex items-start gap-2.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-poster-coral mt-1.5 shrink-0"></span>
-                <div class="space-y-0.5">
-                  <h3 class="text-sm font-bold text-poster-charcoal" data-i18n="edu-1-degree">Laurea in Informatica</h3>
-                  <p class="text-xs text-poster-muted" data-i18n="edu-1-school">Università di Salerno</p>
-                  <p class="text-[11px] font-mono text-poster-coral font-bold">2019</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-2.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-poster-coral mt-1.5 shrink-0"></span>
-                <div class="space-y-0.5">
-                  <h3 class="text-sm font-bold text-poster-charcoal" data-i18n="edu-2-degree">Bandi Europei Ricerca ML</h3>
-                  <p class="text-xs text-poster-muted" data-i18n="edu-2-school">PICO-E-PRO & PACIB</p>
-                  <p class="text-[11px] font-mono text-poster-coral font-bold">2019 — 2020</p>
-                </div>
-              </div>
-
+          <!-- EDUCATION -->
+          <section class="space-y-3">
+            <h2 id="classic-edu-title" class="poster-section-title">Education</h2>
+            <div id="classic-edu-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Popolato dinamicamente -->
             </div>
-
-            <hr class="border-poster-line pt-2">
+            <hr class="border-poster-line pt-1">
           </section>
 
-          <!-- BLOCCO 2: EXPERIENCE -->
-          <section id="section-experience" class="space-y-6">
-            <div>
-              <h2 class="poster-section-title" data-i18n="title-experience">Experience</h2>
-            </div>
-
-            <div class="space-y-6">
-
-              <!-- ================= ESPERIENZA 1: ALTEN (SISAL / FLUTTER SEA) ================= -->
-              <article id="exp-alten" class="p-5 sm:p-6 rounded-2xl bg-white border-2 border-poster-coral/40 shadow-xs space-y-4 hover:border-poster-coral transition-all">
-                
-                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-0-role">
-                        DevSecOps Engineer
-                      </h3>
-                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-0-company">
-                        Alten Italia
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
-                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
-                      <span data-i18n="exp-0-client">Sisal (Flutter SEA)</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-coralLight text-poster-coral border border-poster-coral/30 uppercase tracking-wider shrink-0 self-start" data-i18n="exp-0-date">
-                    08/2025 — PRESENTE
-                  </span>
-                </div>
-
-                <!-- NARRATIVA -->
-                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-0-desc">
-                  In Sisal ho operato come DevSecOps all'interno di un contesto enterprise ad alto traffico. Oltre al supporto tecnico quotidiano (BAU) ai team di sviluppo su problematiche di build e deployment, mi sono occupato della standardizzazione delle pipeline CI/CD e delle pratiche GitOps, gestendo deploy dichiarativi su cluster Kubernetes (OKE su Oracle Cloud). Parallelamente ho presidiato la sicurezza applicativa (Shift-Left) integrando controlli di qualità e sicurezza direttamente nel ciclo di merge, definendo i Quality Gates di SonarQube sul New Code e gestendo scansioni SAST e SCA con Veracode.
-                </p>
-
-                <!-- STRUMENTI & TECNOLOGIE -->
-                <div class="pt-1 space-y-2">
-                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
-                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-0-tools">
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">GitHub Actions (Reusable &amp; Composite)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Kubernetes (OKE)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">ArgoCD</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Oracle Cloud (OCI)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">ARC (Runner effimeri su Pod)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Veracode (SAST &amp; SCA)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SonarQube (Quality Gates &amp; KPI)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Helm &amp; Kustomize</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Trivy</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">CrowdStrike</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">OCI Vault &amp; Sealed Secrets</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Bash</span>
-                  </div>
-                </div>
-
-              </article>
-
-              <!-- ================= ESPERIENZA 2: MAGMA (WALGREENS BOOTS ALLIANCE) ================= -->
-              <article id="exp-magma" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
-                
-                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-1-role">
-                        Technical Architect
-                      </h3>
-                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-1-company">
-                        Magma S.r.l.
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
-                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
-                      <span data-i18n="exp-1-client">Walgreens Boots Alliance (WBA)</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-1-date">
-                    03/2021 — 08/2025
-                  </span>
-                </div>
-
-                <!-- NARRATIVA -->
-                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-1-desc">
-                  Per Walgreens Boots Alliance ho ricoperto il ruolo di Technical Architect, progettando e guidando l'implementazione di architetture Cloud Native su Microsoft Azure con focus su scalabilità, decoupling a microservizi e approccio serverless ed event-driven. Ho coordinato e supportato un team di 13 sviluppatori nella creazione di librerie e middleware condivisi, curando anche la migrazione e l'adozione di Java 11 e .NET 8 a zero downtime. Tra i risultati principali, l'ingegnerizzazione di un middleware di protocol conversion che ha permesso un'ottimizzazione del 30% sui costi computazionali (FinOps).
-                </p>
-
-                <!-- STRUMENTI & TECNOLOGIE -->
-                <div class="pt-1 space-y-2">
-                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
-                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-1-tools">
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Microsoft Azure (Functions, APIM, AKS)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Azure ServiceBus &amp; EventHub</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Java (Spring Boot)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">C# (.NET 8)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Docker</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Cosmos DB</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Redis</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SonarQube</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">FinOps &amp; Cost Optimization</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">CI/CD</span>
-                  </div>
-                </div>
-
-              </article>
-
-              <!-- ================= ESPERIENZA 3: ACT OPERATIONS (COD19) ================= -->
-              <article id="exp-act" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
-                
-                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-2-role">
-                        Algorithm Engineer
-                      </h3>
-                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-2-company">
-                        ACT Operations Research IT S.r.l.
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
-                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
-                      <span data-i18n="exp-2-client">Cod19 (Piattaforma Ospedaliera Emergenza Covid)</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-2-date">
-                    09/2020 — 02/2021
-                  </span>
-                </div>
-
-                <!-- NARRATIVA -->
-                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-2-desc">
-                  Durante la prima fase pandemica ho sviluppato il backend per Cod19, una piattaforma a supporto decisionale dei presidi ospedalieri finalizzata a monitorare e stimare i tempi di degenza dei pazienti Covid-19. Ho lavorato a stretto contatto con ricercatori operativi e medici, occupandomi di analisi dati e ingegnerizzazione di modelli algoritmici predittivi per anticipare i picchi di occupazione dei reparti.
-                </p>
-
-                <!-- STRUMENTI & TECNOLOGIE -->
-                <div class="pt-1 space-y-2">
-                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
-                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-2-tools">
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Python</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">REST APIs</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Algoritmi Predittivi</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Time-Series Modeling</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">MySQL</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">SQLite</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Git</span>
-                  </div>
-                </div>
-
-              </article>
-
-              <!-- ================= ESPERIENZA 4: UNISA (BANDI EUROPEI) ================= -->
-              <article id="exp-unisa" class="p-5 sm:p-6 rounded-2xl bg-white border border-poster-line shadow-xs space-y-4 hover:border-poster-coral/40 transition-all">
-                
-                <!-- HEADER: Ruolo, Azienda, Cliente & Periodo -->
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3.5">
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal" data-i18n="exp-3-role">
-                        Software &amp; ML Engineer
-                      </h3>
-                      <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line" data-i18n="exp-3-company">
-                        Università di Salerno
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
-                      <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black" data-i18n="label-client">CLIENTE</span>
-                      <span data-i18n="exp-3-client">Bandi UE PICO-E-PRO &amp; PACIB (Dip. Farmacia)</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line uppercase tracking-wider shrink-0 self-start" data-i18n="exp-3-date">
-                    07/2019 — 03/2020
-                  </span>
-                </div>
-
-                <!-- NARRATIVA -->
-                <p class="text-xs sm:text-sm text-poster-charcoal/90 leading-relaxed font-normal" data-i18n="exp-3-desc">
-                  Ho partecipato ad attività di ricerca applicata e sviluppo software all'interno di bandi europei competitivi, realizzando modelli predittivi basati su reti neurali convoluzionali (CNN) per l'analisi preventiva di anomalie biomedicali e industriali. Per il Dipartimento di Farmacia ho inoltre progettato un layer di orchestrazione distribuita basato sullo scambio asincrono di messaggi tra moduli software per il calcolo di pannelli proteici.
-                </p>
-
-                <!-- STRUMENTI & TECNOLOGIE -->
-                <div class="pt-1 space-y-2">
-                  <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
-                    <span data-i18n="label-tools">Strumenti &amp; Tecnologie</span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5 text-[11px] font-mono" data-i18n="exp-3-tools">
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Python</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Machine Learning &amp; CNN</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Message Brokers (Code Asincrone)</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Elaborazione Immagini Biomediche</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Linux</span>
-                    <span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">Git</span>
-                  </div>
-                </div>
-
-              </article>
-
+          <!-- EXPERIENCE -->
+          <section class="space-y-5">
+            <h2 id="classic-exp-title" class="poster-section-title">Experience</h2>
+            <div id="classic-exp-list" class="space-y-5">
+              <!-- Popolato dinamicamente -->
             </div>
           </section>
 
@@ -705,203 +706,737 @@
 
       </div>
 
-      <!-- FOOTER POSTER -->
-      <footer class="no-print pt-6 border-t border-poster-line text-center">
-        <p class="text-xs text-poster-muted font-medium">
-          Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect & DevSecOps Specialist • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
-        </p>
-      </footer>
+    </section>
 
-    </div>
+    <!-- FOOTER POSTER -->
+    <footer class="pt-6 border-t border-poster-line text-center">
+      <p id="footer-text" class="text-xs text-poster-muted font-medium">
+        Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect &amp; DevSecOps Specialist • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
+      </p>
+    </footer>
+
   </main>
 
-  <!-- JAVASCRIPT: Switch Lingua ITA / ENG e Navigazione -->
+  <!-- ================= VISTA STAMPABILE A4 ATS-FRIENDLY (@media print) ================= -->
+  <div id="print-view" class="print-only w-full max-w-4xl mx-auto p-4 bg-white text-black font-sans text-xs leading-relaxed">
+    <!-- Popolato dinamicamente da renderPrintView() -->
+  </div>
+
+  <!-- ================= LOGICA APPLICATIVA JAVASCRIPT ================= -->
   <script>
     let currentLang = 'it';
+    let currentView = 'xray'; // 'xray' | 'classic'
+    let currentLayer = 'ALL'; // 'ALL' | '2' | '1' | '0'
+    let expandedStories = {};
 
-    const translations = {
-      it: {
-        "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
-        "btn-print": "Stampa / Salva",
-        "hero-greeting": "Hello! I'm",
-        "hero-nickname-prefix": "...but you can call me",
-        "hero-title": "Technical Architect & DevSecOps Specialist",
-        "hero-summary": "Technical Architect con comprovata esperienza nel design di architetture <strong class=\"text-poster-charcoal\">Cloud Native scalabili</strong> (Azure, OCI) e nell'implementazione di ecosistemi <strong class=\"text-poster-charcoal\">DevSecOps enterprise</strong> (CI/CD, GitOps, shift-left security). Forte background nella guida di team ingegneristici (fino a 13 persone), FinOps e resilienza di sistemi critici.",
-        "hero-badge-1": "Sisal (Flutter SEA) • DevSecOps & Platform",
-        "hero-badge-2": "Walgreens Boots Alliance • Tech Architect",
-        "evo-heading": "Esperienze Più Significative & Tappe Chiave",
-        "evo-sub": "Clicca per saltare all'esperienza",
-        "evo-s1": "Laurea Informatica",
-        "evo-s2": "Deep Learning & ML",
-        "evo-s3": "Algorithm Eng.",
-        "evo-s4": "Cloud Architect",
-        "evo-s5": "DevSecOps & Platform",
-        "title-contact": "Contact",
-        "qr-text": "Scansiona o clicca per il CV online",
-        "contact-loc": "Napoli / Remoto (Italia)",
-        "title-skills": "Skills & Expertise",
-        "skills-tag": "CORE STACK",
-        "skill-k8s-title": "Kubernetes & GitOps",
-        "skill-k8s-desc": "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s",
-        "skill-cicd-title": "CI/CD & Automation",
-        "skill-cicd-desc": "GitHub Actions (Reusable & Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash",
-        "skill-sec-title": "AppSec & Governance",
-        "skill-sec-desc": "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets",
-        "skill-cloud-title": "Cloud & Containers",
-        "skill-cloud-desc": "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker",
-        "skill-backend-title": "Backend & Languages",
-        "skill-backend-desc": "Java (Spring Boot), C# (.NET 8), Python, Microservizi, Serverless",
-        "skill-data-title": "Messaging & Data",
-        "skill-data-desc": "Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL",
-        "skill-lead-title": "Leadership & FinOps",
-        "skill-lead-desc": "Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum",
-        "title-languages": "Lingue / Languages",
-        "lang-ita": "Madrelingua",
-        "lang-eng": "C2 Lettura • C1 Scrittura • B1 Parlato",
-        "title-education": "Education",
-        "edu-1-degree": "Laurea in Informatica",
-        "edu-1-school": "Università di Salerno",
-        "edu-2-degree": "Bandi Europei Ricerca ML",
-        "edu-2-school": "PICO-E-PRO & PACIB",
-        "title-experience": "Experience",
-        "label-client": "CLIENTE",
-        "label-tools": "Strumenti & Tecnologie",
-        
-        "exp-0-role": "DevSecOps Engineer",
-        "exp-0-company": "Alten Italia",
-        "exp-0-client": "Sisal (Flutter SEA)",
-        "exp-0-date": "08/2025 — PRESENTE",
-        "exp-0-desc": "In Sisal ho operato come DevSecOps all'interno di un contesto enterprise ad alto traffico. Oltre al supporto tecnico quotidiano (BAU) ai team di sviluppo su problematiche di build e deployment, mi sono occupato della standardizzazione delle pipeline CI/CD e delle pratiche GitOps, gestendo deploy dichiarativi su cluster Kubernetes (OKE su Oracle Cloud). Parallelamente ho presidiato la sicurezza applicativa (Shift-Left) integrando controlli di qualità e sicurezza direttamente nel ciclo di merge, definendo i Quality Gates di SonarQube sul New Code e gestendo scansioni SAST e SCA con Veracode.",
-        "exp-0-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">GitHub Actions (Reusable & Composite)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Kubernetes (OKE)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ArgoCD</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Oracle Cloud (OCI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ARC (Runner effimeri su Pod)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Veracode (SAST & SCA)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube (Quality Gates & KPI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Helm & Kustomize</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Trivy</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CrowdStrike</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">OCI Vault & Sealed Secrets</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Bash</span>",
-
-        "exp-1-role": "Technical Architect",
-        "exp-1-company": "Magma S.r.l.",
-        "exp-1-client": "Walgreens Boots Alliance (WBA)",
-        "exp-1-date": "03/2021 — 08/2025",
-        "exp-1-desc": "Per Walgreens Boots Alliance ho ricoperto il ruolo di Technical Architect, progettando e guidando l'implementazione di architetture Cloud Native su Microsoft Azure con focus su scalabilità, decoupling a microservizi e approccio serverless ed event-driven. Ho coordinato e supportato un team di 13 sviluppatori nella creazione di librerie e middleware condivisi, curando anche la migrazione e l'adozione di Java 11 e .NET 8 a zero downtime. Tra i risultati principali, l'ingegnerizzazione di un middleware di protocol conversion che ha permesso un'ottimizzazione del 30% sui costi computazionali (FinOps).",
-        "exp-1-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Microsoft Azure (Functions, APIM, AKS)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Azure ServiceBus & EventHub</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Java (Spring Boot)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">C# (.NET 8)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Docker</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Cosmos DB</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Redis</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">FinOps & Cost Optimization</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CI/CD</span>",
-
-        "exp-2-role": "Algorithm Engineer",
-        "exp-2-company": "ACT Operations Research IT S.r.l.",
-        "exp-2-client": "Cod19 (Piattaforma Ospedaliera Emergenza Covid)",
-        "exp-2-date": "09/2020 — 02/2021",
-        "exp-2-desc": "Durante la prima fase pandemica ho sviluppato il backend per Cod19, una piattaforma a supporto decisionale dei presidi ospedalieri finalizzata a monitorare e stimare i tempi di degenza dei pazienti Covid-19. Ho lavorato a stretto contatto con ricercatori operativi e medici, occupandomi di analisi dati e ingegnerizzazione di modelli algoritmici predittivi per anticipare i picchi di occupazione dei reparti.",
-        "exp-2-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">REST APIs</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Algoritmi Predittivi</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Time-Series Modeling</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">MySQL</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SQLite</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>",
-
-        "exp-3-role": "Software & ML Engineer",
-        "exp-3-company": "Università di Salerno",
-        "exp-3-client": "Bandi UE PICO-E-PRO & PACIB (Dip. Farmacia)",
-        "exp-3-date": "07/2019 — 03/2020",
-        "exp-3-desc": "Ho partecipato ad attività di ricerca applicata e sviluppo software all'interno di bandi europei competitivi, realizzando modelli predittivi basati su reti neurali convoluzionali (CNN) per l'analisi preventiva di anomalie biomedicali e industriali. Per il Dipartimento di Farmacia ho inoltre progettato un layer di orchestrazione distribuita basato sullo scambio asincrono di messaggi tra moduli software per il calcolo di pannelli proteici.",
-        "exp-3-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Machine Learning & CNN</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Message Brokers (Code Asincrone)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Elaborazione Immagini Biomediche</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Linux</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>"
-      },
-      en: {
-        "badge-top": "Curriculum Vitae • Domenico Pascucci (pasmimmo)",
-        "btn-print": "Print / Save",
-        "hero-greeting": "Hello! I'm",
-        "hero-nickname-prefix": "...but you can call me",
-        "hero-title": "Technical Architect & DevSecOps Specialist",
-        "hero-summary": "Technical Architect with proven expertise in designing scalable <strong class=\"text-poster-charcoal\">Cloud Native architectures</strong> (Azure, OCI) and leading enterprise <strong class=\"text-poster-charcoal\">DevSecOps ecosystems</strong> (CI/CD, GitOps, shift-left security). Strong background leading engineering teams (up to 13 developers), FinOps governance, and critical systems resilience.",
-        "hero-badge-1": "Sisal (Flutter SEA) • DevSecOps & Platform",
-        "hero-badge-2": "Walgreens Boots Alliance • Tech Architect",
-        "evo-heading": "Key Milestones & Significant Experiences",
-        "evo-sub": "Click to jump to experience",
-        "evo-s1": "B.Sc. CompSci",
-        "evo-s2": "Deep Learning & ML",
-        "evo-s3": "Algorithm Eng.",
-        "evo-s4": "Cloud Architect",
-        "evo-s5": "DevSecOps & Platform",
-        "title-contact": "Contact",
-        "qr-text": "Scansiona o clicca per il CV online",
-        "contact-loc": "Naples, Italy / Remote",
-        "title-skills": "Skills & Expertise",
-        "skills-tag": "CORE STACK",
-        "skill-k8s-title": "Kubernetes & GitOps",
-        "skill-k8s-desc": "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s",
-        "skill-cicd-title": "CI/CD & Automation",
-        "skill-cicd-desc": "GitHub Actions (Reusable & Composite Workflows), ARC (Ephemeral Runners on Pods), Azure DevOps, Bash",
-        "skill-sec-title": "AppSec & Governance",
-        "skill-sec-desc": "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets",
-        "skill-cloud-title": "Cloud & Containers",
-        "skill-cloud-desc": "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM), Docker",
-        "skill-backend-title": "Backend & Languages",
-        "skill-backend-desc": "Java (Spring Boot), C# (.NET 8), Python, Microservices, Serverless",
-        "skill-data-title": "Messaging & Data",
-        "skill-data-desc": "Azure ServiceBus, EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL",
-        "skill-lead-title": "Leadership & FinOps",
-        "skill-lead-desc": "Technical Architecture, Team Lead (13 devs), FinOps (-30% costs), Agile / Scrum",
-        "title-languages": "Languages",
-        "lang-ita": "Native speaker",
-        "lang-eng": "C2 Reading • C1 Writing • B1 Speaking",
-        "title-education": "Education",
-        "edu-1-degree": "B.Sc. in Computer Science",
-        "edu-1-school": "University of Salerno",
-        "edu-2-degree": "European Research Grants",
-        "edu-2-school": "PICO-E-PRO & PACIB",
-        "title-experience": "Experience",
-        "label-client": "CLIENT",
-        "label-tools": "Tools & Technologies",
-
-        "exp-0-role": "DevSecOps Engineer",
-        "exp-0-company": "Alten Italia",
-        "exp-0-client": "Sisal (Flutter SEA)",
-        "exp-0-date": "08/2025 — PRESENT",
-        "exp-0-desc": "At Sisal (Flutter SEA), I worked as a DevSecOps engineer within a high-traffic enterprise environment. Alongside day-to-day business-as-usual (BAU) technical support for development teams on build and deployment issues, I focused on standardizing CI/CD pipelines and GitOps practices, managing declarative deployments on Kubernetes clusters (OKE on Oracle Cloud). In parallel, I championed application security (Shift-Left) by integrating quality and security checks directly into the merge cycle, defining SonarQube Quality Gates for New Code and automating SAST and SCA scanning with Veracode.",
-        "exp-0-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">GitHub Actions (Reusable & Composite)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Kubernetes (OKE)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ArgoCD</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Oracle Cloud (OCI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">ARC (Ephemeral Runners on Pods)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Veracode (SAST & SCA)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube (Quality Gates & KPI)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Helm & Kustomize</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Trivy</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-charcoal font-medium border border-poster-line/70\">CrowdStrike</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">OCI Vault & Sealed Secrets</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Bash</span>",
-
-        "exp-1-role": "Technical Architect",
-        "exp-1-company": "Magma S.r.l.",
-        "exp-1-client": "Walgreens Boots Alliance (WBA)",
-        "exp-1-date": "03/2021 — 08/2025",
-        "exp-1-desc": "For Walgreens Boots Alliance, I served as Technical Architect, designing and leading the delivery of Cloud Native architectures on Microsoft Azure with an emphasis on scalability, microservices decoupling, and serverless/event-driven patterns. I led and mentored a team of 13 engineers in developing enterprise common libraries and middleware, while executing zero-downtime migrations to Java 11 and .NET 8. Key achievements include engineering a protocol conversion middleware that delivered a 30% reduction in cloud compute costs (FinOps).",
-        "exp-1-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Microsoft Azure (Functions, APIM, AKS)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Azure ServiceBus & EventHub</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Java (Spring Boot)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">C# (.NET 8)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Docker</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Cosmos DB</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Redis</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SonarQube</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">FinOps & Cost Optimization</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">CI/CD</span>",
-
-        "exp-2-role": "Algorithm Engineer",
-        "exp-2-company": "ACT Operations Research IT S.r.l.",
-        "exp-2-client": "Cod19 (Emergency Hospital Platform)",
-        "exp-2-date": "09/2020 — 02/2021",
-        "exp-2-desc": "During the initial pandemic wave, I developed the backend for Cod19, a clinical decision-support platform designed to monitor and forecast Covid-19 patient hospitalization windows. Working in close collaboration with operations researchers and medical staff, I focused on data modeling and computational engineering of predictive time-series algorithms to anticipate hospital ward bed saturation.",
-        "exp-2-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">REST APIs</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Algoritmi Predittivi</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Time-Series Modeling</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">MySQL</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">SQLite</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>",
-
-        "exp-3-role": "Software & ML Engineer",
-        "exp-3-company": "University of Salerno",
-        "exp-3-client": "EU Grants PICO-E-PRO & PACIB (Pharmacy Dept.)",
-        "exp-3-date": "07/2019 — 03/2020",
-        "exp-3-desc": "I contributed to applied research and software development within competitive European Union grant projects, engineering predictive models based on convolutional neural networks (CNNs) for anomaly detection in biomedical and industrial imaging. For the Department of Pharmacy, I additionally designed a distributed orchestration layer powered by asynchronous message queues across software compute nodes for protein panel calculations.",
-        "exp-3-tools": "<span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Python</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Machine Learning & CNN</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Message Brokers (Async Queues)</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Biomedical Image Processing</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Linux</span> <span class=\"px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70\">Git</span>"
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('pasmimmo_lang')) {
+        currentLang = localStorage.getItem('pasmimmo_lang');
       }
-    };
+      renderApp();
+      selectLayer('ALL'); // Livello default selezionato: ALL (Punto 3)
+      setupKeyboardShortcuts();
+    });
 
     function setLanguage(lang) {
+      if (lang !== 'it' && lang !== 'en') return;
       currentLang = lang;
-      const dict = translations[lang];
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-          el.innerHTML = dict[key];
-        }
-      });
+      localStorage.setItem('pasmimmo_lang', lang);
+      document.documentElement.lang = lang;
+      renderApp();
+    }
 
-      const btnIt = document.getElementById('btn-lang-it');
-      const btnEn = document.getElementById('btn-lang-en');
-      if (lang === 'it') {
-        btnIt.className = "px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all bg-poster-coral text-white shadow-xs";
-        btnEn.className = "px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+    function setViewMode(mode) {
+      currentView = mode;
+      const xrayContainer = document.getElementById('xray-view-container');
+      const classicContainer = document.getElementById('classic-view-container');
+      const btnXray = document.getElementById('btn-view-xray');
+      const btnClassic = document.getElementById('btn-view-classic');
+
+      if (mode === 'xray') {
+        xrayContainer.classList.remove('hidden');
+        classicContainer.classList.add('hidden');
+        btnXray.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnClassic.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       } else {
-        btnEn.className = "px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all bg-poster-coral text-white shadow-xs";
-        btnIt.className = "px-2.5 py-1 text-xs font-extrabold rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+        classicContainer.classList.remove('hidden');
+        xrayContainer.classList.add('hidden');
+        btnClassic.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnXray.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       }
     }
 
-    function scrollToId(id) {
-      const target = document.getElementById(id);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        target.classList.add('bg-poster-yellow/20');
-        setTimeout(() => {
-          target.classList.remove('bg-poster-yellow/20');
-        }, 1500);
+    // Selettore Livelli: L0 - main, L1 - @Framework, mimmoctl -d, ALL (Punto 1)
+    function selectLayer(layerCode) {
+      // Normalizzazione layer code
+      if (layerCode === 'L0') layerCode = '0';
+      if (layerCode === 'L1') layerCode = '1';
+      if (layerCode === 'L2') layerCode = '2';
+
+      currentLayer = layerCode;
+      
+      const slider = document.getElementById('xray-depth-slider');
+      const depthVal = document.getElementById('xray-depth-value');
+      if (layerCode === '0') { slider.value = 0; depthVal.innerText = "0 / 3 (L0 - main)"; }
+      else if (layerCode === '1') { slider.value = 1; depthVal.innerText = "1 / 3 (L1 - @Framework)"; }
+      else if (layerCode === '2') { slider.value = 2; depthVal.innerText = "2 / 3 (mimmoctl -d)"; }
+      else { slider.value = 3; depthVal.innerText = "3 / 3 (ALL)"; }
+
+      // Aggiorna stato visivo bottoni [0], [1], [2], [all]
+      ['0', '1', '2', 'all'].forEach(k => {
+        const btn = document.getElementById(`btn-layer-${k}`);
+        if (!btn) return;
+        const matches = (k === 'all' && layerCode === 'ALL') || (k === layerCode);
+        if (matches) {
+          if (k === '0') {
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-teal text-white border border-poster-tealDark font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+          } else if (k === '1') {
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-coral text-white border border-poster-coralHover font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+          } else if (k === '2') {
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-yellowDark text-poster-charcoal border border-poster-yellow font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+          } else {
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+          }
+        } else {
+          btn.className = "py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs";
+        }
+      });
+
+      updateAvatarXRay(layerCode);
+
+      const hudTag = document.getElementById('xray-hud-layer-tag');
+      const curCode = document.getElementById('xray-current-code');
+
+      if (layerCode === 'ALL') {
+        hudTag.innerText = "ALL";
+        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line";
+        curCode.innerText = "ALL";
+      } else if (layerCode === '0') {
+        hudTag.innerText = "L0 - main";
+        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-teal/15 text-poster-teal border border-poster-teal/30";
+        curCode.innerText = "L0 - main";
+      } else if (layerCode === '1') {
+        hudTag.innerText = "L1 - @Framework";
+        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-coral/15 text-poster-coral border border-poster-coral/30";
+        curCode.innerText = "L1 - @Framework";
+      } else {
+        hudTag.innerText = "mimmoctl -d";
+        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-yellow/20 text-poster-charcoal border border-poster-yellowDark/30";
+        curCode.innerText = "mimmoctl -d";
       }
+
+      renderInspector();
+    }
+
+    function handleSliderDepth(val) {
+      const v = parseInt(val, 10);
+      if (v === 0) selectLayer('0');
+      else if (v === 1) selectLayer('1');
+      else if (v === 2) selectLayer('2');
+      else selectLayer('ALL');
+    }
+
+    // GESTIONE RAGGI X ED ELIMINAZIONE ARTEFATTI SU PELLE (PUNTO 6)
+    function updateAvatarXRay(activeCode) {
+      const gScheletro = document.getElementById('livello-scheletro');
+      const gPelle = document.getElementById('livello-pelle');
+      const gPersona = document.getElementById('livello-persona');
+      if (!gScheletro || !gPelle || !gPersona) return;
+
+      if (activeCode === '0') {
+        // Focus Ossa / Scheletro / Livello 0
+        gPersona.style.opacity = '0.08';
+        gPersona.style.filter = 'grayscale(100%)';
+        gPelle.style.opacity = '0.12';
+        gPelle.style.filter = 'grayscale(100%)';
+        gScheletro.style.opacity = '1';
+        gScheletro.style.filter = 'drop-shadow(0 0 10px rgba(0, 168, 133, 0.9))';
+      } else if (activeCode === '1') {
+        // Focus Pelle / Corpo / Livello 1
+        gPersona.style.opacity = '0.12';
+        gPersona.style.filter = 'grayscale(100%)';
+        gPelle.style.opacity = '1';
+        gPelle.style.filter = 'drop-shadow(0 0 8px rgba(226, 81, 58, 0.8))';
+        gScheletro.style.opacity = '0';
+        gScheletro.style.filter = 'none';
+      } else if (activeCode === '2') {
+        // Focus Persona / Vestiti / Livello 2
+        gPersona.style.opacity = '1';
+        gPersona.style.filter = 'drop-shadow(0 0 8px rgba(255, 209, 82, 0.8))';
+        gPelle.style.opacity = '1';
+        gPelle.style.filter = 'none';
+        gScheletro.style.opacity = '0';
+        gScheletro.style.filter = 'none';
+      } else {
+        // ALL - Selezione Completa: Pelle e Persona al 100% nitide (Punto 6 risolto!)
+        gPersona.style.opacity = '1';
+        gPersona.style.filter = 'none';
+        gPelle.style.opacity = '1';
+        gPelle.style.filter = 'none';
+        gScheletro.style.opacity = '0';
+        gScheletro.style.filter = 'none';
+      }
+    }
+
+    function setupKeyboardShortcuts() {
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const key = e.key.toUpperCase();
+        if (key === '0') { e.preventDefault(); selectLayer('0'); }
+        else if (key === '1') { e.preventDefault(); selectLayer('1'); }
+        else if (key === '2') { e.preventDefault(); selectLayer('2'); }
+        else if (key === 'A') { e.preventDefault(); selectLayer('ALL'); }
+      });
+    }
+
+    function toggleStory(id) {
+      expandedStories[id] = !expandedStories[id];
+      renderInspector();
+    }
+
+    // ================= RENDERING APPLICATIVO =================
+    function renderApp() {
+      const data = cvData[currentLang];
+      if (!data) return;
+
+      document.title = data.ui.docTitle;
+
+      // Header in rilievo sullo sfondo verde (senza riferimenti al lavoro)
+      const heroGreeting = document.getElementById('hero-greeting');
+      if (heroGreeting) heroGreeting.innerText = data.ui.heroGreeting;
+      const heroNickPrefix = document.getElementById('hero-nickname-prefix');
+      if (heroNickPrefix) heroNickPrefix.innerText = data.ui.heroNicknamePrefix;
+      const heroRole = document.getElementById('hero-role');
+      if (heroRole) heroRole.innerHTML = 'Technical Architect &amp;<br class="hidden sm:inline">DevSecOps Specialist';
+      const heroLocSub = document.getElementById('hero-location-sub');
+      if (heroLocSub) heroLocSub.innerText = data.contact.location;
+
+      const badgeTop = document.getElementById('badge-top-label');
+      if (badgeTop) badgeTop.innerText = `${data.contact.name} (@${data.contact.nickname})`;
+      document.getElementById('btn-view-xray').innerText = `🔬 ${data.ui.viewInteractive.replace(' (3 Livelli)', '').replace(' (3 Layers)', '')}`;
+      document.getElementById('btn-view-classic').innerText = `📄 ${data.ui.viewClassic.replace('Vista ', '')}`;
+
+      const btnIt = document.getElementById('btn-lang-it');
+      const btnEn = document.getElementById('btn-lang-en');
+      if (currentLang === 'it') {
+        btnIt.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnEn.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+      } else {
+        btnEn.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnIt.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+      }
+
+      document.getElementById('footer-text').innerHTML = `${data.contact.name} (<span class="font-bold text-poster-coral">${data.contact.nickname}</span>) • ${data.contact.role} • <a href="${data.contact.website}" class="text-poster-coral font-bold hover:underline">${data.contact.websiteDisplay}</a>`;
+
+      document.getElementById('xray-section-title').innerHTML = `🔬 ${data.ui.xraySectionTitle.replace('🔬 ', '')}`;
+      document.getElementById('xray-section-sub').innerText = data.ui.xraySectionSub;
+      document.getElementById('xray-shortcuts-hint').innerHTML = `<span class="w-2 h-2 rounded-full bg-poster-coral animate-ping"></span><span>${data.ui.xrayShortcutsHint}</span>`;
+      document.getElementById('xray-depth-label').innerText = data.ui.xrayDepth;
+      document.getElementById('xray-tech-title').innerHTML = `<span class="text-poster-coral">⚡</span> ${data.ui.xrayTechTitle}`;
+      document.getElementById('xray-related-exp-title').innerHTML = `<span class="text-poster-coral">💼</span> ${data.ui.xrayRelatedExpTitle}`;
+      document.getElementById('xray-star-title').innerHTML = `<span class="text-poster-coral">🚨</span> ${data.ui.xrayStarTitle}`;
+      document.getElementById('xray-star-sub').innerText = data.ui.xrayStarSub;
+      document.getElementById('xray-homelab-title').innerHTML = `<span class="text-poster-coral">🏡</span> ${data.ui.xrayHomelabTitle}`;
+
+      renderInspector();
+      renderClassicView();
+      renderPrintView();
+    }
+
+    function renderInspector() {
+      const data = cvData[currentLang];
+      const headerContainer = document.getElementById('inspector-layer-header');
+      const techListContainer = document.getElementById('inspector-tech-list');
+      const expListContainer = document.getElementById('inspector-exp-list');
+      const starListContainer = document.getElementById('inspector-star-list');
+      const homelabListContainer = document.getElementById('inspector-homelab-list');
+      const countBadge = document.getElementById('xray-tech-count-badge');
+
+      const activeLayerKey = currentLayer === '0' ? 'L0' : (currentLayer === '1' ? 'L1' : (currentLayer === '2' ? 'L2' : 'ALL'));
+
+      if (currentLayer === 'ALL') {
+        headerContainer.innerHTML = `
+          <div class="flex items-center justify-between border-b border-poster-line/70 pb-2.5">
+            <div>
+              <span class="text-[9px] font-mono font-black uppercase tracking-wider px-2 py-0.5 rounded bg-poster-yellow text-poster-charcoal">
+                STACK INTEGRALE • 3 LIVELLI
+              </span>
+              <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal mt-1">
+                Visione Architetturale Completa
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
+              ALL
+            </span>
+          </div>
+          <p class="text-xs text-poster-muted leading-relaxed font-normal">
+            Ispezione integrale dell'avatar architetturale: dalle fondamenta e kernel barebone (L0 - main), alla corporatura e sicurezza applicativa (L1 - @Framework), fino ai sistemi distribuiti cloud (mimmoctl -d).
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-[11px] font-mono">
+            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
+              <strong class="text-poster-teal block">L0 - main</strong>
+              .NET 8 (-30%), SPI DMA, -20mA
+            </div>
+            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
+              <strong class="text-poster-coral block">L1 - @Framework</strong>
+              4.500+ repo, -27% CI, -60% LoC
+            </div>
+            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
+              <strong class="text-poster-yellowDark block">mimmoctl -d</strong>
+              ~3.000 TPS, 3 Middleware, KEDA
+            </div>
+          </div>
+        `;
+      } else {
+        const l = data.layers[activeLayerKey];
+        const badgeBg = activeLayerKey === 'L0' ? 'bg-poster-teal text-white' : (activeLayerKey === 'L1' ? 'bg-poster-coral text-white' : 'bg-poster-yellowDark text-poster-charcoal');
+        headerContainer.innerHTML = `
+          <div class="flex items-center justify-between border-b border-poster-line/70 pb-2.5">
+            <div>
+              <span class="text-[9px] font-mono font-black uppercase tracking-wider px-2 py-0.5 rounded ${badgeBg}">
+                ${l.name}
+              </span>
+              <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal mt-1">
+                ${l.name} — ${l.subtitle}
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
+              ${l.name}
+            </span>
+          </div>
+          <p class="text-xs text-poster-muted leading-relaxed font-normal">
+            ${l.concept}
+          </p>
+          <div class="space-y-1.5 pt-1">
+            <span class="text-[9px] font-mono font-black uppercase tracking-wider text-poster-charcoal block">
+              ${currentLang === 'it' ? 'METRICHE CHIAVE DEL LIVELLO:' : 'KEY LAYER METRICS:'}
+            </span>
+            <div class="flex flex-wrap gap-1.5">
+              ${l.metrics.map(m => `
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-lg bg-poster-cream border border-poster-line text-poster-charcoal">
+                  ✅ ${m}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      let techItems = [];
+      if (currentLayer === 'ALL') {
+        techItems = [
+          ...data.layers.L2.technologies,
+          ...data.layers.L1.technologies,
+          ...data.layers.L0.technologies
+        ];
+      } else {
+        techItems = data.layers[activeLayerKey].technologies;
+      }
+      countBadge.innerText = `${techItems.length} ${currentLang === 'it' ? 'Tecnologie' : 'Technologies'}`;
+
+      techListContainer.innerHTML = techItems.map(t => `
+        <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-1.5 hover:border-poster-coral/40 transition-all">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full ${t.layers.includes('L0') ? 'bg-poster-teal' : (t.layers.includes('L1') ? 'bg-poster-coral' : 'bg-poster-yellowDark')}"></span>
+              <h4 class="text-xs sm:text-sm font-bold font-heading text-poster-charcoal">
+                ${t.name}
+              </h4>
+            </div>
+            <div class="flex items-center gap-1">
+              ${t.layers.map(l => `<span class="text-[9px] font-mono font-extrabold px-1.5 py-0.2 rounded bg-poster-cream text-poster-charcoal border border-poster-line">${l}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-0.5">
+            <div class="sm:col-span-5 text-poster-muted">
+              <span class="block text-[9px] font-mono font-bold uppercase text-poster-charcoal/70">${data.ui.xrayColScope}</span>
+              ${t.scope}
+            </div>
+            <div class="sm:col-span-3 text-poster-muted">
+              <span class="block text-[9px] font-mono font-bold uppercase text-poster-charcoal/70">${data.ui.xrayColContext}</span>
+              <span class="font-medium text-poster-charcoal">${t.context}</span>
+            </div>
+            <div class="sm:col-span-4 p-2 rounded-lg bg-poster-cream/60 border border-poster-line/70 text-poster-charcoal">
+              <span class="block text-[9px] font-mono font-bold uppercase text-poster-coral">${data.ui.xrayColValue}</span>
+              <span class="text-[10.5px] font-medium leading-snug block mt-0.5">${t.value}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      const relatedExps = data.experiences.filter(exp => currentLayer === 'ALL' || exp.layers.includes(activeLayerKey));
+      expListContainer.innerHTML = relatedExps.map(exp => `
+        <article class="p-4 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2 hover:border-poster-coral/40 transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1 border-b border-poster-line/60 pb-2">
+            <div>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <h4 class="text-xs sm:text-sm font-black font-heading text-poster-charcoal">${exp.role}</h4>
+                <span class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-poster-cream border border-poster-line">${exp.company}</span>
+              </div>
+              <p class="text-[11px] font-bold text-poster-coral mt-0.5">
+                ${data.ui.labelClient}: ${exp.client}
+              </p>
+            </div>
+            <div class="flex items-center gap-1 shrink-0">
+              ${exp.layers.map(l => `<span class="text-[8px] font-mono font-extrabold px-1.5 py-0.2 rounded bg-poster-charcoal text-white">${l}</span>`).join('')}
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-poster-cream text-poster-muted border border-poster-line">${exp.period}</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-poster-charcoal leading-relaxed">
+            ${exp.narrative}
+          </p>
+
+          ${exp.quantifiableResults && exp.quantifiableResults.length > 0 ? `
+            <div class="space-y-1 p-2.5 rounded-lg bg-poster-cream/60 border border-poster-line/70">
+              <span class="text-[9px] font-mono font-black uppercase text-poster-coral block">${data.ui.labelMetrics}:</span>
+              <ul class="space-y-0.5 text-[11px] text-poster-charcoal">
+                ${exp.quantifiableResults.map(r => `<li class="flex items-start gap-1"><span class="text-poster-coral font-bold shrink-0">▸</span><span>${r}</span></li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          <div class="flex flex-wrap gap-1 text-[9px] font-mono pt-0.5">
+            ${exp.tools.slice(0, 6).map(t => `<span class="px-1.5 py-0.2 rounded bg-poster-cream text-poster-charcoal border border-poster-line/70">${t}</span>`).join('')}
+            ${exp.tools.length > 6 ? `<span class="px-1.5 py-0.2 rounded bg-white text-poster-muted border border-poster-line">+${exp.tools.length - 6}</span>` : ''}
+          </div>
+        </article>
+      `).join('');
+
+      const filteredStories = data.starStories.filter(s => currentLayer === 'ALL' || s.layers.includes(activeLayerKey));
+      if (filteredStories.length === 0) {
+        starListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">Nessuna scheda STAR specifica per questo livello (consulta Livello 0 o Livello 2).</p>`;
+      } else {
+        starListContainer.innerHTML = filteredStories.map(s => {
+          const isExp = expandedStories[s.id];
+          return `
+            <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2.5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-poster-line/60 pb-1.5">
+                <div>
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="text-[9px] font-mono font-black px-1.5 py-0.2 rounded bg-poster-coral text-white">${s.code}</span>
+                    <h4 class="text-xs sm:text-sm font-bold font-heading text-poster-charcoal">${s.title}</h4>
+                  </div>
+                  <span class="text-[10px] font-mono text-poster-muted">${s.badge}</span>
+                </div>
+                <button type="button" onclick="toggleStory('${s.id}')" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line hover:border-poster-coral transition-colors shrink-0">
+                  ${isExp ? data.ui.btnDetailsToggleHide : data.ui.btnDetailsToggleShow}
+                </button>
+              </div>
+
+              <div class="text-xs text-poster-charcoal">
+                <strong class="text-poster-charcoal">${data.ui.xrayResult}:</strong> ${s.result}
+              </div>
+
+              ${isExp ? `
+                <div class="space-y-1.5 pt-1.5 border-t border-poster-line/60 text-xs">
+                  <div class="p-2 rounded-lg bg-poster-cream/50 border border-poster-line">
+                    <strong class="font-mono text-[9px] uppercase text-poster-charcoal block">${data.ui.xraySituation}:</strong>
+                    <p class="text-poster-charcoal/90 mt-0.5">${s.situation}</p>
+                  </div>
+                  <div class="p-2 rounded-lg bg-poster-cream/50 border border-poster-line">
+                    <strong class="font-mono text-[9px] uppercase text-poster-charcoal block">${data.ui.xrayTask}:</strong>
+                    <p class="text-poster-charcoal/90 mt-0.5">${s.task}</p>
+                  </div>
+                  <div class="p-2 rounded-lg bg-poster-cream/50 border border-poster-line">
+                    <strong class="font-mono text-[9px] uppercase text-poster-coral block">${data.ui.xrayAction}:</strong>
+                    <p class="text-poster-charcoal/90 mt-0.5">${s.action}</p>
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+      }
+
+      const filteredHomelab = data.homelab.filter(h => currentLayer === 'ALL' || h.layers.includes(activeLayerKey));
+      if (filteredHomelab.length === 0) {
+        homelabListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">Nessun progetto edge o homelab specifico per questo livello.</p>`;
+      } else {
+        homelabListContainer.innerHTML = filteredHomelab.map(h => `
+          <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold font-heading text-poster-charcoal">${h.title}</h4>
+                <span class="text-[9px] font-mono text-poster-muted">${h.category}</span>
+              </div>
+              ${h.repo ? `
+                <a href="${h.repo}" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono font-bold text-poster-coral hover:underline inline-flex items-center gap-1">
+                  <span>${h.repoDisplay}</span> ↗
+                </a>
+              ` : ''}
+            </div>
+            <p class="text-xs text-poster-charcoal/90">
+              ${h.description}
+            </p>
+            <ul class="space-y-0.5 text-xs text-poster-charcoal pt-0.5">
+              ${h.highlights.map(hl => `<li class="flex items-start gap-1"><span class="text-poster-coral font-bold shrink-0">▸</span><span>${hl}</span></li>`).join('')}
+            </ul>
+          </div>
+        `).join('');
+      }
+    }
+
+    // ================= VISTA CLASSICA =================
+    function renderClassicView() {
+      const data = cvData[currentLang];
+      
+      const milestonesContainer = document.getElementById('classic-milestones-grid');
+      document.getElementById('classic-milestones-title').innerText = data.ui.milestonesHeading;
+      document.getElementById('classic-milestones-sub').innerText = data.ui.milestonesSub;
+
+      milestonesContainer.innerHTML = data.milestones.map(m => `
+        <button type="button" onclick="scrollToClassicId('${m.targetId}')" class="evo-pill text-left p-3 rounded-xl bg-poster-cream border border-poster-line hover:border-poster-coral transition-all">
+          <div class="flex items-center gap-2">
+            <div>
+              <span class="block text-[9px] sm:text-[10px] font-mono font-bold text-poster-coral">${m.badge}</span>
+              <span class="block text-xs font-bold font-heading text-poster-charcoal leading-tight">${m.title}</span>
+              <span class="block text-[10px] text-poster-muted">${m.subtitle}</span>
+            </div>
+          </div>
+        </button>
+      `).join('');
+
+      document.getElementById('classic-contact-title').innerText = data.ui.titleContact;
+      document.getElementById('classic-contact-email').innerText = data.contact.email;
+      document.getElementById('classic-contact-email').href = `mailto:${data.contact.email}`;
+      document.getElementById('classic-contact-linkedin').innerText = data.contact.linkedinDisplay;
+      document.getElementById('classic-contact-linkedin').href = data.contact.linkedin;
+      document.getElementById('classic-contact-github').innerText = data.contact.githubDisplay;
+      document.getElementById('classic-contact-github').href = data.contact.github;
+      document.getElementById('classic-contact-location').innerText = data.contact.location;
+      document.getElementById('classic-qr-tag').innerText = data.ui.qrTag;
+      document.getElementById('classic-qr-text').innerText = data.ui.qrText;
+
+      document.getElementById('classic-skills-title').innerText = data.ui.titleSkills;
+      const skillsContainer = document.getElementById('classic-skills-matrix');
+      
+      const skillCategories = [
+        { title: "Kubernetes & GitOps", icon: "☸️", items: "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s" },
+        { title: "CI/CD & Automation", icon: "🚀", items: "GitHub Actions (Reusable & Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash" },
+        { title: "AppSec & Governance", icon: "🛡️", items: "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets, Compliance SBAI" },
+        { title: "Cloud & Containers", icon: "☁️", items: "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM, AKS), Docker, Proxmox VE" },
+        { title: "Backend & Languages", icon: "💻", items: "Java (Spring Boot), C# (.NET 8 Isolated), Python, Go, Microservizi, Serverless" },
+        { title: "Messaging & Data", icon: "🔄", items: "Azure ServiceBus (~3.000 TPS), EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL" },
+        { title: "Leadership & FinOps", icon: "👥", items: "Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum" }
+      ];
+
+      skillsContainer.innerHTML = skillCategories.map((c, idx) => `
+        <div class="space-y-1">
+          <span class="font-bold text-poster-charcoal flex items-center gap-1.5 font-heading">
+            <span class="text-poster-coral">${c.icon}</span>
+            <span>${c.title}</span>
+          </span>
+          <p class="text-[11px] font-mono text-poster-muted pl-5 leading-relaxed">
+            ${c.items}
+          </p>
+        </div>
+        ${idx < skillCategories.length - 1 ? '<hr class="border-poster-line/60">' : ''}
+      `).join('');
+
+      document.getElementById('classic-lang-title').innerText = data.ui.titleLanguages;
+      const langContainer = document.getElementById('classic-lang-list');
+      langContainer.innerHTML = data.languages.map(l => `
+        <p class="text-xs text-poster-muted">
+          <strong class="text-poster-charcoal">${l.language}:</strong> ${l.detail}
+        </p>
+      `).join('');
+
+      document.getElementById('classic-edu-title').innerText = data.ui.titleEducation;
+      const eduContainer = document.getElementById('classic-edu-grid');
+      eduContainer.innerHTML = data.education.map(e => `
+        <div class="flex items-start gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-poster-coral mt-1.5 shrink-0"></span>
+          <div class="space-y-0.5">
+            <h3 class="text-sm font-bold text-poster-charcoal">${e.degree}</h3>
+            <p class="text-xs text-poster-muted">${e.institution}</p>
+            <p class="text-[11px] font-mono text-poster-coral font-bold">${e.period}</p>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('classic-exp-title').innerText = data.ui.titleExperience;
+      const expContainer = document.getElementById('classic-exp-list');
+      expContainer.innerHTML = data.experiences.map((exp, idx) => `
+        <article id="${exp.id}" class="p-5 sm:p-6 rounded-2xl bg-white ${idx === 0 ? 'border-2 border-poster-coral/40' : 'border border-poster-line'} shadow-xs space-y-4 hover:border-poster-coral transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-poster-line/70 pb-3">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal">${exp.role}</h3>
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line">${exp.company}</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-xs font-bold text-poster-coral mt-1">
+                <span class="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.5 rounded bg-poster-coralLight text-poster-coral border border-poster-coral/20 font-black">${data.ui.labelClient}</span>
+                <span>${exp.client}</span>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg ${idx === 0 ? 'bg-poster-coralLight text-poster-coral border border-poster-coral/30' : 'bg-poster-cream text-poster-charcoal border border-poster-line'} uppercase tracking-wider shrink-0 self-start">
+              ${exp.period}
+            </span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-poster-charcoal leading-relaxed font-normal">
+            ${exp.narrative}
+          </p>
+
+          ${exp.responsibilities && exp.responsibilities.length > 0 ? `
+            <div class="space-y-2 pt-1">
+              <span class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+                <span>${data.ui.labelResponsibilities}</span>
+              </span>
+              <div class="grid grid-cols-1 gap-2 text-xs text-poster-charcoal">
+                ${exp.responsibilities.map(r => `
+                  <div class="p-2.5 rounded-xl bg-poster-cream/50 border border-poster-line/70">
+                    <strong class="font-bold text-poster-charcoal">${r.title}:</strong> ${r.description}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          ${exp.quantifiableResults && exp.quantifiableResults.length > 0 ? `
+            <div class="p-3 rounded-xl bg-poster-coralLight/40 border border-poster-coral/20 space-y-1">
+              <span class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-coral block">${data.ui.labelMetrics}</span>
+              <ul class="space-y-1 text-xs text-poster-charcoal">
+                ${exp.quantifiableResults.map(q => `<li class="flex items-start gap-1.5"><span class="text-poster-coral font-bold shrink-0">▸</span><span>${q}</span></li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          <div class="pt-1 space-y-2">
+            <div class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-muted flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-poster-coral"></span>
+              <span>${data.ui.labelTools}</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+              ${exp.tools.map(t => `<span class="px-2 py-0.5 rounded-md bg-poster-cream/80 text-poster-charcoal font-medium border border-poster-line/70">${t}</span>`).join('')}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function scrollToClassicId(id) {
+      if (currentView !== 'classic') {
+        setViewMode('classic');
+      }
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('bg-poster-yellow/20');
+          setTimeout(() => {
+            target.classList.remove('bg-poster-yellow/20');
+          }, 1500);
+        }
+      }, 100);
+    }
+
+    // ================= VISTA STAMPA A4 ATS-FRIENDLY =================
+    function renderPrintView() {
+      const data = cvData[currentLang];
+      const printContainer = document.getElementById('print-view');
+
+      printContainer.innerHTML = `
+        <div class="space-y-4">
+          
+          <header class="border-b-2 border-black pb-3 flex justify-between items-start gap-4">
+            <div>
+              <h1 class="text-2xl font-black uppercase tracking-tight text-black">${data.contact.name}</h1>
+              <p class="text-sm font-bold text-gray-800">${data.contact.role}</p>
+              <div class="text-[11px] text-gray-700 mt-1 space-y-0.5">
+                <p>${data.contact.location} | Tel: ${data.contact.phone} | Email: ${data.contact.email}</p>
+                <p>LinkedIn: ${data.contact.linkedinDisplay} | GitHub: ${data.contact.githubDisplay} | Portfolio: ${data.contact.websiteDisplay}</p>
+              </div>
+            </div>
+            <div class="shrink-0 text-center">
+              <img src="qr-code.svg" alt="QR Code" class="w-16 h-16 object-contain border border-black p-0.5">
+              <span class="text-[9px] font-mono block mt-0.5">pasmimmo.github.io</span>
+            </div>
+          </header>
+
+          <section class="space-y-1">
+            <h2 class="text-xs font-black uppercase tracking-wider border-b border-gray-400 pb-0.5 text-black">
+              ${currentLang === 'it' ? 'Profilo Professionale' : 'Professional Summary'}
+            </h2>
+            <p class="text-justify text-[11px] leading-relaxed text-gray-800">
+              ${data.summaries.executive}
+            </p>
+          </section>
+
+          <section class="space-y-3">
+            <h2 class="text-xs font-black uppercase tracking-wider border-b border-gray-400 pb-0.5 text-black">
+              ${currentLang === 'it' ? 'Esperienza Professionale' : 'Professional Experience'}
+            </h2>
+
+            ${data.experiences.map(exp => `
+              <div class="page-break-avoid space-y-1">
+                <div class="flex justify-between items-baseline">
+                  <h3 class="text-xs font-bold text-black">${exp.role} — <span class="font-normal italic">${exp.company} (${data.ui.labelClient}: ${exp.client})</span></h3>
+                  <span class="text-[10px] font-mono font-bold text-gray-700">${exp.period}</span>
+                </div>
+                <p class="text-[10px] text-gray-600">${exp.location} • ${exp.scale}</p>
+                <p class="text-[10.5px] leading-relaxed text-gray-800">${exp.narrative}</p>
+                
+                ${exp.responsibilities && exp.responsibilities.length > 0 ? `
+                  <ul class="list-disc pl-4 space-y-0.5 text-[10px] text-gray-800 pt-0.5">
+                    ${exp.responsibilities.map(r => `<li><strong>${r.title}:</strong> ${r.description}</li>`).join('')}
+                  </ul>
+                ` : ''}
+
+                ${exp.quantifiableResults && exp.quantifiableResults.length > 0 ? `
+                  <div class="text-[10px] text-black font-semibold pt-0.5 pl-2 border-l-2 border-black">
+                    ${exp.quantifiableResults.map(q => `<p>▸ ${q}</p>`).join('')}
+                  </div>
+                ` : ''}
+              </div>
+            `).join('')}
+          </section>
+
+          <section class="page-break-avoid space-y-1 pt-1">
+            <h2 class="text-xs font-black uppercase tracking-wider border-b border-gray-400 pb-0.5 text-black">
+              ${currentLang === 'it' ? 'Competenze Tecniche & Core Stack' : 'Technical Skills & Core Stack'}
+            </h2>
+            <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-800 pt-0.5">
+              <div>
+                <p><strong>Cloud & Container:</strong> Azure (Functions, APIM, AKS), OCI (OKE), Docker, Kubernetes, KEDA</p>
+                <p><strong>CI/CD & GitOps:</strong> GitHub Actions (Reusable & Composite), ARC, ArgoCD, Helm, Kustomize</p>
+                <p><strong>AppSec & Quality:</strong> SonarQube (Quality Gates), Veracode (SAST/SCA), Nexus Pro, SBAI Compliance</p>
+              </div>
+              <div>
+                <p><strong>Backend & Languages:</strong> Java (Spring Boot), C# (.NET 8 Isolated), Python, Go, Bash</p>
+                <p><strong>Messaging & Data:</strong> Azure Service Bus (~3.000 TPS), EventHub, Redis, Cosmos DB, SQL</p>
+                <p><strong>${currentLang === 'it' ? 'Metodologie' : 'Methodologies'}:</strong> FinOps, Incident & Vendor Escalation Management, Root Cause Analysis, Scrum</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="page-break-avoid space-y-1 pt-1">
+            <h2 class="text-xs font-black uppercase tracking-wider border-b border-gray-400 pb-0.5 text-black">
+              ${currentLang === 'it' ? 'Attività Personali, Homelab & IoT' : 'Personal Projects, Homelab & IoT'}
+            </h2>
+            <div class="text-[10px] text-gray-800 space-y-1">
+              ${data.homelab.map(h => `
+                <p><strong>${h.title}:</strong> ${h.description} ${h.highlights.join(' ')}</p>
+              `).join('')}
+            </div>
+          </section>
+
+          <section class="page-break-avoid space-y-1 pt-1 border-t border-gray-300">
+            <div class="flex justify-between text-[10px] text-gray-800">
+              <div>
+                <strong>${currentLang === 'it' ? 'Formazione:' : 'Education:'}</strong> ${data.education.map(e => `${e.degree} — ${e.institution} (${e.period})`).join(' | ')}
+              </div>
+              <div>
+                <strong>${currentLang === 'it' ? 'Lingue:' : 'Languages:'}</strong> ${data.languages.map(l => `${l.language} (${l.detail.split('•')[0].trim()})`).join(' | ')}
+              </div>
+            </div>
+          </section>
+
+        </div>
+      `;
     }
   </script>
 

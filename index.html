@@ -129,7 +129,7 @@
     }
   </style>
 </head>
-<body class="selection:bg-poster-yellow selection:text-poster-charcoal p-2 sm:p-5 md:p-6 min-h-screen flex flex-col items-center justify-start">
+<body class="selection:bg-poster-yellow selection:text-poster-charcoal p-2 sm:p-4 md:p-5 pb-2 sm:pb-3 min-h-screen flex flex-col items-center justify-start">
 
   <!-- ================= INTESTAZIONE IN RILIEVO SULLO SFONDO VERDE CON CONTROLLI INTEGRATI ================= -->
   <header class="no-print w-full max-w-7xl mx-auto px-4 sm:px-6 pt-2 pb-4 text-white select-none">
@@ -162,7 +162,7 @@
           <!-- Switcher Modalità Vista: X-Ray vs Classico -->
           <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner">
             <button id="btn-view-xray" onclick="setViewMode('xray')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs">
-              🔬 X-Ray Stack
+              🔬 Interactive X-Ray
             </button>
             <button id="btn-view-classic" onclick="setViewMode('classic')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
               📄 CV Classico
@@ -191,7 +191,7 @@
         <!-- RUOLO E LOCALITÀ (CON A CAPO SU TECH ARCH & DEVSECOPS) -->
         <div class="text-left lg:text-right">
           <p id="hero-role" class="text-xs sm:text-sm font-bold font-heading text-poster-yellow tracking-wide drop-shadow-xs leading-tight">
-            Technical Architect &amp;<br class="hidden sm:inline">DevSecOps Specialist
+            Technical Architect &amp;<br>DevSecOps Specialist
           </p>
           <p id="hero-location-sub" class="text-[11px] text-white/80 font-mono mt-0.5">
             Napoli / Remoto (Italia)
@@ -204,7 +204,7 @@
   </header>
 
   <!-- ================= FOGLIO POSTER ALLARGATO (PUNTO 1, CORPO PIÙ LARGO) ================= -->
-  <main class="poster-card no-print relative w-full max-w-7xl bg-poster-cream rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-poster-line/70 p-5 sm:p-8 md:p-10 space-y-7">
+  <main class="poster-card no-print relative w-full max-w-7xl bg-poster-cream rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-poster-line/70 p-4 sm:p-6 md:p-7 pb-3 sm:pb-4 flex flex-col justify-between">
     
     <!-- LINGUETTE DECORATIVE GIALLE SUL BORDO -->
     <div class="hidden sm:block absolute left-0 top-[30%] w-2.5 h-16 bg-poster-yellow rounded-r-md z-20"></div>
@@ -585,7 +585,7 @@
     </section>
 
     <!-- ================= VISTA B: CV CLASSICO (LAYOUT INTEGRALE) ================= -->
-    <section id="classic-view-container" class="space-y-8 hidden">
+    <section id="classic-view-container" class="space-y-8 hidden" hidden>
       
       <!-- BARRA TAPPE CHIAVE -->
       <section class="bg-white/85 rounded-2xl border border-poster-line p-4 sm:p-5 space-y-3">
@@ -709,7 +709,7 @@
     </section>
 
     <!-- FOOTER POSTER -->
-    <footer class="pt-6 border-t border-poster-line text-center">
+    <footer class="mt-6 pt-3 pb-0.5 border-t border-poster-line text-center">
       <p id="footer-text" class="text-xs text-poster-muted font-medium">
         Domenico Pascucci (<span class="font-bold text-poster-coral">pasmimmo</span>) • Technical Architect &amp; DevSecOps Specialist • Ospitato su GitHub Pages (<a href="https://pasmimmo.github.io" class="text-poster-coral font-bold hover:underline">pasmimmo.github.io</a>)
       </p>
@@ -755,12 +755,16 @@
 
       if (mode === 'xray') {
         xrayContainer.classList.remove('hidden');
+        xrayContainer.removeAttribute('hidden');
         classicContainer.classList.add('hidden');
+        classicContainer.setAttribute('hidden', '');
         btnXray.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
         btnClassic.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       } else {
         classicContainer.classList.remove('hidden');
+        classicContainer.removeAttribute('hidden');
         xrayContainer.classList.add('hidden');
+        xrayContainer.setAttribute('hidden', '');
         btnClassic.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
         btnXray.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       }
@@ -907,14 +911,14 @@
       const heroNickPrefix = document.getElementById('hero-nickname-prefix');
       if (heroNickPrefix) heroNickPrefix.innerText = data.ui.heroNicknamePrefix;
       const heroRole = document.getElementById('hero-role');
-      if (heroRole) heroRole.innerHTML = 'Technical Architect &amp;<br class="hidden sm:inline">DevSecOps Specialist';
+      if (heroRole) heroRole.innerHTML = 'Technical Architect &amp;<br>DevSecOps Specialist';
       const heroLocSub = document.getElementById('hero-location-sub');
       if (heroLocSub) heroLocSub.innerText = data.contact.location;
 
       const badgeTop = document.getElementById('badge-top-label');
       if (badgeTop) badgeTop.innerText = `${data.contact.name} (@${data.contact.nickname})`;
-      document.getElementById('btn-view-xray').innerText = `🔬 ${data.ui.viewInteractive.replace(' (3 Livelli)', '').replace(' (3 Layers)', '')}`;
-      document.getElementById('btn-view-classic').innerText = `📄 ${data.ui.viewClassic.replace('Vista ', '')}`;
+      document.getElementById('btn-view-xray').innerText = `🔬 ${data.ui.viewInteractive}`;
+      document.getElementById('btn-view-classic').innerText = `📄 ${data.ui.viewClassic}`;
 
       const btnIt = document.getElementById('btn-lang-it');
       const btnEn = document.getElementById('btn-lang-en');

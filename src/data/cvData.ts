@@ -12,9 +12,7 @@ export interface ContactInfo {
   name: string;
   nickname: string;
   role: string;
-  location: string;
   email: string;
-  phone: string;
   linkedin: string;
   linkedinDisplay: string;
   github: string;

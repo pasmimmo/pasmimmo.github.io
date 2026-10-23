@@ -17,9 +17,7 @@
         name: "Domenico Pascucci",
         nickname: "pasmimmo",
         role: "Technical Architect & DevSecOps Specialist",
-        location: "Napoli / Remoto (Italia)",
         email: "pasmimmo@gmail.com",
-        phone: "+39 388 1020601",
         linkedin: "https://linkedin.com/in/pasmimmo/",
         linkedinDisplay: "linkedin.com/in/pasmimmo",
         github: "https://github.com/pasmimmo",
@@ -36,7 +34,7 @@
         L0: {
           id: "layer-0",
           code: "L0",
-          name: "L0 - main",
+          name: "L0 · Core",
           subtitle: "Barebone, OS & Core Frameworks",
           concept: "Hardware, Kernel, Runtime & Performance di Basso Livello",
           color: "poster-teal",
@@ -108,7 +106,7 @@
         L1: {
           id: "layer-1",
           code: "L1",
-          name: "L1 - @Framework",
+          name: "L1 · Platform",
           subtitle: "Container, Delivery, AppSec & Quality",
           concept: "Automazione CI/CD, Container Engine, Governance del Codice & AppSec Shift-Left",
           color: "poster-coral",
@@ -201,7 +199,7 @@
         L2: {
           id: "layer-2",
           code: "L2",
-          name: "mimmoctl -d",
+          name: "L2 · Cloud",
           subtitle: "Cloud, Orchestrazione Distribuita & Dati",
           concept: "Cluster Kubernetes, GitOps, Event Streaming, Serverless & Alta Scalabilità",
           color: "poster-yellowDark",
@@ -355,7 +353,7 @@
           client: "Walgreens Boots Alliance (WBA)",
           role: "Technical Architect & Tech Project Lead",
           period: "03/2021 – 08/2025",
-          location: "Napoli / Remoto",
+          location: "Remoto",
           domain: "Supply Chain, Replenishment, Gestione Ordini e Logistica Farmaceutica (~9.000 farmacie)",
           scale: "Throughput di punta fino a ~3.000 TPS sui canali critici di instradamento ordini",
           layers: ["L0", "L1", "L2"],
@@ -626,7 +624,28 @@
         xrayHomelabTitle: "Homelab & Progetti Edge Collegati",
         xrayViewCode: "Visualizza Repository",
         btnDetailsToggleShow: "Mostra Dettagli Architetturali",
-        btnDetailsToggleHide: "Nascondi Dettagli Architetturali"
+        btnDetailsToggleHide: "Nascondi Dettagli Architetturali",
+        xraySelectionLabel: "SELEZIONE LIVELLO:",
+        xrayAllBadge: "STACK INTEGRALE • 3 LIVELLI",
+        xrayAllHeading: "Visione Architetturale Completa",
+        xrayAllDesc: "Ispezione integrale dell'avatar architetturale: dalle fondamenta e kernel barebone (L0 · Core), alla piattaforma di delivery e sicurezza applicativa (L1 · Platform), fino ai sistemi distribuiti cloud (L2 · Cloud).",
+        xrayEmptyStar: "Nessuna scheda STAR specifica per questo livello (seleziona L0 · Core, L2 · Cloud o ALL).",
+        xrayEmptyHomelab: "Nessun progetto edge o homelab specifico per questo livello.",
+        titleSummary: "Profilo & Sintesi Architetturale",
+        btnContacts: "Contatti",
+        filterContextAll: "Tutti",
+        filterContextSisal: "Sisal",
+        filterContextWba: "WBA",
+        filterContextHomelab: "Homelab & IoT",
+        skillCategories: [
+          { title: "Kubernetes & GitOps", icon: "☸️", items: "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, KEDA" },
+          { title: "CI/CD & Automation", icon: "🚀", items: "GitHub Actions (4.500+ repo, Reusable & Composite), ARC (Runner effimeri), Orka (macOS bare-metal)" },
+          { title: "AppSec & Governance", icon: "🛡️", items: "Veracode (SAST/SCA & Firewall), SonarQube (Quality Gates), Nexus Pro, OCI Vault, Sealed Secrets, SBAI" },
+          { title: "Cloud & Virtualization", icon: "☁️", items: "Microsoft Azure (Functions, APIM, AKS, Spot), Oracle Cloud (OCI, OKE), Docker, Proxmox VE" },
+          { title: "Backend & Barebone", icon: "💻", items: "Java (8→11→17, Spring Boot), C# (.NET 8 Isolated), Python, Go, Bash, ESPHome (ESP32-S3)" },
+          { title: "Messaging & Data", icon: "🔄", items: "Azure Service Bus (~3.000 TPS), EventHub, Cosmos DB (Change Feed), Redis, InfluxDB, Grafana" },
+          { title: "Leadership & FinOps", icon: "👥", items: "Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Vendor Escalation (Microsoft L3)" }
+        ]
       }
     },
     en: {
@@ -634,9 +653,7 @@
         name: "Domenico Pascucci",
         nickname: "pasmimmo",
         role: "Technical Architect & DevSecOps Specialist",
-        location: "Naples, Italy / Remote",
         email: "pasmimmo@gmail.com",
-        phone: "+39 388 1020601",
         linkedin: "https://linkedin.com/in/pasmimmo/",
         linkedinDisplay: "linkedin.com/in/pasmimmo",
         github: "https://github.com/pasmimmo",
@@ -653,7 +670,7 @@
         L0: {
           id: "layer-0",
           code: "L0",
-          name: "L0 - main",
+          name: "L0 · Core",
           subtitle: "Barebone, OS & Core Frameworks",
           concept: "Hardware, Kernel, Runtimes & Low-Level Performance",
           color: "poster-teal",
@@ -725,7 +742,7 @@
         L1: {
           id: "layer-1",
           code: "L1",
-          name: "L1 - @Framework",
+          name: "L1 · Platform",
           subtitle: "Container, Delivery, AppSec & Quality",
           concept: "CI/CD Automation, Container Engines, Code Governance & Shift-Left AppSec",
           color: "poster-coral",
@@ -818,7 +835,7 @@
         L2: {
           id: "layer-2",
           code: "L2",
-          name: "mimmoctl -d",
+          name: "L2 · Cloud",
           subtitle: "Cloud, Distributed Orchestration & Data",
           concept: "Kubernetes Clusters, GitOps, Event Streaming, Serverless & Massive Scale",
           color: "poster-yellowDark",
@@ -972,7 +989,7 @@
           client: "Walgreens Boots Alliance (WBA)",
           role: "Technical Architect & Tech Project Lead",
           period: "03/2021 – 08/2025",
-          location: "Naples, Italy / Remote",
+          location: "Remote",
           domain: "Supply Chain, Replenishment, Order Management and Pharmaceutical Logistics (~9,000 pharmacies)",
           scale: "Peak throughput up to ~3,000 TPS on mission-critical order routing channels",
           layers: ["L0", "L1", "L2"],
@@ -1243,7 +1260,28 @@
         xrayHomelabTitle: "Homelab & Edge Projects Related to this Layer",
         xrayViewCode: "View Repository",
         btnDetailsToggleShow: "Show Architectural Details",
-        btnDetailsToggleHide: "Hide Architectural Details"
+        btnDetailsToggleHide: "Hide Architectural Details",
+        xraySelectionLabel: "LAYER SELECTION:",
+        xrayAllBadge: "FULL STACK • 3 LAYERS",
+        xrayAllHeading: "Complete Architectural Overview",
+        xrayAllDesc: "Complete inspection of the architectural avatar: from bare-metal kernel and core foundations (L0 · Core), through delivery platform and AppSec (L1 · Platform), up to distributed cloud systems (L2 · Cloud).",
+        xrayEmptyStar: "No STAR troubleshooting card specific to this layer (select L0 · Core, L2 · Cloud or ALL).",
+        xrayEmptyHomelab: "No edge or homelab project specific to this layer.",
+        titleSummary: "Executive & Architectural Summary",
+        btnContacts: "Contact",
+        filterContextAll: "All",
+        filterContextSisal: "Sisal",
+        filterContextWba: "WBA",
+        filterContextHomelab: "Homelab & IoT",
+        skillCategories: [
+          { title: "Kubernetes & GitOps", icon: "☸️", items: "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, KEDA" },
+          { title: "CI/CD & Automation", icon: "🚀", items: "GitHub Actions (4,500+ repos, Reusable & Composite), ARC (Ephemeral Runners), Orka (macOS bare-metal)" },
+          { title: "AppSec & Governance", icon: "🛡️", items: "Veracode (SAST/SCA & Firewall), SonarQube (Quality Gates), Nexus Pro, OCI Vault, Sealed Secrets, SBAI" },
+          { title: "Cloud & Virtualization", icon: "☁️", items: "Microsoft Azure (Functions, APIM, AKS, Spot), Oracle Cloud (OCI, OKE), Docker, Proxmox VE" },
+          { title: "Backend & Barebone", icon: "💻", items: "Java (8→11→17, Spring Boot), C# (.NET 8 Isolated), Python, Go, Bash, ESPHome (ESP32-S3)" },
+          { title: "Messaging & Data", icon: "🔄", items: "Azure Service Bus (~3,000 TPS), EventHub, Cosmos DB (Change Feed), Redis, InfluxDB, Grafana" },
+          { title: "Leadership & FinOps", icon: "👥", items: "Technical Architecture, Team Lead (13 devs), FinOps (-30% costs), Vendor Escalation (Microsoft L3)" }
+        ]
       }
     }
   };

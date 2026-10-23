@@ -1,6 +1,6 @@
 # Domenico Pascucci
 **Technical Architect & DevSecOps Specialist**  
-Napoli / Remoto (Italia) | Tel: +39 388 1020601 | Email: pasmimmo@gmail.com  
+Email: pasmimmo@gmail.com  
 LinkedIn: [linkedin.com/in/pasmimmo](https://linkedin.com/in/pasmimmo/) | GitHub: [github.com/pasmimmo](https://github.com/pasmimmo) | Portfolio: [pasmimmo.github.io](https://pasmimmo.github.io/)
 
 ---
@@ -23,7 +23,7 @@ Technical Architect e DevSecOps Specialist con solida esperienza nella progettaz
   * **-60% LoC SonarQube e +70% velocità di esecuzione** tramite reingegnerizzazione dei processi di estrazione metriche con workflow schedulati su InfluxDB/Grafana e dismissione dei progetti temporanei.
 
 ### Technical Architect & Tech Project Lead | Magma S.r.l. (Cliente: Walgreens Boots Alliance)
-*Marzo 2021 – Agosto 2025 | Napoli / Remoto*
+*Marzo 2021 – Agosto 2025 | Remoto*
 * **Ambito & Scala:** Architettura di integrazione per i servizi critici di supply chain, replenishment e ordini a supporto di oltre 9.000 farmacie, con carichi di picco fino a ~3.000 transazioni al secondo (TPS).
 * **Leadership Tecnica:** Coordinamento di 2 team (13 sviluppatori complessivi) per lo sviluppo di common libraries (Java/Spring Boot) e componenti middleware/serverless (C#/.NET); gestione di roadmap tecniche, audit enterprise, PoC e allineamento con stakeholder internazionali.
 * **Decoupling & Protocol Conversion:** Disegno e rilascio di 3 middleware core per l'integrazione di sistemi: bridge bidirezionale SOAP ⇄ REST, connettore ad alte prestazioni Azure Service Bus ⇄ EventHub, e pattern reattivo disaccoppiato basato su Cosmos DB Change Feed.

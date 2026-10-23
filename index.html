@@ -5,13 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Domenico Pascucci (pasmimmo) — Technical Architect & DevSecOps Specialist</title>
   <meta name="description" content="Portfolio e Curriculum Vitae di Domenico Pascucci (pasmimmo) — Technical Architect & DevSecOps Specialist. Architetture Cloud Native, GitOps, Kubernetes, AppSec e Interactive X-Ray dello stack.">
+  <meta name="author" content="Domenico Pascucci (pasmimmo)">
+
+  <!-- OpenGraph / Social Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pasmimmo.github.io/">
+  <meta property="og:title" content="Domenico Pascucci (@pasmimmo) — Technical Architect & DevSecOps Specialist">
+  <meta property="og:description" content="Interactive X-Ray CV a 3 livelli: dal Kernel Linux & Barebone IoT a Kubernetes, GitOps e Cloud Enterprise.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Domenico Pascucci (@pasmimmo) — Technical Architect & DevSecOps Specialist">
+
+  <!-- Inline SVG Favicon (@pasmimmo) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300a885'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='%23fbf7ee'/%3E%3Ctext x='32' y='41' font-family='monospace' font-weight='900' font-size='26' text-anchor='middle' fill='%23e2513a'%3EDP%3C/text%3E%3C/svg%3E">
 
   <!-- Google Fonts: Space Grotesk, Syne e Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS via CDN (con filtro warning per architettura statica zero-build su GitHub Pages) -->
+  <script>
+    (function() {
+      const origWarn = console.warn;
+      console.warn = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+        origWarn.apply(console, args);
+      };
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -83,6 +104,28 @@
       filter: drop-shadow(0 0 8px rgba(255, 209, 82, 0.8));
     }
 
+    /* Aura Full-Stack attorno all'omino nel selettore ALL */
+    #xray-avatar-svg {
+      transition: filter 0.35s ease;
+    }
+
+    #xray-avatar-svg.xray-all-aura {
+      animation: allAuraPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes allAuraPulse {
+      0% {
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95))
+                drop-shadow(0 0 11px rgba(0, 168, 133, 0.85))
+                drop-shadow(0 0 22px rgba(226, 81, 58, 0.55));
+      }
+      100% {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 15px rgba(226, 81, 58, 0.85))
+                drop-shadow(0 0 28px rgba(0, 168, 133, 0.75));
+      }
+    }
+
     /* Linea Scanner Lenta ed Elegante */
     .xray-scan-beam {
       animation: scanVertical 4s ease-in-out infinite alternate;
@@ -98,7 +141,7 @@
     @media print {
       @page {
         size: A4 portrait;
-        margin: 10mm 12mm;
+        margin: 8mm 10mm;
       }
       body {
         background: white !important;
@@ -146,41 +189,80 @@
           </h1>
           <div class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white/95 italic">
             <span id="hero-nickname-prefix">...but you can call me</span>
-            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-poster-coral text-white font-mono font-extrabold text-sm sm:text-base shadow-lg rotate-[-1.5deg] hover:rotate-0 transition-transform">
-              <span>@</span><span>pasmimmo</span>
-            </span>
+            <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" title="GitHub @pasmimmo" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-poster-coral hover:bg-poster-coralHover text-white font-mono font-extrabold text-sm sm:text-base shadow-lg rotate-[-1.5deg] hover:rotate-0 transition-all">
+              <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>@pasmimmo</span>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- DESTRA: BADGE CONTROLLI COMPATTO (IN ALTO A DESTRA, LINEA ROSSA 2) + RUOLO E SEDE -->
-      <div class="flex flex-col items-start lg:items-end gap-2">
+      <!-- DESTRA: BADGE CONTROLLI COMPATTO SENZA SPAZIO EXTRA + RUOLO -->
+      <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
         
-        <!-- BADGE CONTROLLI COMPATTO (SOLO X-RAY / CV CLASSICO / IT-EN / PDF) -->
-        <aside aria-label="Controlli CV" class="inline-flex items-center flex-wrap gap-1.5 bg-white/95 backdrop-blur-md p-1.5 rounded-2xl border border-poster-line shadow-lg">
+        <!-- BADGE CONTROLLI COMPATTO SU RIGA UNICA (X-RAY / CV CLASSICO / IT-EN / CONTATTI / PDF) -->
+        <aside aria-label="Controlli CV" class="relative z-40 inline-flex items-center flex-wrap sm:flex-nowrap w-fit gap-1.5 bg-white/95 backdrop-blur-md p-1.5 rounded-2xl border border-poster-line shadow-lg">
           
           <!-- Switcher Modalità Vista: X-Ray vs Classico -->
-          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner">
-            <button id="btn-view-xray" onclick="setViewMode('xray')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs">
+          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner whitespace-nowrap">
+            <button id="btn-view-xray" onclick="setViewMode('xray')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm whitespace-nowrap">
               🔬 Interactive X-Ray
             </button>
-            <button id="btn-view-classic" onclick="setViewMode('classic')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
+            <button id="btn-view-classic" onclick="setViewMode('classic')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal whitespace-nowrap">
               📄 CV Classico
             </button>
           </div>
 
-          <!-- Switcher Lingua Bilingue -->
-          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner">
-            <button id="btn-lang-it" onclick="setLanguage('it')" class="px-2 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs">
-              🇮🇹 IT
+          <!-- Switcher Lingua Bilingue (senza flag emoji rotte su Windows) -->
+          <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-xs font-bold font-heading shadow-inner whitespace-nowrap">
+            <button id="btn-lang-it" onclick="setLanguage('it')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm">
+              IT
             </button>
-            <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
-              🇬🇧 EN
+            <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
+              EN
             </button>
           </div>
 
+          <!-- Bottone Contatti con Popover Rapido -->
+          <div class="relative">
+            <button id="btn-contacts-top" type="button" onclick="toggleContactsPopover(event)" class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-poster-charcoal bg-poster-cream hover:bg-poster-coralLight border border-poster-line rounded-xl shadow-sm transition-all active:scale-95 font-heading whitespace-nowrap">
+              <svg class="w-3.5 h-3.5 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span id="btn-contacts-label">Contatti</span>
+            </button>
+
+            <!-- Dropdown / Popover Contatti -->
+            <div id="contacts-popover" class="hidden absolute right-0 mt-2 w-64 p-3 rounded-2xl bg-white border-2 border-poster-charcoal shadow-2xl text-poster-charcoal space-y-2 z-50">
+              <div class="flex items-center justify-between border-b border-poster-line pb-1.5">
+                <span class="text-[10px] font-mono font-black uppercase tracking-wider text-poster-coral">Domenico Pascucci</span>
+                <span class="text-[10px] font-mono font-bold text-poster-muted">@pasmimmo</span>
+              </div>
+              <a href="mailto:pasmimmo@gmail.com" class="flex items-center gap-2.5 p-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight transition-colors text-xs font-bold">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span>pasmimmo@gmail.com</span>
+              </a>
+              <a href="https://linkedin.com/in/pasmimmo/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight transition-colors text-xs font-bold">
+                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>linkedin.com/in/pasmimmo</span>
+              </a>
+              <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight transition-colors text-xs font-bold">
+                <svg class="w-4 h-4 text-poster-charcoal shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>github.com/pasmimmo</span>
+              </a>
+            </div>
+          </div>
+
           <!-- Tasto Stampa PDF ATS -->
-          <button onclick="window.print()" class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-poster-charcoal bg-poster-yellow hover:bg-poster-yellowDark rounded-xl shadow-xs transition-all active:scale-95 font-heading">
+          <button onclick="window.print()" class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-poster-charcoal bg-poster-yellow hover:bg-poster-yellowDark rounded-xl shadow-sm transition-all active:scale-95 font-heading whitespace-nowrap">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
             </svg>
@@ -188,13 +270,10 @@
           </button>
         </aside>
 
-        <!-- RUOLO E LOCALITÀ (CON A CAPO SU TECH ARCH & DEVSECOPS) -->
+        <!-- RUOLO -->
         <div class="text-left lg:text-right">
-          <p id="hero-role" class="text-xs sm:text-sm font-bold font-heading text-poster-yellow tracking-wide drop-shadow-xs leading-tight">
+          <p id="hero-role" class="text-xs sm:text-sm font-bold font-heading text-poster-yellow tracking-wide drop-shadow-sm leading-tight">
             Technical Architect &amp;<br>DevSecOps Specialist
-          </p>
-          <p id="hero-location-sub" class="text-[11px] text-white/80 font-mono mt-0.5">
-            Napoli / Remoto (Italia)
           </p>
         </div>
 
@@ -217,7 +296,7 @@
       <!-- SCANNER RADIOGRAFICO (L'OMINIO A TUTTA LARGHEZZA) -->
       <div class="p-5 sm:p-7 rounded-3xl bg-white border-2 border-poster-line shadow-sm relative overflow-hidden flex flex-col items-center w-full">
         
-        <!-- Header Scanner con Titolo e Sottotitolo Integrati (Senza Box Esterno) -->
+        <!-- Header Scanner con Titolo, Sottotitolo e Bottone GitHub Integrati -->
         <div class="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-poster-line">
           <div>
             <div class="flex items-center gap-2">
@@ -226,33 +305,40 @@
                 🔬 Domenico Pascucci, un dev ai raggi x
               </h2>
             </div>
-            <p id="xray-section-sub" class="text-xs text-poster-muted mt-1.5 pl-4.5">
+            <p id="xray-section-sub" class="text-xs text-poster-muted mt-1.5 pl-5">
               Ispezione dello stack a 3 livelli: dal kernel barebone alle piattaforme cloud distribuite.
             </p>
           </div>
 
-          <div class="flex items-center gap-2 self-start sm:self-center shrink-0">
-            <span id="xray-shortcuts-hint" class="text-[11px] font-mono font-bold text-poster-charcoal bg-poster-cream px-2.5 py-1 rounded-lg border border-poster-line flex items-center gap-1.5 shadow-2xs">
-              <span class="w-2 h-2 rounded-full bg-poster-coral animate-ping"></span>
-              <span>Clicca su un livello per filtrare</span>
-            </span>
-            <span id="xray-hud-layer-tag" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
-              ALL
-            </span>
+          <div class="flex flex-wrap items-center gap-2 self-start sm:self-center shrink-0">
+            <!-- Badge GitHub Evidente nello Scanner Interattivo -->
+            <a href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" title="GitHub Profile: github.com/pasmimmo" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-poster-charcoal hover:bg-poster-coral text-white text-[11px] font-mono font-bold transition-colors shadow-sm">
+              <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>github.com/pasmimmo</span>
+            </a>
           </div>
         </div>
 
-        <!-- VIEWPORT RADIOGRAFICO CON AVATAR.SVG (Allargato per occupare il corpo dello scanner) -->
-        <div class="relative my-5 w-full max-w-[380px] sm:max-w-[440px] h-[500px] sm:h-[560px] flex items-center justify-center bg-poster-cream/50 rounded-2xl border-2 border-poster-line overflow-hidden select-none shadow-inner">
+        <!-- CORPO SCANNER: AVATAR A SINISTRA (5 COLS) + CONTROLLI E OVERVIEW LIVELLO A DESTRA (7 COLS) -->
+        <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mt-5">
+          
+          <!-- SINISTRA: VIEWPORT RADIOGRAFICO CON AVATAR.SVG -->
+          <div class="lg:col-span-5 flex justify-center w-full">
+            <div class="relative w-full max-w-[380px] sm:max-w-[430px] h-[480px] sm:h-[520px] flex items-center justify-center bg-poster-cream/50 rounded-2xl border-2 border-poster-line overflow-hidden select-none shadow-inner">
               
               <!-- Reticolo Tecnico Radiografico Sottile -->
               <div class="absolute inset-0 bg-[radial-gradient(#e8e1d5_1.5px,transparent_1.5px)] [background-size:16px_16px] opacity-75 pointer-events-none"></div>
+
+              <!-- Alone / Aura di sfondo per il selettore ALL -->
+              <div id="xray-aura-backdrop" class="absolute inset-6 rounded-full bg-[radial-gradient(circle,rgba(0,168,133,0.18)_0%,rgba(226,81,58,0.12)_45%,transparent_72%)] blur-xl opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
               <!-- Fascio Laser Scanner Animato -->
               <div class="xray-scan-beam absolute left-2 right-2 h-0.5 bg-gradient-to-r from-transparent via-poster-coral to-transparent z-20 pointer-events-none shadow-[0_0_8px_#e2513a]"></div>
 
               <!-- AVATAR.SVG INLINE -->
-              <svg id="xray-avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" class="w-full h-full max-h-[540px] drop-shadow-md">
+              <svg id="xray-avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" class="relative z-10 w-full h-full max-h-[500px] drop-shadow-md xray-all-aura">
                 <defs>
                   <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
                     <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12" />
@@ -464,32 +550,36 @@
               </svg>
 
             </div>
+          </div>
 
-            <!-- SELETTORE LIVELLO: L0 - main // L1 - @Framework // mimmoctl -d // ALL -->
-            <div class="w-full max-w-xl space-y-3 pt-2">
+          <!-- DESTRA: CONTROLLI LIVELLO + OVERVIEW ARCHITETTURALE DEL LIVELLO ATTIVO -->
+          <div class="lg:col-span-7 lg:h-[520px] flex flex-col justify-between gap-4 w-full">
+            
+            <!-- SELETTORE LIVELLO: L0 · Core // L1 · Platform // L2 · Cloud // ALL -->
+            <div class="w-full shrink-0 space-y-3 p-4 sm:p-5 rounded-2xl bg-poster-cream/40 border border-poster-line">
               
               <div class="flex items-center justify-between text-xs font-mono">
-                <span class="text-poster-muted font-bold">SELEZIONE LIVELLO:</span>
+                <span id="xray-selection-label" class="text-poster-muted font-bold">SELEZIONE LIVELLO:</span>
                 <span id="xray-current-code" class="font-extrabold text-poster-charcoal">ALL</span>
               </div>
               
-              <!-- Griglia Selettori: L0 - main // L1 - @Framework // mimmoctl -d // ALL -->
+              <!-- Griglia Selettori con Hover Preview: L0 · Core // L1 · Platform // L2 · Cloud // ALL -->
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono font-bold">
-                <button id="btn-layer-0" onclick="selectLayer('0')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="L0 - main: Barebone, OS & Core Frameworks">
-                  L0 - main
+                <button id="btn-layer-0" onclick="selectLayer('0')" onmouseenter="previewLayer('0')" onmouseleave="restoreLayer()" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-sm" title="L0 · Core: Barebone, OS & Core Frameworks">
+                  L0 · Core
                 </button>
-                <button id="btn-layer-1" onclick="selectLayer('1')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="L1 - @Framework: Container, Delivery, AppSec & Quality">
-                  L1 - @Framework
+                <button id="btn-layer-1" onclick="selectLayer('1')" onmouseenter="previewLayer('1')" onmouseleave="restoreLayer()" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-sm" title="L1 · Platform: Container, Delivery, AppSec & Quality">
+                  L1 · Platform
                 </button>
-                <button id="btn-layer-2" onclick="selectLayer('2')" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs" title="mimmoctl -d: Cloud, Orchestrazione Distribuita & Dati">
-                  mimmoctl -d
+                <button id="btn-layer-2" onclick="selectLayer('2')" onmouseenter="previewLayer('2')" onmouseleave="restoreLayer()" class="py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-sm" title="L2 · Cloud: Cloud, Orchestrazione Distribuita & Dati">
+                  L2 · Cloud
                 </button>
-                <button id="btn-layer-all" onclick="selectLayer('ALL')" class="py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal transition-all text-center font-extrabold flex items-center justify-center shadow-2xs" title="Stack Completo">
+                <button id="btn-layer-all" onclick="selectLayer('ALL')" onmouseenter="previewLayer('ALL')" onmouseleave="restoreLayer()" class="py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal transition-all text-center font-extrabold flex items-center justify-center shadow-sm" title="Stack Completo">
                   ALL
                 </button>
               </div>
 
-              <!-- Slider Profondità: L0 - main, L1 - @Framework, mimmoctl -d, ALL -->
+              <!-- Slider Profondità: L0 · Core, L1 · Platform, L2 · Cloud, ALL -->
               <div class="pt-1.5 space-y-1">
                 <div class="flex items-center justify-between text-[11px] font-mono text-poster-muted">
                   <span id="xray-depth-label">Profondità Raggi X</span>
@@ -497,37 +587,46 @@
                 </div>
                 <input type="range" id="xray-depth-slider" min="0" max="3" value="3" step="1" oninput="handleSliderDepth(this.value)" class="w-full accent-poster-coral bg-poster-cream border border-poster-line rounded-lg h-2 cursor-pointer">
                 <div class="flex justify-between text-[10px] font-mono text-poster-muted px-0.5">
-                  <span>L0 - main</span>
-                  <span>L1 - @Framework</span>
-                  <span>mimmoctl -d</span>
+                  <span>L0 · Core</span>
+                  <span>L1 · Platform</span>
+                  <span>L2 · Cloud</span>
                   <span>ALL</span>
                 </div>
               </div>
 
             </div>
 
+            <!-- SCHEDA INFORMAZIONI LIVELLO ATTIVO (INTEGRATA NELLO SCANNER A FIANCO DELL'OMINO) -->
+            <div id="inspector-layer-header" class="flex-1 p-4 sm:p-5 rounded-2xl bg-poster-cream/60 border border-poster-line shadow-sm space-y-2.5 overflow-y-auto">
+              <!-- Popolato dinamicamente da cvData -->
+            </div>
+
           </div>
 
+        </div>
+
+      </div>
+
       <!-- ================= 2 COLONNE SOTTO ALL'OMINIO (PUNTO 4) ================= -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start pt-2">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start pt-1">
         
-        <!-- COLONNA 1 (SINISTRA, 6 COLS): ARCHITECTURAL LAYER INSPECTOR + TECHNOLOGIES -->
-        <div class="lg:col-span-6 space-y-5">
-          
-          <!-- SCHEDA INFORMAZIONI LIVELLO ATTIVO -->
-          <div id="inspector-layer-header" class="p-5 rounded-2xl bg-white border border-poster-line shadow-xs space-y-3">
-            <!-- Popolato dinamicamente da cvData -->
-          </div>
+        <!-- COLONNA 1 (SINISTRA, 6 COLS): TECHNOLOGIES CON FILTRO CONTESTO -->
+        <div class="lg:col-span-6 space-y-4">
 
           <!-- CARDS TECNOLOGIE DEL LIVELLO -->
           <div class="space-y-3">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-wrap items-center justify-between gap-2">
               <h3 id="xray-tech-title" class="text-xs font-black font-heading uppercase tracking-wider text-poster-charcoal flex items-center gap-1.5">
                 <span class="text-poster-coral">⚡</span> Tecnologie &amp; Competenze del Livello
               </h3>
               <span id="xray-tech-count-badge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-poster-cream text-poster-charcoal border border-poster-line">
                 <!-- Conteggio -->
               </span>
+            </div>
+
+            <!-- FILTRO RAPIDO PER CONTESTO ENTERPRISE / PROGETTO -->
+            <div id="xray-context-filters" class="flex flex-wrap items-center gap-1.5">
+              <!-- Popolato dinamicamente -->
             </div>
 
             <div id="inspector-tech-list" class="space-y-2.5">
@@ -634,13 +733,6 @@
                 </svg>
                 <a id="classic-contact-github" href="https://github.com/pasmimmo" target="_blank" rel="noopener noreferrer" class="hover:text-poster-coral transition-colors">github.com/pasmimmo</a>
               </p>
-              <p class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-poster-coral shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <span id="classic-contact-location">Napoli / Remoto (Italia)</span>
-              </p>
             </div>
           </section>
 
@@ -682,8 +774,26 @@
 
         </div>
 
-        <!-- COLONNA DESTRA: EDUCATION + EXPERIENCE -->
-        <div class="md:col-span-7 space-y-8">
+        <!-- COLONNA DESTRA: PROFILO + EDUCATION + EXPERIENCE -->
+        <div class="md:col-span-7 space-y-7">
+
+          <!-- PROFILO & SINTESI ARCHITETTURALE (EXECUTIVE / TECH LEAD) -->
+          <section class="p-4 sm:p-5 rounded-2xl bg-white border border-poster-line shadow-sm space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-poster-line/70 pb-2.5">
+              <h2 id="classic-summary-title" class="poster-section-title text-base sm:text-lg">Profilo &amp; Sintesi Architetturale</h2>
+              <div class="inline-flex rounded-xl bg-poster-cream p-0.5 border border-poster-line text-[11px] font-bold font-heading">
+                <button id="btn-classic-sum-exec" type="button" onclick="setClassicSummary('executive')" class="px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm">
+                  👔 Executive / HR
+                </button>
+                <button id="btn-classic-sum-tech" type="button" onclick="setClassicSummary('technical')" class="px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal">
+                  ⚙️ Tech Lead
+                </button>
+              </div>
+            </div>
+            <p id="classic-summary-text" class="text-xs sm:text-sm text-poster-charcoal leading-relaxed">
+              <!-- Popolato dinamicamente -->
+            </p>
+          </section>
 
           <!-- EDUCATION -->
           <section class="space-y-3">
@@ -727,16 +837,51 @@
     let currentLang = 'it';
     let currentView = 'xray'; // 'xray' | 'classic'
     let currentLayer = 'ALL'; // 'ALL' | '2' | '1' | '0'
+    let currentContextFilter = 'ALL'; // 'ALL' | 'Sisal' | 'WBA' | 'Homelab'
+    let currentSummaryType = 'executive'; // 'executive' | 'technical'
     let expandedStories = {};
+    let expandedExpDetails = {};
+    let expandedExpTools = {};
 
     document.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem('pasmimmo_lang')) {
         currentLang = localStorage.getItem('pasmimmo_lang');
       }
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('lang') === 'en' || params.get('lang') === 'it') {
+        currentLang = params.get('lang');
+      }
+      document.documentElement.lang = currentLang;
+
       renderApp();
-      selectLayer('ALL'); // Livello default selezionato: ALL (Punto 3)
+
+      // Ripristino stato da URL Hash (#L0, #L1, #L2, #ALL, #classic)
+      const hash = (window.location.hash || '').replace('#', '').toUpperCase();
+      if (hash === 'CLASSIC') {
+        selectLayer('ALL');
+        setViewMode('classic');
+      } else if (hash === 'L0' || hash === '0') {
+        selectLayer('0');
+      } else if (hash === 'L1' || hash === '1') {
+        selectLayer('1');
+      } else if (hash === 'L2' || hash === '2' || hash === 'MIMMOCTL') {
+        selectLayer('2');
+      } else {
+        selectLayer('ALL'); // Livello default selezionato: ALL (Punto 3)
+      }
+
       setupKeyboardShortcuts();
     });
+
+    function syncUrlHash() {
+      if (!window.history || !window.history.replaceState) return;
+      if (currentView === 'classic') {
+        window.history.replaceState(null, '', '#classic');
+      } else {
+        const hashCode = currentLayer === '0' ? '#L0' : (currentLayer === '1' ? '#L1' : (currentLayer === '2' ? '#L2' : '#ALL'));
+        window.history.replaceState(null, '', hashCode);
+      }
+    }
 
     function setLanguage(lang) {
       if (lang !== 'it' && lang !== 'en') return;
@@ -758,19 +903,48 @@
         xrayContainer.removeAttribute('hidden');
         classicContainer.classList.add('hidden');
         classicContainer.setAttribute('hidden', '');
-        btnXray.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnXray.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
         btnClassic.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       } else {
         classicContainer.classList.remove('hidden');
         classicContainer.removeAttribute('hidden');
         xrayContainer.classList.add('hidden');
         xrayContainer.setAttribute('hidden', '');
-        btnClassic.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnClassic.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
         btnXray.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       }
+      syncUrlHash();
     }
 
-    // Selettore Livelli: L0 - main, L1 - @Framework, mimmoctl -d, ALL (Punto 1)
+    function setContextFilter(ctx) {
+      currentContextFilter = ctx;
+      renderInspector();
+    }
+
+    function setClassicSummary(type) {
+      currentSummaryType = type;
+      renderClassicView();
+    }
+
+    function toggleExpDetails(id) {
+      expandedExpDetails[id] = !expandedExpDetails[id];
+      renderInspector();
+    }
+
+    function toggleExpTools(id) {
+      expandedExpTools[id] = !expandedExpTools[id];
+      renderInspector();
+    }
+
+    function previewLayer(layerCode) {
+      updateAvatarXRay(layerCode);
+    }
+
+    function restoreLayer() {
+      updateAvatarXRay(currentLayer);
+    }
+
+    // Selettore Livelli: L0 · Core, L1 · Platform, L2 · Cloud, ALL
     function selectLayer(layerCode) {
       // Normalizzazione layer code
       if (layerCode === 'L0') layerCode = '0';
@@ -781,9 +955,9 @@
       
       const slider = document.getElementById('xray-depth-slider');
       const depthVal = document.getElementById('xray-depth-value');
-      if (layerCode === '0') { slider.value = 0; depthVal.innerText = "0 / 3 (L0 - main)"; }
-      else if (layerCode === '1') { slider.value = 1; depthVal.innerText = "1 / 3 (L1 - @Framework)"; }
-      else if (layerCode === '2') { slider.value = 2; depthVal.innerText = "2 / 3 (mimmoctl -d)"; }
+      if (layerCode === '0') { slider.value = 0; depthVal.innerText = "0 / 3 (L0 · Core)"; }
+      else if (layerCode === '1') { slider.value = 1; depthVal.innerText = "1 / 3 (L1 · Platform)"; }
+      else if (layerCode === '2') { slider.value = 2; depthVal.innerText = "2 / 3 (L2 · Cloud)"; }
       else { slider.value = 3; depthVal.innerText = "3 / 3 (ALL)"; }
 
       // Aggiorna stato visivo bottoni [0], [1], [2], [all]
@@ -793,42 +967,34 @@
         const matches = (k === 'all' && layerCode === 'ALL') || (k === layerCode);
         if (matches) {
           if (k === '0') {
-            btn.className = "py-2.5 px-2 rounded-xl bg-poster-teal text-white border border-poster-tealDark font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-teal text-white border border-poster-tealDark font-extrabold shadow-sm transition-all text-center flex items-center justify-center";
           } else if (k === '1') {
-            btn.className = "py-2.5 px-2 rounded-xl bg-poster-coral text-white border border-poster-coralHover font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-coral text-white border border-poster-coralHover font-extrabold shadow-sm transition-all text-center flex items-center justify-center";
           } else if (k === '2') {
-            btn.className = "py-2.5 px-2 rounded-xl bg-poster-yellowDark text-poster-charcoal border border-poster-yellow font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-yellowDark text-poster-charcoal border border-poster-yellow font-extrabold shadow-sm transition-all text-center flex items-center justify-center";
           } else {
-            btn.className = "py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal font-extrabold shadow-xs transition-all text-center flex items-center justify-center";
+            btn.className = "py-2.5 px-2 rounded-xl bg-poster-charcoal text-white border border-poster-charcoal font-extrabold shadow-sm transition-all text-center flex items-center justify-center";
           }
         } else {
-          btn.className = "py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-2xs";
+          btn.className = "py-2.5 px-2 rounded-xl bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-all text-center flex items-center justify-center shadow-sm";
         }
       });
 
       updateAvatarXRay(layerCode);
 
-      const hudTag = document.getElementById('xray-hud-layer-tag');
       const curCode = document.getElementById('xray-current-code');
 
       if (layerCode === 'ALL') {
-        hudTag.innerText = "ALL";
-        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-cream text-poster-charcoal border border-poster-line";
-        curCode.innerText = "ALL";
+        if (curCode) curCode.innerText = "ALL";
       } else if (layerCode === '0') {
-        hudTag.innerText = "L0 - main";
-        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-teal/15 text-poster-teal border border-poster-teal/30";
-        curCode.innerText = "L0 - main";
+        if (curCode) curCode.innerText = "L0 · Core";
       } else if (layerCode === '1') {
-        hudTag.innerText = "L1 - @Framework";
-        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-coral/15 text-poster-coral border border-poster-coral/30";
-        curCode.innerText = "L1 - @Framework";
+        if (curCode) curCode.innerText = "L1 · Platform";
       } else {
-        hudTag.innerText = "mimmoctl -d";
-        hudTag.className = "text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md bg-poster-yellow/20 text-poster-charcoal border border-poster-yellowDark/30";
-        curCode.innerText = "mimmoctl -d";
+        if (curCode) curCode.innerText = "L2 · Cloud";
       }
 
+      syncUrlHash();
       renderInspector();
     }
 
@@ -840,8 +1006,10 @@
       else selectLayer('ALL');
     }
 
-    // GESTIONE RAGGI X ED ELIMINAZIONE ARTEFATTI SU PELLE (PUNTO 6)
+    // GESTIONE RAGGI X ED ELIMINAZIONE ARTEFATTI SU PELLE (PUNTO 6) + AURA ALL
     function updateAvatarXRay(activeCode) {
+      const svgAvatar = document.getElementById('xray-avatar-svg');
+      const auraBackdrop = document.getElementById('xray-aura-backdrop');
       const gScheletro = document.getElementById('livello-scheletro');
       const gPelle = document.getElementById('livello-pelle');
       const gPersona = document.getElementById('livello-persona');
@@ -849,37 +1017,64 @@
 
       if (activeCode === '0') {
         // Focus Ossa / Scheletro / Livello 0
+        if (svgAvatar) svgAvatar.classList.remove('xray-all-aura');
+        if (auraBackdrop) auraBackdrop.style.opacity = '0';
         gPersona.style.opacity = '0.08';
         gPersona.style.filter = 'grayscale(100%)';
+        gPersona.style.pointerEvents = 'none';
         gPelle.style.opacity = '0.12';
         gPelle.style.filter = 'grayscale(100%)';
+        gPelle.style.pointerEvents = 'none';
         gScheletro.style.opacity = '1';
         gScheletro.style.filter = 'drop-shadow(0 0 10px rgba(0, 168, 133, 0.9))';
+        gScheletro.style.pointerEvents = 'auto';
       } else if (activeCode === '1') {
         // Focus Pelle / Corpo / Livello 1
+        if (svgAvatar) svgAvatar.classList.remove('xray-all-aura');
+        if (auraBackdrop) auraBackdrop.style.opacity = '0';
         gPersona.style.opacity = '0.12';
         gPersona.style.filter = 'grayscale(100%)';
+        gPersona.style.pointerEvents = 'none';
         gPelle.style.opacity = '1';
         gPelle.style.filter = 'drop-shadow(0 0 8px rgba(226, 81, 58, 0.8))';
+        gPelle.style.pointerEvents = 'auto';
         gScheletro.style.opacity = '0';
         gScheletro.style.filter = 'none';
+        gScheletro.style.pointerEvents = 'none';
       } else if (activeCode === '2') {
         // Focus Persona / Vestiti / Livello 2
+        if (svgAvatar) svgAvatar.classList.remove('xray-all-aura');
+        if (auraBackdrop) auraBackdrop.style.opacity = '0';
         gPersona.style.opacity = '1';
-        gPersona.style.filter = 'drop-shadow(0 0 8px rgba(255, 209, 82, 0.8))';
+        gPersona.style.filter = 'drop-shadow(0 0 8px rgba(255, 209, 82, 0.85))';
+        gPersona.style.pointerEvents = 'auto';
         gPelle.style.opacity = '1';
         gPelle.style.filter = 'none';
+        gPelle.style.pointerEvents = 'auto';
         gScheletro.style.opacity = '0';
         gScheletro.style.filter = 'none';
+        gScheletro.style.pointerEvents = 'none';
       } else {
-        // ALL - Selezione Completa: Pelle e Persona al 100% nitide (Punto 6 risolto!)
+        // ALL - Selezione Completa con Aura Full-Stack dedicata attorno all'omino
+        if (svgAvatar) svgAvatar.classList.add('xray-all-aura');
+        if (auraBackdrop) auraBackdrop.style.opacity = '1';
         gPersona.style.opacity = '1';
         gPersona.style.filter = 'none';
+        gPersona.style.pointerEvents = 'auto';
         gPelle.style.opacity = '1';
         gPelle.style.filter = 'none';
+        gPelle.style.pointerEvents = 'auto';
         gScheletro.style.opacity = '0';
         gScheletro.style.filter = 'none';
+        gScheletro.style.pointerEvents = 'none';
       }
+    }
+
+    function formatLayerLabel(code) {
+      if (code === 'L0' || code === '0') return 'L0 · Core';
+      if (code === 'L1' || code === '1') return 'L1 · Platform';
+      if (code === 'L2' || code === '2') return 'L2 · Cloud';
+      return code;
     }
 
     function setupKeyboardShortcuts() {
@@ -898,6 +1093,23 @@
       renderInspector();
     }
 
+    function toggleContactsPopover(e) {
+      if (e) e.stopPropagation();
+      const pop = document.getElementById('contacts-popover');
+      if (!pop) return;
+      pop.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', (e) => {
+      const pop = document.getElementById('contacts-popover');
+      const btn = document.getElementById('btn-contacts-top');
+      if (pop && !pop.classList.contains('hidden')) {
+        if (!pop.contains(e.target) && (!btn || !btn.contains(e.target))) {
+          pop.classList.add('hidden');
+        }
+      }
+    });
+
     // ================= RENDERING APPLICATIVO =================
     function renderApp() {
       const data = cvData[currentLang];
@@ -912,21 +1124,20 @@
       if (heroNickPrefix) heroNickPrefix.innerText = data.ui.heroNicknamePrefix;
       const heroRole = document.getElementById('hero-role');
       if (heroRole) heroRole.innerHTML = 'Technical Architect &amp;<br>DevSecOps Specialist';
-      const heroLocSub = document.getElementById('hero-location-sub');
-      if (heroLocSub) heroLocSub.innerText = data.contact.location;
 
-      const badgeTop = document.getElementById('badge-top-label');
-      if (badgeTop) badgeTop.innerText = `${data.contact.name} (@${data.contact.nickname})`;
+      const btnContactsLbl = document.getElementById('btn-contacts-label');
+      if (btnContactsLbl && data.ui.btnContacts) btnContactsLbl.innerText = data.ui.btnContacts;
+
       document.getElementById('btn-view-xray').innerText = `🔬 ${data.ui.viewInteractive}`;
       document.getElementById('btn-view-classic').innerText = `📄 ${data.ui.viewClassic}`;
 
       const btnIt = document.getElementById('btn-lang-it');
       const btnEn = document.getElementById('btn-lang-en');
       if (currentLang === 'it') {
-        btnIt.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnIt.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
         btnEn.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       } else {
-        btnEn.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-xs";
+        btnEn.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
         btnIt.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
       }
 
@@ -934,7 +1145,8 @@
 
       document.getElementById('xray-section-title').innerHTML = `🔬 ${data.ui.xraySectionTitle.replace('🔬 ', '')}`;
       document.getElementById('xray-section-sub').innerText = data.ui.xraySectionSub;
-      document.getElementById('xray-shortcuts-hint').innerHTML = `<span class="w-2 h-2 rounded-full bg-poster-coral animate-ping"></span><span>${data.ui.xrayShortcutsHint}</span>`;
+      const selLabel = document.getElementById('xray-selection-label');
+      if (selLabel && data.ui.xraySelectionLabel) selLabel.innerText = data.ui.xraySelectionLabel;
       document.getElementById('xray-depth-label').innerText = data.ui.xrayDepth;
       document.getElementById('xray-tech-title').innerHTML = `<span class="text-poster-coral">⚡</span> ${data.ui.xrayTechTitle}`;
       document.getElementById('xray-related-exp-title').innerHTML = `<span class="text-poster-coral">💼</span> ${data.ui.xrayRelatedExpTitle}`;
@@ -959,41 +1171,51 @@
       const activeLayerKey = currentLayer === '0' ? 'L0' : (currentLayer === '1' ? 'L1' : (currentLayer === '2' ? 'L2' : 'ALL'));
 
       if (currentLayer === 'ALL') {
+        const l0Techs = data.layers.L0.technologies.map(t => t.name.split(' (')[0]);
+        const l1Techs = data.layers.L1.technologies.map(t => t.name.split(' (')[0]);
+        const l2Techs = data.layers.L2.technologies.map(t => t.name.split(' (')[0]);
         headerContainer.innerHTML = `
-          <div class="flex items-center justify-between border-b border-poster-line/70 pb-2.5">
+          <div class="flex items-center justify-between border-b border-poster-line/70 pb-2">
             <div>
               <span class="text-[9px] font-mono font-black uppercase tracking-wider px-2 py-0.5 rounded bg-poster-yellow text-poster-charcoal">
-                STACK INTEGRALE • 3 LIVELLI
+                ${data.ui.xrayAllBadge}
               </span>
-              <h3 class="text-base sm:text-lg font-black font-heading text-poster-charcoal mt-1">
-                Visione Architetturale Completa
+              <h3 class="text-sm sm:text-base font-black font-heading text-poster-charcoal mt-0.5">
+                ${data.ui.xrayAllHeading}
               </h3>
             </div>
             <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
               ALL
             </span>
           </div>
-          <p class="text-xs text-poster-muted leading-relaxed font-normal">
-            Ispezione integrale dell'avatar architetturale: dalle fondamenta e kernel barebone (L0 - main), alla corporatura e sicurezza applicativa (L1 - @Framework), fino ai sistemi distribuiti cloud (mimmoctl -d).
+          <p class="text-[11.5px] text-poster-muted leading-snug font-normal">
+            ${data.ui.xrayAllDesc}
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-[11px] font-mono">
-            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
-              <strong class="text-poster-teal block">L0 - main</strong>
-              .NET 8 (-30%), SPI DMA, -20mA
-            </div>
-            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
-              <strong class="text-poster-coral block">L1 - @Framework</strong>
-              4.500+ repo, -27% CI, -60% LoC
-            </div>
-            <div class="p-2 rounded-xl bg-poster-cream border border-poster-line text-poster-charcoal">
-              <strong class="text-poster-yellowDark block">mimmoctl -d</strong>
-              ~3.000 TPS, 3 Middleware, KEDA
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-0.5 text-[10.5px] font-mono">
+            <button type="button" onclick="selectLayer('0')" class="text-left p-2 rounded-xl bg-white hover:bg-poster-coralLight/50 border border-poster-line text-poster-charcoal transition-colors space-y-1">
+              <strong id="card-label-l0" class="text-poster-teal block">${data.layers.L0.name}</strong>
+              <div class="flex flex-wrap gap-1">
+                ${l0Techs.map(t => `<span class="text-[9px] leading-tight px-1.5 py-0.5 rounded bg-poster-cream border border-poster-line/80 text-poster-charcoal">${t}</span>`).join('')}
+              </div>
+            </button>
+            <button type="button" onclick="selectLayer('1')" class="text-left p-2 rounded-xl bg-white hover:bg-poster-coralLight/50 border border-poster-line text-poster-charcoal transition-colors space-y-1">
+              <strong id="card-label-l1" class="text-poster-coral block">${data.layers.L1.name}</strong>
+              <div class="flex flex-wrap gap-1">
+                ${l1Techs.map(t => `<span class="text-[9px] leading-tight px-1.5 py-0.5 rounded bg-poster-cream border border-poster-line/80 text-poster-charcoal">${t}</span>`).join('')}
+              </div>
+            </button>
+            <button type="button" onclick="selectLayer('2')" class="text-left p-2 rounded-xl bg-white hover:bg-poster-coralLight/50 border border-poster-line text-poster-charcoal transition-colors space-y-1">
+              <strong id="card-label-l2" class="text-poster-yellowDark block">${data.layers.L2.name}</strong>
+              <div class="flex flex-wrap gap-1">
+                ${l2Techs.map(t => `<span class="text-[9px] leading-tight px-1.5 py-0.5 rounded bg-poster-cream border border-poster-line/80 text-poster-charcoal">${t}</span>`).join('')}
+              </div>
+            </button>
           </div>
         `;
       } else {
         const l = data.layers[activeLayerKey];
         const badgeBg = activeLayerKey === 'L0' ? 'bg-poster-teal text-white' : (activeLayerKey === 'L1' ? 'bg-poster-coral text-white' : 'bg-poster-yellowDark text-poster-charcoal');
+        const dotColor = activeLayerKey === 'L0' ? 'bg-poster-teal' : (activeLayerKey === 'L1' ? 'bg-poster-coral' : 'bg-poster-yellowDark');
         headerContainer.innerHTML = `
           <div class="flex items-center justify-between border-b border-poster-line/70 pb-2.5">
             <div>
@@ -1005,7 +1227,7 @@
               </h3>
             </div>
             <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-poster-cream text-poster-charcoal border border-poster-line">
-              ${l.name}
+              ${l.technologies.length} Tech
             </span>
           </div>
           <p class="text-xs text-poster-muted leading-relaxed font-normal">
@@ -1013,12 +1235,13 @@
           </p>
           <div class="space-y-1.5 pt-1">
             <span class="text-[9px] font-mono font-black uppercase tracking-wider text-poster-charcoal block">
-              ${currentLang === 'it' ? 'METRICHE CHIAVE DEL LIVELLO:' : 'KEY LAYER METRICS:'}
+              ${currentLang === 'it' ? 'TECNOLOGIE DEL LIVELLO:' : 'LAYER TECHNOLOGIES:'}
             </span>
             <div class="flex flex-wrap gap-1.5">
-              ${l.metrics.map(m => `
-                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-lg bg-poster-cream border border-poster-line text-poster-charcoal">
-                  ✅ ${m}
+              ${l.technologies.map(t => `
+                <span class="inline-flex items-center gap-1.5 text-[10.5px] font-mono font-bold px-2.5 py-1 rounded-lg bg-white border border-poster-line text-poster-charcoal shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>
+                  <span>${t.name}</span>
                 </span>
               `).join('')}
             </div>
@@ -1026,20 +1249,49 @@
         `;
       }
 
-      let techItems = [];
+      let allLayerTechs = [];
       if (currentLayer === 'ALL') {
-        techItems = [
+        allLayerTechs = [
           ...data.layers.L2.technologies,
           ...data.layers.L1.technologies,
           ...data.layers.L0.technologies
         ];
       } else {
-        techItems = data.layers[activeLayerKey].technologies;
+        allLayerTechs = data.layers[activeLayerKey].technologies;
       }
-      countBadge.innerText = `${techItems.length} ${currentLang === 'it' ? 'Tecnologie' : 'Technologies'}`;
+
+      // Render filtro rapido per contesto (Tutti | Sisal | WBA | Homelab & IoT)
+      const contextFilterContainer = document.getElementById('xray-context-filters');
+      if (contextFilterContainer) {
+        const filterOpts = [
+          { key: 'ALL', label: data.ui.filterContextAll || 'Tutti' },
+          { key: 'Sisal', label: data.ui.filterContextSisal || 'Sisal' },
+          { key: 'WBA', label: data.ui.filterContextWba || 'WBA' },
+          { key: 'Homelab', label: data.ui.filterContextHomelab || 'Homelab & IoT' }
+        ];
+        contextFilterContainer.innerHTML = filterOpts.map(f => {
+          const isActive = currentContextFilter === f.key;
+          return `
+            <button type="button" onclick="setContextFilter('${f.key}')" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg transition-all border ${isActive ? 'bg-poster-coral text-white border-poster-coral shadow-sm' : 'bg-white text-poster-muted hover:text-poster-charcoal border-poster-line'}">
+              ${f.label}
+            </button>
+          `;
+        }).join('');
+      }
+
+      let techItems = allLayerTechs.filter(t => {
+        if (currentContextFilter === 'ALL') return true;
+        const ctxLower = (t.context || '').toLowerCase();
+        if (currentContextFilter === 'Sisal') return ctxLower.includes('sisal') || ctxLower.includes('flutter');
+        if (currentContextFilter === 'WBA') return ctxLower.includes('wba') || ctxLower.includes('walgreens');
+        if (currentContextFilter === 'Homelab') return ctxLower.includes('homelab') || ctxLower.includes('smartdisplay') || ctxLower.includes('iot') || ctxLower.includes('edge');
+        return true;
+      });
+
+      countBadge.innerText = `${techItems.length} / ${allLayerTechs.length} ${currentLang === 'it' ? 'Tecnologie' : 'Technologies'}`;
 
       techListContainer.innerHTML = techItems.map(t => `
-        <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-1.5 hover:border-poster-coral/40 transition-all">
+        <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-sm space-y-1.5 hover:border-poster-coral/40 transition-all">
           <div class="flex items-start justify-between gap-2">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full ${t.layers.includes('L0') ? 'bg-poster-teal' : (t.layers.includes('L1') ? 'bg-poster-coral' : 'bg-poster-yellowDark')}"></span>
@@ -1048,7 +1300,7 @@
               </h4>
             </div>
             <div class="flex items-center gap-1">
-              ${t.layers.map(l => `<span class="text-[9px] font-mono font-extrabold px-1.5 py-0.2 rounded bg-poster-cream text-poster-charcoal border border-poster-line">${l}</span>`).join('')}
+              ${t.layers.map(l => `<button type="button" onclick="selectLayer('${l}')" class="text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-colors">${formatLayerLabel(l)}</button>`).join('')}
             </div>
           </div>
 
@@ -1070,20 +1322,24 @@
       `).join('');
 
       const relatedExps = data.experiences.filter(exp => currentLayer === 'ALL' || exp.layers.includes(activeLayerKey));
-      expListContainer.innerHTML = relatedExps.map(exp => `
-        <article class="p-4 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2 hover:border-poster-coral/40 transition-all">
+      expListContainer.innerHTML = relatedExps.map(exp => {
+        const isDetailsOpen = !!expandedExpDetails[exp.id];
+        const isToolsOpen = !!expandedExpTools[exp.id];
+        const visibleTools = isToolsOpen ? exp.tools : exp.tools.slice(0, 6);
+        return `
+        <article class="p-4 rounded-xl bg-white border border-poster-line shadow-sm space-y-2.5 hover:border-poster-coral/40 transition-all">
           <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1 border-b border-poster-line/60 pb-2">
             <div>
               <div class="flex items-center gap-1.5 flex-wrap">
                 <h4 class="text-xs sm:text-sm font-black font-heading text-poster-charcoal">${exp.role}</h4>
-                <span class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-poster-cream border border-poster-line">${exp.company}</span>
+                <span class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-poster-cream border border-poster-line">${exp.company}</span>
               </div>
               <p class="text-[11px] font-bold text-poster-coral mt-0.5">
                 ${data.ui.labelClient}: ${exp.client}
               </p>
             </div>
-            <div class="flex items-center gap-1 shrink-0">
-              ${exp.layers.map(l => `<span class="text-[8px] font-mono font-extrabold px-1.5 py-0.2 rounded bg-poster-charcoal text-white">${l}</span>`).join('')}
+            <div class="flex items-center gap-1 flex-wrap shrink-0">
+              ${exp.layers.map(l => `<button type="button" onclick="selectLayer('${l}')" class="text-[8px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-poster-charcoal hover:bg-poster-coral text-white transition-colors">${formatLayerLabel(l)}</button>`).join('')}
               <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-poster-cream text-poster-muted border border-poster-line">${exp.period}</span>
             </div>
           </div>
@@ -1101,25 +1357,46 @@
             </div>
           ` : ''}
 
+          ${exp.responsibilities && exp.responsibilities.length > 0 ? `
+            <div class="pt-0.5">
+              <button type="button" onclick="toggleExpDetails('${exp.id}')" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-poster-cream hover:bg-poster-coralLight text-poster-charcoal border border-poster-line transition-colors">
+                ${isDetailsOpen ? '▾ ' + data.ui.btnDetailsToggleHide : '▸ ' + data.ui.btnDetailsToggleShow} (${exp.responsibilities.length})
+              </button>
+              ${isDetailsOpen ? `
+                <div class="grid grid-cols-1 gap-1.5 text-xs text-poster-charcoal mt-2">
+                  ${exp.responsibilities.map(r => `
+                    <div class="p-2 rounded-lg bg-poster-cream/50 border border-poster-line/70">
+                      <strong class="font-bold text-poster-charcoal">${r.title}:</strong> ${r.description}
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+
           <div class="flex flex-wrap gap-1 text-[9px] font-mono pt-0.5">
-            ${exp.tools.slice(0, 6).map(t => `<span class="px-1.5 py-0.2 rounded bg-poster-cream text-poster-charcoal border border-poster-line/70">${t}</span>`).join('')}
-            ${exp.tools.length > 6 ? `<span class="px-1.5 py-0.2 rounded bg-white text-poster-muted border border-poster-line">+${exp.tools.length - 6}</span>` : ''}
+            ${visibleTools.map(t => `<span class="px-1.5 py-0.5 rounded bg-poster-cream text-poster-charcoal border border-poster-line/70">${t}</span>`).join('')}
+            ${exp.tools.length > 6 ? `
+              <button type="button" onclick="toggleExpTools('${exp.id}')" class="px-1.5 py-0.5 rounded bg-white hover:bg-poster-coralLight text-poster-coral font-bold border border-poster-line transition-colors">
+                ${isToolsOpen ? '−' : '+' + (exp.tools.length - 6)}
+              </button>
+            ` : ''}
           </div>
         </article>
-      `).join('');
+      `}).join('');
 
       const filteredStories = data.starStories.filter(s => currentLayer === 'ALL' || s.layers.includes(activeLayerKey));
       if (filteredStories.length === 0) {
-        starListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">Nessuna scheda STAR specifica per questo livello (consulta Livello 0 o Livello 2).</p>`;
+        starListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">${data.ui.xrayEmptyStar}</p>`;
       } else {
         starListContainer.innerHTML = filteredStories.map(s => {
           const isExp = expandedStories[s.id];
           return `
-            <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2.5">
+            <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-sm space-y-2.5">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-poster-line/60 pb-1.5">
                 <div>
                   <div class="flex items-center gap-1.5 flex-wrap">
-                    <span class="text-[9px] font-mono font-black px-1.5 py-0.2 rounded bg-poster-coral text-white">${s.code}</span>
+                    <span class="text-[9px] font-mono font-black px-1.5 py-0.5 rounded bg-poster-coral text-white">${s.code}</span>
                     <h4 class="text-xs sm:text-sm font-bold font-heading text-poster-charcoal">${s.title}</h4>
                   </div>
                   <span class="text-[10px] font-mono text-poster-muted">${s.badge}</span>
@@ -1156,10 +1433,10 @@
 
       const filteredHomelab = data.homelab.filter(h => currentLayer === 'ALL' || h.layers.includes(activeLayerKey));
       if (filteredHomelab.length === 0) {
-        homelabListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">Nessun progetto edge o homelab specifico per questo livello.</p>`;
+        homelabListContainer.innerHTML = `<p class="text-xs text-poster-muted italic">${data.ui.xrayEmptyHomelab}</p>`;
       } else {
         homelabListContainer.innerHTML = filteredHomelab.map(h => `
-          <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-2xs space-y-2">
+          <div class="p-3.5 rounded-xl bg-white border border-poster-line shadow-sm space-y-2">
             <div class="flex items-center justify-between">
               <div>
                 <h4 class="text-xs sm:text-sm font-bold font-heading text-poster-charcoal">${h.title}</h4>
@@ -1209,22 +1486,12 @@
       document.getElementById('classic-contact-linkedin').href = data.contact.linkedin;
       document.getElementById('classic-contact-github').innerText = data.contact.githubDisplay;
       document.getElementById('classic-contact-github').href = data.contact.github;
-      document.getElementById('classic-contact-location').innerText = data.contact.location;
       document.getElementById('classic-qr-tag').innerText = data.ui.qrTag;
       document.getElementById('classic-qr-text').innerText = data.ui.qrText;
 
       document.getElementById('classic-skills-title').innerText = data.ui.titleSkills;
       const skillsContainer = document.getElementById('classic-skills-matrix');
-      
-      const skillCategories = [
-        { title: "Kubernetes & GitOps", icon: "☸️", items: "K8s, OKE (Oracle), AKS (Azure), ArgoCD, Helm, Kustomize, K3s" },
-        { title: "CI/CD & Automation", icon: "🚀", items: "GitHub Actions (Reusable & Composite Workflows), ARC (Runner effimeri su Pod), Azure DevOps, Bash" },
-        { title: "AppSec & Governance", icon: "🛡️", items: "Veracode (SAST & SCA), SonarQube (Quality Gates), Trivy, CrowdStrike, OCI Vault, Sealed Secrets, Compliance SBAI" },
-        { title: "Cloud & Containers", icon: "☁️", items: "Oracle Cloud Infrastructure (OCI), Microsoft Azure (Functions, APIM, AKS), Docker, Proxmox VE" },
-        { title: "Backend & Languages", icon: "💻", items: "Java (Spring Boot), C# (.NET 8 Isolated), Python, Go, Microservizi, Serverless" },
-        { title: "Messaging & Data", icon: "🔄", items: "Azure ServiceBus (~3.000 TPS), EventHub, RabbitMQ, Redis, Cosmos DB, SQL Server, MySQL" },
-        { title: "Leadership & FinOps", icon: "👥", items: "Technical Architecture, Team Lead (13 dev), FinOps (-30% costi), Agile / Scrum" }
-      ];
+      const skillCategories = data.ui.skillCategories || [];
 
       skillsContainer.innerHTML = skillCategories.map((c, idx) => `
         <div class="space-y-1">
@@ -1246,6 +1513,26 @@
           <strong class="text-poster-charcoal">${l.language}:</strong> ${l.detail}
         </p>
       `).join('');
+
+      // Profilo & Sintesi Architetturale (Executive vs Tech Lead)
+      const sumTitle = document.getElementById('classic-summary-title');
+      if (sumTitle && data.ui.titleSummary) sumTitle.innerText = data.ui.titleSummary;
+      const btnSumExec = document.getElementById('btn-classic-sum-exec');
+      const btnSumTech = document.getElementById('btn-classic-sum-tech');
+      const sumText = document.getElementById('classic-summary-text');
+      if (btnSumExec && btnSumTech && sumText) {
+        btnSumExec.innerText = data.ui.summaryExecutive;
+        btnSumTech.innerText = data.ui.summaryTechnical;
+        if (currentSummaryType === 'executive') {
+          btnSumExec.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
+          btnSumTech.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+          sumText.innerText = data.summaries.executive;
+        } else {
+          btnSumTech.className = "px-2.5 py-1 rounded-lg transition-all bg-poster-coral text-white shadow-sm";
+          btnSumExec.className = "px-2.5 py-1 rounded-lg transition-all text-poster-muted hover:text-poster-charcoal";
+          sumText.innerText = data.summaries.technical;
+        }
+      }
 
       document.getElementById('classic-edu-title').innerText = data.ui.titleEducation;
       const eduContainer = document.getElementById('classic-edu-grid');
@@ -1351,8 +1638,8 @@
               <h1 class="text-2xl font-black uppercase tracking-tight text-black">${data.contact.name}</h1>
               <p class="text-sm font-bold text-gray-800">${data.contact.role}</p>
               <div class="text-[11px] text-gray-700 mt-1 space-y-0.5">
-                <p>${data.contact.location} | Tel: ${data.contact.phone} | Email: ${data.contact.email}</p>
-                <p>LinkedIn: ${data.contact.linkedinDisplay} | GitHub: ${data.contact.githubDisplay} | Portfolio: ${data.contact.websiteDisplay}</p>
+                <p>Email: ${data.contact.email} | LinkedIn: ${data.contact.linkedinDisplay}</p>
+                <p>GitHub: ${data.contact.githubDisplay} | Portfolio: ${data.contact.websiteDisplay}</p>
               </div>
             </div>
             <div class="shrink-0 text-center">

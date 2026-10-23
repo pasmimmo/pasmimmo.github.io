@@ -9,9 +9,7 @@
 
 * **Nominativo:** Domenico Pascucci
 * **Data di Nascita:** 20/09/1990
-* **Residenza / Operatività:** Napoli / Remoto (Italia)
 * **Email:** pasmimmo@gmail.com
-* **Telefono:** +39 388 1020601
 * **LinkedIn:** [linkedin.com/in/pasmimmo](https://linkedin.com/in/pasmimmo/)
 * **GitHub:** [github.com/pasmimmo](https://github.com/pasmimmo)
 * **Web / Portfolio:** [pasmimmo.github.io](https://pasmimmo.github.io/)
